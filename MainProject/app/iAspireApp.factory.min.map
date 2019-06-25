@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"C:\\Workspace\\Assembla\\iAspire_www\\www_iAspire_App\\app\\iAspireApp.factory.min.js",
+"lineCount":1,
+"mappings":"AAAC,SAAS,EAAG,CAITA,OAAAC,OAAA,CACY,YADZ,CAAAC,QAAA,CAEa,aAFb,CAIAC,QAAoB,EAAG,EAJvB,CAJS,CAAZ,CAAD;",
+"sources":["C:/Workspace/Assembla/iAspire_www/www_iAspire_App/app/iAspireApp.factory.js"],
+"names":["angular","module","factory","InitService"]
+}

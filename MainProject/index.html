@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" data-ng-app="iAspireApp">
+<head>
+    <title>iAspire</title>
+    <meta http-equiv="Content-Security-Policy" content="img-src 'self' data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://api.apptivo.com http://localhost:4976; connect-src 'self' api.apptivo.com http://localhost:59795 http://localhost:4976; style-src 'self' 'unsafe-inline' https://www.google.com https://ajax.googleapis.com">
+
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' *; img-src 'self' data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://localhost:8081/ https://www.google.com https://api.apptivo.com https://iAspire.azurewebsites.net; connect-src 'self' api.apptivo.com http://localhost:8081/ https://iAspire.azurewebsites.net; style-src 'self' 'unsafe-inline' http://localhost:8081/ https://www.google.com https://ajax.googleapis.com">-->
+
+    <link rel="shortcut icon" type="image/ico" sizes="16x16 32x32 48x48 192x192 256x256" href="assets/images/iAspireLogo.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="Sat, 01 Dec 2001 00:00:00 GMT">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <!-- Style Sheets -->
+    <link href="assets/css/global.css" rel="stylesheet" />
+    <link href="Scripts/angular-csp.css" rel="stylesheet" />
+    <link href="assets/css/SMAClient.Alerts.css" rel="stylesheet" />
+    <link href="assets/css/SMAClient.Alerts.Extras.css" rel="stylesheet" />
+    <link href="assets/css/jquery-ui.min.css" rel="stylesheet" />
+    <link href="assets/css/jquery-ui.structure.min.css" rel="stylesheet" />
+    <link href="assets/css/jquery-ui.theme.min.css" rel="stylesheet" />
+    <link href="assets/css/jquery.datetimepicker.css" rel="stylesheet" />
+    <link href="assets/css/surveyPage.css" rel="stylesheet" />
+    <link href="assets/css/settings.css" rel="stylesheet" />
+    <link href="assets/css/selectForm.css" rel="stylesheet" />
+    <link href="assets/css/reports.css" rel="stylesheet" />
+    <link href="assets/css/openSavedDoc.css" rel="stylesheet" />
+    <link href="assets/css/selection.css" rel="stylesheet" />
+    <!--<link href="assets/css/bootstrap.min.css" rel="stylesheet" />-->
+    <link href="assets/css/bootstrap-glyphicons.css" rel="stylesheet" />
+    <link href="assets/css/calendar.css" rel="stylesheet" />
+    <link href="assets/css/calendar.min.css" rel="stylesheet" />
+    <link href="assets/css/normalize.css" rel="stylesheet" />
+    <!-- Library Scripts -->
+    <!--new Dashboard link-->
+    <!-- Required Fremwork -->
+    <!-- waves.css -->
+    <link rel="stylesheet" type="text/css" href="files/bower_components/bootstrap/css/bootstrap.min.css">
+    <link href="files/assets/pages/waves/css/waves.min.css" rel="stylesheet" />
+    <!-- feather icon -->
+    <link rel="stylesheet" type="text/css" href="files/assets/icon/feather/css/feather.css">
+    <!-- font-awesome-n -->
+    <link rel="stylesheet" type="text/css" href="files/assets/css/font-awesome-n.min.css">
+    <!-- Chartlist chart css -->
+    <link rel="stylesheet" href="files/bower_components/chartist/css/chartist.css" type="text/css" media="all">
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="files/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="files/assets/css/widget.css">
+    <!-- Required Fremwork -->
+    <!-- waves.css -->
+    <link rel="stylesheet" href="files/assets/pages/waves/css/waves.min.css" type="text/css" media="all">
+    <!-- feather icon -->
+    <link rel="stylesheet" type="text/css" href="files/assets/icon/feather/css/feather.css">
+    <!-- font-awesome-n -->
+    <link rel="stylesheet" type="text/css" href="files/assets/css/font-awesome-n.min.css">
+    <!-- Chartlist chart css -->
+    <link rel="stylesheet" href="files/bower_components/chartist/css/chartist.css" type="text/css" media="all">
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="files/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="files/assets/css/widget.css">
+
+    <!--------------------------End--------------------------->
+
+    <script type="text/javascript" src="Scripts/es5-shim.min.js"></script>
+    <script type="text/javascript" src="Scripts/es6-shim.js"></script>
+    <script type="text/javascript" src="Scripts/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="Scripts/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.datetimepicker.js"></script>
+    <script type="text/javascript" src="Scripts/modernizr-2.8.3.js"></script>
+    <script type="text/javascript" src="Scripts/moment.min.js"></script>
+    <script type="text/javascript" src="Scripts/angular.min.js"></script>
+    <script type="text/javascript" src="Scripts/angular-route.min.js"></script>
+    <script type="text/javascript" src="Scripts/angular-animate.min.js"></script>
+    <script type="text/javascript" src="Scripts/jspdf.min.js"></script>
+    <script type="text/javascript" src="Scripts/jspdf.plugin.autotable.js"></script>
+    <script type="text/javascript" src="assets/js/tableHeadFixer.js"></script>
+    <script src="assets/js/jquery.stickyTableHeader.js"></script>
+    <script src="assets/js/ScrollableTablePlugin_1.0_min.js"></script>
+    <!--<script type="text/javascript" src="Scripts/domvas.js"></script>-->
+    <script src="Scripts/highcharts.js"></script>
+    <script src="Scripts/HiChartExporting.js"></script>
+    <script src="Scripts/highcharts-ng.js"></script>
+    <script src="Scripts/highcharts-more.js"></script>
+    <script src="Scripts/drilldown.js"></script>
+    <script src="Scripts/data.js"></script>
+    <!-- Application Script -->
+    <!--START NILESH-TSK16 -->  
+    <script type="text/javascript" src="Scripts/ui-bootstrap-tpls-0.12.0.js"></script>
+    <script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
+    <!--END NILESH-TSK16 -->
+    <script type="text/javascript" src="app/iAspireApp.js"></script><!-- min -->
+    <script type="text/javascript" src="app/iAspireApp.routes.js"></script><!-- min -->
+    <script type="text/javascript" src="app/iAspireApp.config.js"></script><!-- min -->
+    <script type="text/javascript" src="app/iAspireApp.controller.js"></script><!-- min -->
+    <script type="text/javascript" src="app/iAspireApp.factory.js"></script><!-- min -->
+    <script type="text/javascript" src="app/iAspireApp.directives.js"></script><!-- min -->
+    <script type="text/javascript" src="app/iAspireApp.run.js"></script><!-- min -->
+    <script type="text/javascript" src="app/iAspireApp.filters.js"></script><!-- min -->
+    <script type="text/javascript" src="app/DataService.js"></script><!-- min -->
+    <script type="text/javascript" src="app/ProjectConstants.js"></script><!-- min -->
+    <!-- Services -->
+    <script type="text/javascript" src="app/services/SMAClientAngularModules/SMAClient.Alert.Angular.js"></script><!-- min -->
+    <script type="text/javascript" src="app/services/SMAClientAngularModules/SMAClient.SQLite.Angular.js"></script><!-- min -->
+    <script type="text/javascript" src="app/services/SMAClientInstances/SMAClient.SQLite.AppDB.js"></script><!-- min -->
+    <script type="text/javascript" src="app/services/SMAClientInstances/SMAClient.SQLite.iAspireDB.js"></script><!-- min -->
+    <!-- View Controllers -->
+    <script type="text/javascript" src="app/controllers/loginController.js"></script><!-- min -->
+    <script type="text/javascript" src="app/controllers/selectionController.js"></script><!-- min -->
+    <script type="text/javascript" src="app/controllers/selectFormController.js"></script><!-- min -->
+    <script type="text/javascript" src="app/controllers/createAccountController.js"></script><!-- min -->
+    <script type="text/javascript" src="app/controllers/forgotPasswordController.js"></script><!-- min -->
+    <script type="text/javascript" src="app/controllers/surveyController.js"></script><!-- min -->
+    <script type="text/javascript" src="app/controllers/openSavedDocController.js"></script><!-- min -->
+    <script type="text/javascript" src="app/controllers/reportsController.js"></script><!-- min -->
+    <script type="text/javascript" src="app/controllers/activeFilterController.js"></script><!-- min -->
+    <script type="text/javascript" src="app/controllers/MobileViewController.js"></script>
+    <!--<script type="text/javascript" src="app/controllers/AdureportingQuestionController.js"></script>--><!-- min -->
+    <script src="app/controllers/BusinessReportingQuestionController.js"></script>
+    <script type="text/javascript" src="app/controllers/settingsController.js"></script><!-- min -->
+    <script src="app/controllers/BusinessReportController.js"></script>
+    <script src="app/controllers/calendar-tpls.js"></script>
+    <script src="app/controllers/DashboardSurveyController.js"></script>
+
+    <!-- External Services -->
+    <script type="text/javascript" src="app/services/Google/googlechart.module.js"></script>
+    <script type="text/javascript" src="app/services/Google/FormatManager.js"></script>
+    <script type="text/javascript" src="app/services/Google/googleChart.js"></script>
+    <script type="text/javascript" src="app/services/Google/googleChartApiConfig.js"></script>
+    <script type="text/javascript" src="app/services/Google/googleChartApiPromise.js"></script>
+    <script type="text/javascript" src="app/services/Google/googleJsapiUrl.js"></script>
+    <script type="text/javascript" src="app/services/Google/onError.js"></script>
+    <script type="text/javascript" src="app/services/Google/onReady.js"></script>
+    <script type="text/javascript" src="app/services/Google/onSelect.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+    <script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script type="e6c7b7630547578705dbf55e-text/javascript" src="files/bower_components/jquery/js/jquery.min.js"></script>
+    <script type="e6c7b7630547578705dbf55e-text/javascript" src="files/bower_components/jquery-ui/js/jquery-ui.min.js"></script>
+    <script type="e6c7b7630547578705dbf55e-text/javascript" src="files/bower_components/popper.js/js/popper.min.js"></script>
+    <script type="e6c7b7630547578705dbf55e-text/javascript" src="files/bower_components/bootstrap/js/bootstrap.min.js"></script>
+    <!-- waves js -->
+    <script src="files/assets/pages/waves/js/waves.min.js" type="e6c7b7630547578705dbf55e-text/javascript"></script>
+    <!-- jquery slimscroll js -->
+    <script type="e6c7b7630547578705dbf55e-text/javascript" src="files/bower_components/jquery-slimscroll/js/jquery.slimscroll.js"></script>
+    <!-- Float Chart js -->
+    <script src="files/assets/pages/chart/float/jquery.flot.js" type="e6c7b7630547578705dbf55e-text/javascript"></script>
+    <script src="files/assets/pages/chart/float/jquery.flot.categories.js" type="e6c7b7630547578705dbf55e-text/javascript"></script>
+    <script src="files/assets/pages/chart/float/curvedLines.js" type="e6c7b7630547578705dbf55e-text/javascript"></script>
+    <script src="files/assets/pages/chart/float/jquery.flot.tooltip.min.js" type="e6c7b7630547578705dbf55e-text/javascript"></script>
+    <!-- Chartlist charts -->
+    <script src="files/bower_components/chartist/js/chartist.js" type="e6c7b7630547578705dbf55e-text/javascript"></script>
+    <!-- amchart js -->
+    <script src="files/assets/pages/widget/amchart/amcharts.js" type="e6c7b7630547578705dbf55e-text/javascript"></script>
+    <script src="files/assets/pages/widget/amchart/serial.js" type="e6c7b7630547578705dbf55e-text/javascript"></script>
+    <script src="files/assets/pages/widget/amchart/light.js" type="e6c7b7630547578705dbf55e-text/javascript"></script>
+    <!-- Custom js -->
+    <script src="files/assets/js/pcoded.min.js" type="e6c7b7630547578705dbf55e-text/javascript"></script>
+    <script src="files/assets/js/vertical/vertical-layout.min.js" type="e6c7b7630547578705dbf55e-text/javascript"></script>
+    <script type="e6c7b7630547578705dbf55e-text/javascript" src="files/assets/pages/dashboard/custom-dashboard.min.js"></script>
+    <script type="e6c7b7630547578705dbf55e-text/javascript" src="files/assets/js/script.min.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13" type="e6c7b7630547578705dbf55e-text/javascript"></script>
+    <script type="e6c7b7630547578705dbf55e-text/javascript">
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-23581568-13');
+    </script>
+
+    <script src="ajax.cloudflare.com/cdn-cgi/scripts/a2bd7673/cloudflare-static/rocket-loader.min.js" data-cf-settings="e6c7b7630547578705dbf55e-|49" defer=""></script>
+
+
+</head>
+<body data-ng-controller="AppController as AppC">            
+            <div data-ng-view class="pageTransitionAnimation ViewContainer"></div>
+</body>
+</html>

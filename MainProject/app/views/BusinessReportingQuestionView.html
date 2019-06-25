@@ -1,0 +1,212 @@
+﻿<div id="questionReport_{{BrQC.Question.QuestionID}}" class="questionReportWrapper" data-ng-hide="BrQC.GoogleChartsObjectList.length == 0 && BrQC.HighChartObjectList.length == 0 && BrQC.CommentList.length == 0">
+    <!-- START - END NILESH-TSK21 :: Change in Above Line -->
+    <div class="expandableWrapper">
+        <div class="scissorSwitchContainer">
+            <div class="scissorSwitchWrapper">
+                <input id="questionReportCheckbox_{{BrQC.Question.QuestionID}}" type="checkbox" class="ScissorSwitch" data-ng-model="BrQC.Show" />
+                <label for="questionReportCheckbox_{{BrQC.Question.QuestionID}}"></label>
+            </div>
+        </div>
+        <div class="questionTextHeader">
+            <div>{{BrQC.Question.CleanQuestionText}}</div>
+        </div>
+        <div style="position: absolute; right: 0px; width:50px; height:50px;" ng-click="" ng-hide="BrQC.Show == false">
+            <!--<label class="" style="height:48px; width: 48px; margin-right:2px; margin-top:2px; color: white; position: absolute; padding-top:13px; padding-left:5px;"><span class="blueButton">PDF</span></label>-->
+        </div>
+    </div>
+
+    <div class="dataWrapper displayContent" data-ng-hide="BrQC.Show == false">
+        <div class="DataFormatChangeWrapper" data-ng-hide="BrQC.ContainsOnlyComments == true">
+            <!--START NILESH-TSK21-4 -->
+            <div class="InactiveFormat" data-ng-if="BrQC.DataFormat == 'History' || BrQC.DataFormat == 'HistoryPercent' || BrQC.DataFormat == 'Distribution'" data-ng-click="BrQC.ChangeDataFormat('Totals')">
+                <!--END NILESH-TSK21-4 -->
+                <div class="InactiveFormatLabel">
+                    <label>Totals</label>
+                </div>
+            </div>
+            <div data-ng-if="BrQC.DataFormat == 'Totals' || BrQC.DataFormat == 'TotalsPercent'" class="ActiveFormat">
+                <!--START NILESH-TSK42-->
+                <div ng-if="BrQC.HideTotalPercentQuestionId().indexOf(BrQC.Question.OldQuestionID) > -1" class="DataFormatFreqLabelWrapper" data-ng-class="BrQC.DataFormat == 'Totals' ? 'ActiveDataFormat' : 'InactiveDataFormat'">
+                    <label data-ng-if="(BrQC.DataFormat == 'Totals' || BrQC.DataFormat == 'TotalsPercent')">Frequency</label>
+                </div>
+                <div ng-if="BrQC.HideTotalPercentQuestionId().indexOf(BrQC.Question.OldQuestionID) == -1" class="DataFormatFreqLabelWrapper" data-ng-class="BrQC.DataFormat == 'Totals' ? 'ActiveDataFormat' : 'InactiveDataFormat'" data-ng-click="BrQC.ChangeDataFormat('Totals')">
+                    <label data-ng-if="(BrQC.DataFormat == 'Totals' || BrQC.DataFormat == 'TotalsPercent')">Frequency</label>
+                </div>
+                <!--END NILESH-TSK42-->
+                <div class="ActiveFormatLabel">
+                    <label>Totals</label>
+                </div>
+                <!--START NILESH-TSK31-->
+                <!--START NILESH-TSK35-->
+                <!--START NILESH-TSK42-->
+                <div ng-if="BrQC.HideTotalPercentQuestionId().indexOf(BrQC.Question.OldQuestionID) == -1" class="DataFormatPercentLabelWrapper" data-ng-class="BrQC.DataFormat == 'TotalsPercent' ? 'ActiveDataFormat' : 'InactiveDataFormat'" data-ng-click="BrQC.ChangeDataFormat('Totals')">
+                    <!--END NILESH-TSK42-->
+                    <label data-ng-if="(BrQC.DataFormat == 'Totals' || BrQC.DataFormat == 'TotalsPercent')">Percent</label>
+                </div>
+                <div ng-if="BrQC.HideTotalPercentQuestionId().indexOf(BrQC.Question.OldQuestionID) > -1" class="DataFormatPercentLabelWrapper InactiveDataFormat">
+                    <label>&nbsp;</label>
+                </div>
+                <!--END NILESH-TSK35-->
+                <!--END NILESH-TSK31-->
+            </div>
+            <!--START NILESH-TSK21-4 -->
+            <div class="InactiveFormat" data-ng-if="BrQC.DataFormat == 'Totals' || BrQC.DataFormat == 'TotalsPercent' || BrQC.DataFormat == 'Distribution'" data-ng-click="BrQC.ChangeDataFormat('History')">
+                <!--END NILESH-TSK21-4 -->
+                <div class="InactiveFormatLabel">
+                    <label>History</label>
+                </div>
+            </div>
+            <div data-ng-if="BrQC.DataFormat == 'History' || BrQC.DataFormat == 'HistoryPercent'" class="ActiveFormat">
+                <div ng-if="BrQC.HideHistoryPercentQuestionId().indexOf(BrQC.Question.OldQuestionID) > -1" class="DataFormatFreqLabelWrapper" data-ng-class="BrQC.DataFormat == 'History' ? 'ActiveDataFormat' : 'InactiveDataFormat'">
+                    <label data-ng-if="(BrQC.DataFormat == 'History' || BrQC.DataFormat == 'HistoryPercent' )">Frequency</label>
+                </div>
+                <div ng-if="BrQC.HideHistoryPercentQuestionId().indexOf(BrQC.Question.OldQuestionID) == -1" class="DataFormatFreqLabelWrapper" data-ng-class="BrQC.DataFormat == 'History' ? 'ActiveDataFormat' : 'InactiveDataFormat'" data-ng-click="BrQC.ChangeDataFormat('History')">
+                    <label data-ng-if="(BrQC.DataFormat == 'History' || BrQC.DataFormat == 'HistoryPercent' )">Frequency</label>
+                </div>
+
+
+                <div class="ActiveFormatLabel">
+                    <label class="ActiveFormatLabelHistory">History:&nbsp;</label>
+                    <select data-ng-if="BrQC.DataFormat == 'History' || BrQC.DataFormat == 'HistoryPercent'" data-ng-model="BrQC.TimeInterval" data-ng-options="o.string as o.string for o in BrQC.TimeIntervals"></select>
+                </div>
+                <!--START NILESH-TSK31-->
+                <!--START NILESH-TSK35-->
+                <!--START NILESH-TSK42-->
+                <div ng-if="BrQC.HideHistoryPercentQuestionId().indexOf(BrQC.Question.OldQuestionID) == -1" class="DataFormatPercentLabelWrapper" data-ng-class="BrQC.DataFormat == 'HistoryPercent' ? 'ActiveDataFormat' : 'InactiveDataFormat'" data-ng-click="BrQC.ChangeDataFormat('History')">
+                    <!--END NILESH-TSK42-->
+                    <label data-ng-if="(BrQC.DataFormat == 'History' || BrQC.DataFormat == 'HistoryPercent' )">Percent</label>
+                </div>
+                <div ng-if="BrQC.HideHistoryPercentQuestionId().indexOf(BrQC.Question.OldQuestionID) > -1" class="DataFormatPercentLabelWrapper InactiveDataFormat">
+                    <label>&nbsp;</label>
+                </div>
+                <!--END NILESH-TSK35-->
+                <!--END NILESH-TSK31-->
+            </div>
+            <!--START NILESH-TSK21-4 -->
+            <div class="InactiveFormat" data-ng-if="IsPremiumUser == true && BrQC.DataFormat != 'Distribution' && BrQC.HideDistributionQuestionId().indexOf(BrQC.Question.OldQuestionID) == -1" data-ng-click="BrQC.ChangeDataFormat('Distribution')">
+                <div class="InactiveFormatLabel">
+                    <label>Distribution</label>
+                </div>
+            </div>
+
+            <div data-ng-if="IsPremiumUser == true && BrQC.DataFormat == 'Distribution'" class="ActiveFormat">
+                <div class="">
+                    <label>&nbsp;</label>
+                </div>
+                <div class="ActiveFormatLabel ActiveDataFormat">
+                    <label>Distribution</label>
+                </div>
+                <div class="">
+                    <label>&nbsp;</label>
+                </div>
+            </div>
+            <!--END NILESH-TSK21-4 -->
+        </div>
+        <!--START NILESH-TSK21  -->
+        <div data-ng-if="IsPremiumUser == false" data-ng-repeat="googleChartsObject in BrQC.GoogleChartsObjectList">
+            <!--END NILESH-TSK21-->
+            <div data-ng-if="BrQC.ContainsOnlyComments == false">
+                <div class="ChangeChartTypeButtonsWrapper"
+                     data-ng-if="BrQC.DataFormat == 'Totals'">
+                    <div class="ChangeChartButtonFlexWrapper">
+                        <div>
+                            <label data-ng-click="BrQC.ChangeChartType('ColumnChart');"></label>
+                        </div>
+                        <div>
+                            <label data-ng-click="BrQC.ChangeChartType('PieChart');"></label>
+                        </div>
+                        <div>
+                            <label data-ng-click="BrQC.RenderSingleReport()"><img src="assets/images/pdf-icon.svg" /></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="ChangeChartTypeButtonsWrapper"
+                     data-ng-if="BrQC.DataFormat == 'TotalsPercent'">
+                    <div class="ChangeChartButtonFlexWrapper">
+                        <div>
+                            <label data-ng-click="BrQC.ChangeChartType('ColumnChart');"></label>
+                        </div>
+                        <div>
+                            <label data-ng-click="BrQC.RenderSingleReport()"><img src="assets/images/pdf-icon.svg" /></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="ChangeChartTypeButtonsWrapper"
+                     data-ng-if="BrQC.DataFormat == 'History'">
+                    <div class="ChangeChartButtonFlexWrapper">
+                        <div>
+                            <label data-ng-click="BrQC.ChangeChartType('ColumnChart');"></label>
+                        </div>
+                        <div>
+                            <label data-ng-click="BrQC.ChangeChartType('LineChart');"></label>
+                        </div>
+                        <div>
+                            <label data-ng-click="BrQC.RenderSingleReport()"><img src="assets/images/pdf-icon.svg" /></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="ChangeChartTypeButtonsWrapper"
+                     data-ng-if="BrQC.DataFormat == 'HistoryPercent'">
+                    <div class="ChangeChartButtonFlexWrapper">
+                        <div>
+                            <label data-ng-click="BrQC.ChangeChartType('ColumnChart');"></label>
+                        </div>
+                        <div>
+                            <label data-ng-click="BrQC.ChangeChartType('LineChart');"></label>
+                        </div>
+                        <div>
+                            <label data-ng-click="BrQC.RenderSingleReport()"><img src="assets/images/pdf-icon.svg" /></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="GoogleChartsObject" google-chart chart="googleChartsObject" on-ready="BrQC.DrawImage(chartWrapper, chart)"></div>
+                <!--<canvas id="Canvas_{{BrQC.Question.QuestionID}}" width="1280" height="720"></canvas>-->
+            </div>
+        </div>
+        <!--START NILESH-TSK21-->
+        
+        <div data-ng-if="IsPremiumUser == true" data-ng-repeat="HighChartObject in BrQC.HighChartObjectList">
+            <div data-ng-if="BrQC.ContainsOnlyComments == false">
+                <highchart class="clsHighChart" config="HighChartObject" displayorder="{{BrQC.Question.DisplayOrder}}" questionid="{{BrQC.Question.QuestionID}}" elem-ready=""></highchart>
+            </div>
+        </div>
+        <!--END NILESH-TSK21-->
+        <div data-ng-show="BrQC.CommentList.length > 0">
+            <div class="hideCommentsWrapper" data-ng-hide="BrQC.ContainsOnlyComments == true">
+                <div data-ng-show="BrQC.ShowComments == false" data-ng-click="BrQC.DisplayComments(1);">
+                    <label>Show Comments</label>
+                </div>
+                <div data-ng-show="BrQC.ShowComments == true" data-ng-click="BrQC.DisplayComments(0);">
+                    <label>Hide Comments</label>
+                </div>
+            </div>
+            <div class="commentsWrapper" data-ng-show="BrQC.ShowComments == true" id="comments-{{BrQC.Question.QuestionID}}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Last Submission Date</th>
+                            <th>Comments</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-repeat="comment in BrQC.CommentList" class="questionComment">
+                            <td class="CommentDateColumn">{{comment.VoterStartDate}}</td>
+                            <td class="CommentText">{{comment.CommentText}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- START NILESH-TSK21-4 -->
+    <style type="text/css">
+        @media only screen and (min-width: 761px) {
+            .InactiveFormat {
+                min-width: 23%;
+                max-width: 23%;
+            }
+        }
+    </style>
+    <!-- START NILESH-TSK21-4 -->
+</div>

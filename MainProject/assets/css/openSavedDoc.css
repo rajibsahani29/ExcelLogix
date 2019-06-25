@@ -1,0 +1,444 @@
+﻿
+/* Mobile Layout *******************************************/
+
+.MainContainer {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    overflow: auto;
+    background-color: gray;
+    background-image: url('../images/iAspire-bacground.png');
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+#SurveyListContainerPosition {
+    min-height: calc(100% - 40px - 50px);
+    max-width: 1024px;
+    margin: auto;
+    background-color: white;
+}
+
+.iFrameWrapper {
+    min-height: calc(100% - 40px - 50px);
+    max-width: 1024px;
+    margin: auto;
+    background-color: white;
+    position: relative;
+    /*height: 100%;*/
+}
+
+.SurveyListContainer {
+    padding: 5px;
+    background-color: white;
+}
+
+.SurveyItem {
+    width: 100%;
+    margin-top: 5px;
+}
+
+    .SurveyItem:last-of-type {
+        margin-bottom: 5px;
+    }
+
+.SurveyTitle {
+    width: 100%;
+    background-color: #d3d3d3;
+    border-radius: 5px;
+    /*color: black;*/
+    font-size: 0px;
+    height: auto;
+    position: relative;
+    padding: 9px;
+}
+
+.SurveyTitleTextContainer {
+    display: inline-block;
+    width: calc(100% - 100px);
+}
+
+.SurveyTitleText {
+    font-size: 12px;
+    position: relative;
+    display: inline-block;
+    text-align: left;
+    width: 100%;
+}
+
+.OpenCloseCheckboxWrapper {
+    display: inline-block;
+    width: 50px;
+}
+
+.CheckboxVertical {
+    height: 45px;
+    position: relative;
+    margin: 3px;
+    overflow: hidden;
+}
+
+.TitleBarPlaceholder {
+    width: 50px;
+}
+
+.VerticalAlign {
+    vertical-align: middle;
+}
+
+.SurveyVoteTable {
+    margin: auto;
+    width: 100%;
+}
+
+    .SurveyVoteTable th,
+    .SurveyVoteTable td {
+        padding: 15px 5px;
+    }
+
+        .SurveyVoteTable td:first-child,
+        .SurveyVoteTable th:first-child {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+
+        .SurveyVoteTable td:last-child,
+        .SurveyVoteTable th:last-child {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+    .SurveyVoteTable > tbody > tr:nth-of-type(even) {
+    }
+
+    .SurveyVoteTable > tbody > tr:nth-of-type(odd) {
+        background-color: lightgray;
+    }
+
+    .SurveyVoteTable > thead {
+        text-align: left;
+    }
+
+    .SurveyVoteTable tr > td:last-of-type {
+        text-align: center;
+    }
+
+.VoteNameHeader {
+}
+
+.LastEditDateHeader {
+}
+
+.VoteRow {
+}
+
+.VoteName {
+}
+
+.LastEditDate {
+}
+.tdwidth {
+    width: 25%;
+}
+.EditButton {
+    border: 0;
+    background-color: transparent;
+    background: center no-repeat url("../../assets/images/edit.png");
+    background-size: contain;
+    padding: 0;
+    height: 31px;
+    width: 40px;
+}
+
+    .EditButton:hover {
+        cursor: pointer;
+    }
+    .DeleteButton {
+    border: 0;
+    background-color: transparent;
+    background: center no-repeat url("../../assets/images/trash.png");
+    background-size: contain;
+    padding: 0;
+    height: 31px;
+    width: 40px;
+}
+    .DeleteButton:hover {
+        cursor: pointer;
+    }
+/* START NILESH_TSK10 */
+.PrintButton {
+    border: 0;
+    background-color: transparent;
+    background: no-repeat url(../../assets/images/PrintIcon.png);
+    background-size: contain;
+    padding: 0;
+    height: 31px;
+    width: 40px;
+    margin-left: 5px;
+}
+.PrintButton:hover {
+		cursor: pointer;
+}
+.EmailSentButton {
+    border: 0;
+    background-color: transparent;
+    background: no-repeat url(../../assets/images/SentSuccessful.png);
+    background-size: contain;
+    padding: 0;
+    height: 31px;
+    width: 40px;
+    margin-left: 5px;
+}
+
+.EmailSentButton:hover {
+    cursor: pointer;
+}
+
+.EmailNotSentButton {
+    border: 0;
+    background-color: transparent;
+    background: no-repeat url(../../assets/images/NotSent.png);
+    background-size: contain;
+    padding: 0;
+    height: 31px;
+    width: 40px;
+    margin-left: 5px;
+}
+
+.EmailNotSentButton:hover {
+    cursor: pointer;
+}
+
+
+/* END NILESH_TSK10 */
+.ResumeButton {
+    font-family: LatoLight;
+    color: white;
+    padding-bottom: 3px;
+    border: thin solid;
+    border-color: #f36c65;
+    border-radius: 3px;
+    background-color: #d80f06;
+    background-image: linear-gradient(to bottom,#f36c65 0,#d80f06 100%);
+    background-repeat: repeat-x;
+    background-position: 0px 0px;
+    transition: all 100ms;
+}
+
+    .ResumeButton:hover {
+        background-position: 0px -10px;
+    }
+
+#FilterSectionPosition {
+    /*width: calc(100% + 10px);
+    margin-left: -5px;*/
+}
+
+    #FilterSectionPosition table {
+        color: #454545;
+        width: 100%;
+        background-color: lightgray;
+    }
+
+        #FilterSectionPosition table tr td {
+            text-align: center;
+            padding: 15px 0px;
+        }
+
+            #FilterSectionPosition table tr td {
+                width: 26%;
+                /*border-right: 1px solid darkgray;*/
+                padding-left: 10px;
+            }
+
+.FilterSection {
+}
+
+#TimeFilterRowPosition {
+}
+
+    #TimeFilterRowPosition input {
+        margin-left: 5px;
+        max-width: 100px;
+        text-align: center;
+    }
+
+.FilterRow {
+}
+
+.TimeFilterRow {
+}
+
+.IsVoteOpenHeader {
+    width: 75px;
+    max-width: 75px;
+}
+
+
+
+/* Scissor Switch Style */
+
+input.ScissorSwitch {
+    clear: both;
+    padding: 0px 0px;
+    height: 40px;
+    width: 40px;
+    margin: 0;
+    margin-left: -9999px;
+}
+
+    input.ScissorSwitch:empty {
+    }
+
+        input.ScissorSwitch:empty + label {
+            display: inline-block;
+            float: left;
+            width: 40px;
+            height: 40px;
+            background-color: transparent;
+            margin: 0px 0px 0px 0px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+            input.ScissorSwitch:empty + label:before,
+            input.ScissorSwitch:empty + label:after {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                content: ' ';
+                -webkit-transform: translate3d(0,0,0);
+                transform: translate3d(0,0,0);
+                -webkit-transition: all 200ms;
+                transition: all 200ms;
+                background-color: white;
+            }
+
+            input.ScissorSwitch:empty + label:before {
+                height: 8px;
+                width: 36px;
+                margin-top: 18px;
+                margin-left: 4px;
+            }
+
+            input.ScissorSwitch:empty + label:after {
+                width: 8px;
+                height: 36px;
+                margin-left: 18px;
+                margin-top: 4px;
+            }
+
+    input.ScissorSwitch:checked + label:before {
+        -webkit-transform: rotateZ(180deg);
+        transform: rotateZ(180deg);
+    }
+
+    input.ScissorSwitch:checked + label:after {
+        /*-webkit-transform: rotateZ(270deg);
+        transform: rotateZ(270deg);*/
+        -webkit-transform: rotateZ(-90deg);
+        transform: rotateZ(-90deg);
+    }
+
+/* Tablet Layout ********************************************/
+
+@media only screen and (min-width: 481px) {
+
+
+    #SurveyListContainerPosition {
+        min-height: calc(100% - 45px - 55px);
+    }
+
+    .iFrameWrapper {
+        min-height: calc(100% - 45px - 55px);
+    }
+
+    .SurveyVoteTable th,
+    .SurveyVoteTable td {
+        padding: 12px 5px;
+    }
+
+    .SurveyListContainer {
+    }
+
+    .SurveyTitleText {
+        font-size: 14px;
+    }
+
+    #TimeFilterRowPosition input {
+        max-width: 110px;
+    }
+
+    /* Scissor Switch Style */
+
+    input.ScissorSwitch {
+        height: 45px;
+        width: 45px;
+    }
+
+        input.ScissorSwitch:empty {
+        }
+
+            input.ScissorSwitch:empty + label {
+                width: 45px;
+                height: 45px;
+            }
+
+                input.ScissorSwitch:empty + label:before,
+                input.ScissorSwitch:empty + label:after {
+                }
+
+                input.ScissorSwitch:empty + label:before {
+                    height: 11px;
+                    width: 41px;
+                    margin-top: 17px;
+                    margin-left: 2px;
+                }
+
+                input.ScissorSwitch:empty + label:after {
+                    width: 11px;
+                    height: 41px;
+                    margin-left: 17px;
+                    margin-top: 2px;
+                }
+
+        input.ScissorSwitch:checked + label:before {
+        }
+
+        input.ScissorSwitch:checked + label:after {
+        }
+}
+
+/* Desktop Layout ********************************************/
+
+@media only screen and (min-width: 761px) {
+
+
+    #SurveyListContainerPosition {
+        min-height: calc(100% - 50px - 60px);
+    }
+
+    .iFrameWrapper {
+        min-height: calc(100% - 50px - 60px);
+    }
+
+    .SurveyVoteTable th,
+    .SurveyVoteTable td {
+        padding: 10px 5px;
+    }
+
+    .SurveyListContainer {
+    }
+
+    .SurveyTitleText {
+        font-size: 16px;
+    }
+
+    #TimeFilterRowPosition input {
+        max-width: 120px;
+    }
+}

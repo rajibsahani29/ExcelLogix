@@ -1,0 +1,172 @@
+﻿<style type="text/css">
+    .surveyTableData {
+        width: 95%;
+        margin: auto;
+        text-align: center;
+        border-collapse: separate;
+        border-spacing: 0 15px;
+    }
+
+    #SurveyTypeListContainerPosition {
+        width: 98%;
+        margin: auto;
+        text-align: center;
+    }
+
+        #SurveyTypeListContainerPosition td {
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        #SurveyTypeListContainerPosition th {
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 12px;
+            background-color: rgb(0, 168, 198);
+            color: white;
+            text-align: center;
+        }
+
+        #SurveyTypeListContainerPosition tbody tr {
+            background-color: lightgray;
+        }
+
+
+            #SurveyTypeListContainerPosition tbody tr:first-child td {
+                /*padding-top: 20px*/
+            }
+
+    .page-body {
+        font-size: 15px;
+    }
+</style>
+
+<div id="pcoded" class="pcoded">
+    <div class="pcoded-overlay-box"></div>
+    <div class="pcoded-container navbar-wrapper">
+        <!-- [ Header ] start -->
+        <nav class="navbar header-navbar pcoded-header" style="background:#abe0f9">
+            <div class="navbar-wrapper">
+                <div class="navbar-logo" style="background: #abe0f9;">
+                    <a href="index.html">
+                        <img src="images/Shaeronlogo.png" />
+
+                    </a>
+                </div>
+                <div class="navbar-container container-fluid">
+                    <ul class="nav-left" style="font-family:monospace">
+                        <li onclick="window.location.hash = '#/selection'">
+                            <a>Dashboard</a>
+                        </li>
+                        <li class="header-search" onclick="window.location.hash = '#/selectForm'">
+                            <a>Forms</a>
+                        </li>
+                        <li onclick="window.location.hash = '#/openSavedDoc'">
+                            <a>Document</a>
+                        </li>
+                        <li onclick="window.location.hash = '#/reports'">
+                            <a>Reports</a>
+                        </li>
+                        <li>
+                            <a>Accounts</a>
+                        </li>
+                        <!--<li>
+                            <a href="#!" onclick="if (!window.__cfRLUnblockHandlers) return false; javascript:toggleFullScreen()" class="waves-effect waves-light" data-cf-modified-e6c7b7630547578705dbf55e-="">
+                                <i class="full-screen feather icon-maximize"></i>
+                            </a>
+                        </li>-->
+                    </ul>
+                    <ul class="nav-right">
+
+                        <li class="user-profile header-notification">
+
+                            <div class="dropdown-primary dropdown">
+                                <div class="dropdown-toggle" data-toggle="dropdown">
+                                    <span style="font-size:15px;font-family:monospace">John Doe</span>
+                                    <i class="feather icon-chevron-down"></i>
+                                </div>
+                                <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                                    <!--<li>
+                                        <a href="#!">
+                                            <i class="feather icon-settings"></i> Settings
+
+                                        </a>
+                                    </li>-->
+                                    <li>
+                                        <a href="#">
+                                            <i class="feather icon-user"></i> Profile
+
+                                        </a>
+                                    </li>
+                                    <!--<li>
+                                        <a href="email-inbox.html">
+                                            <i class="feather icon-mail"></i> My Messages
+
+                                        </a>
+                                    </li>-->
+                                    <li>
+                                        <a href="auth-lock-screen.html">
+                                            <i class="feather icon-lock"></i> Lock Screen
+
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a ng-click="selectionC.logout();">
+                                            <i class="feather icon-log-out"></i> Logout
+
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="pcoded-main-container">
+            <div class="pcoded-wrapper">
+                <div class="pcoded-content">
+                    <div class="pcoded-inner-content">
+                        <div class="main-body">
+                            <div class="page-wrapper">
+                                <div class="page-body">
+                                    <div id="SurveyTypeListContainerPosition" class="SurveyTypeListContainer" data-ng-show="AppC.IsTrialVersion == false">
+                                        <!-- START NILESH -->
+                                        <div form-search-box="" ng-if="sFC.ifSearchbtn==true">
+                                            <input list="Datalist" id="SearchBox" class="SettingsBox SearchBox" style="width:50%" placeholder="Search Forms.." ng-model="sFC.FilterForm">
+                                            <datalist id="Datalist"></datalist>
+                                        </div><br />
+                                        <div ng-repeat="surveyListType in sFC.BDynamicSurveyList" class="SpecialEducationFormList">
+                                            <table class="surveyTableData">
+                                                <!--<thead data-ng-if="surveyListType.Forms.length > 0">
+                                                    <tr>
+                                                        <th>{{surveyListType.ListTitle}}</th>
+                                                    </tr>
+                                                </thead>-->
+                                                <tbody data-ng-if="surveyListType.Forms.length > 0">
+                                                    <tr data-ng-repeat="surv in surveyListType.Forms|filter:sFC.FilterForm" class="pointer" style="text-align:left;font-size:17px">
+                                                        <td data-ng-click="sFC.toSurveyPage($event, surv.SurveyID, surv.SurveyGuid);">{{surv.Title}}</td>
+                                                        <td style="float:right"><button class="btn btn-primary" style="padding: 0px 28px;border-radius: 9px;">Open</button></td>
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot data-ng-if="surveyListType.IsLoading == true">
+                                                    <tr>
+                                                        <td>
+                                                            <div class="spincontainer LoadingImageSmall" data-ng-class="sFC.TESurveyListShowSpinner == true ? 'spincontainer-shown' : ''">
+                                                                <div class="spinner"></div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,215 @@
+﻿
+/* Mobile Layout *******************************************/
+
+@keyframes surveyLoadInMobile {
+    0% {
+        height: 0px;
+    }
+
+    100% {
+        height: calc(100% - 40px - 50px);
+    }
+}
+
+@-webkit-keyframes surveyLoadInMobile {
+    0% {
+        height: 0px;
+    }
+
+    100% {
+        height: calc(100% - 40px - 50px);
+    }
+}
+
+@keyframes surveyLoadInTablet {
+    0% {
+        height: 0px;
+    }
+
+    100% {
+        height: calc(100% - 45px - 55px);
+    }
+}
+
+@-webkit-keyframes surveyLoadInTablet {
+    0% {
+        height: 0px;
+    }
+
+    100% {
+        height: calc(100% - 45px - 55px);
+    }
+}
+
+@keyframes surveyLoadInDesktop {
+    0% {
+        height: 0px;
+    }
+
+    100% {
+        height: calc(100% - 50px - 60px);
+    }
+}
+
+@-webkit-keyframes surveyLoadInDesktop {
+    0% {
+        height: 0px;
+    }
+
+    100% {
+        height: calc(100% - 50px - 60px);
+    }
+}
+
+.MainContainer {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+    background-color: gray;
+    background-image: url('../images/iAspire-bacground.png');
+}
+
+.PictureContainer {
+    height: 100%;
+    background-size: cover;
+    float: left;
+    overflow: hidden;
+    background: gray url('../images/bg-1.png') left center no-repeat;
+}
+
+#SurveyWrapperPosition {
+    /*-webkit-animation: surveyLoadInMobile;
+    animation: surveyLoadInMobile;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;*/
+    height: calc(100% - 40px - 50px);
+    max-width: 1024px;
+    margin: auto;
+    background-color: white;
+}
+
+.SurveyWrapper {
+    background-color: white;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* pre-survey survey */
+
+.PreSurveySurveyContainer {
+    width: 100%;
+    padding-top: 20px;
+    height: calc(100% - 40px - 50px);
+    max-width: 1024px;
+    margin: auto;
+    background-color: white;
+    overflow: auto;
+}
+
+.PreSurveySurveyWrapper {
+    width: 90%;
+    margin: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.HeaderRow {
+    width: 100%;
+    background-color: #00A8C6;
+    border-radius: 5px;
+    padding: 0px 10px;
+    color: white;
+}
+
+.QuestionRow {
+    width: 100%;
+    margin: 5px;
+}
+
+    .QuestionRow input, .QuestionRow select {
+        padding: 5px;
+    }
+
+.LeftSide {
+    display: inline-block;
+    width: 33%;
+}
+
+.RightSide {
+    display: inline-block;
+    width: 66%;
+}
+
+.SubmitButtonWrapper {
+    width: 100%;
+}
+
+.SubmitButton {
+    background-image: -webkit-linear-gradient(top,#337ab7 0,#265a88 100%);
+    background-image: -o-linear-gradient(top,#337ab7 0,#265a88 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#337ab7),to(#265a88));
+    background-image: linear-gradient(to bottom,#337ab7 0,#265a88 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff337ab7', endColorstr='#ff265a88', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    background-repeat: repeat-x;
+    border-color: #245580;
+    margin: 5px;
+    color: white;
+}
+
+/* Tablet Layout ********************************************/
+
+@media only screen and (min-width: 481px) {
+
+    .MainContainer {
+    }
+
+    .PictureContainer {
+    }
+
+    #SurveyWrapperPosition {
+        /*-webkit-animation: surveyLoadInTablet;
+        animation: surveyLoadInTablet;
+        -webkit-animation-duration: 0.5s;
+        animation-duration: 0.5s;*/
+        height: calc(100% - 45px - 55px);
+    }
+
+    .SurveyWrapper {
+    }
+
+    /* pre-survey survey */
+
+    .PreSurveySurveyContainer {
+        height: calc(100% - 45px - 55px);
+    }
+}
+
+/* Desktop Layout ********************************************/
+
+@media only screen and (min-width: 761px) {
+
+    .MainContainer {
+    }
+
+    .PictureContainer {
+    }
+
+    #SurveyWrapperPosition {
+        /*-webkit-animation: surveyLoadInDesktop;
+        animation: surveyLoadInDesktop;
+        -webkit-animation-duration: 0.5s;
+        animation-duration: 0.5s;*/
+        height: calc(100% - 50px - 60px);
+    }
+
+    .SurveyWrapper {
+    }
+
+    /* pre-survey survey */
+
+    .PreSurveySurveyContainer {
+        height: calc(100% - 50px - 60px);
+    }
+}

@@ -1,0 +1,175 @@
+﻿.MainContainer {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+    background-color: gray;
+    background-image: url('../images/iAspire-bacground.png');
+}
+
+/* Mobile Layout *******************************************/
+
+#SettingsWrapper {
+    min-height: calc(100% - 40px - 50px);
+    position: relative;
+    max-width: 1024px;
+    margin: auto;
+    background-color: white;
+}
+
+#ReportingSettingsWrapper label {
+    padding-right: 4px;
+}
+#ReportingSettingsWrapper input {
+    padding-left: 2px;
+}
+
+#ReportingSettingsWrapper,
+#InfoWrapper {
+    padding-top: 2.5%;
+    width: 100%;
+}
+    #ReportingSettingsWrapper table,
+    #InfoWrapper table {
+        width: 95%;
+        margin: auto;
+    }
+
+    #ReportingSettingsWrapper table td:first-child,
+    #InfoWrapper table td:first-child {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+    
+    #ReportingSettingsWrapper table td:last-child,
+    #InfoWrapper table td:last-child {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+    
+    #ReportingSettingsWrapper td,
+    #InfoWrapper td {
+        width: 50%;
+        text-align: center;
+        font-size: 12px;
+        padding: 10px;
+    }
+    
+    #ReportingSettingsWrapper th,
+    #InfoWrapper th {
+        font-size: 14px;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #00ABC6;
+        color: white;
+    }
+    
+    #ReportingSettingsWrapper tr:nth-of-type(2n),
+    #InfoWrapper tr:nth-of-type(2n) {
+        background-color: #D3D3D3;
+    }
+
+#LogoutButtonContainer {
+    width: 95%;
+    margin: auto;
+    padding-top: 2.5%;
+}
+
+#NotificationButtonContainer {
+    width: 44%;
+    margin: auto;
+    padding-left: 0%;
+    padding-bottom: 1%;
+}
+
+    #NotificationButtonContainer button {
+        width: 50%;
+        max-width: 200px;
+        padding: 8px;
+        border: none;
+        border-radius: 29px;
+        color: white;
+        background-color: #265a88;
+        background-image: linear-gradient(to bottom,#00A8C6 0,#265a88 100%);
+        background-repeat: repeat-x;
+        background-position: 0px -8px;
+        transition: all 100ms;
+    }
+
+        #NotificationButtonContainer button:hover {
+            background-position: 0px 0px;
+        }
+
+    #LogoutButtonContainer button {
+        width: 50%;
+        max-width: 200px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        background-color: #265a88;
+        background-image: linear-gradient(to bottom,#00A8C6 0,#265a88 100%);
+        background-repeat: repeat-x;
+        background-position: 0px -10px;
+        transition: all 100ms;
+    }
+
+    #LogoutButtonContainer button:hover {
+        background-position: 0px 0px;
+    }
+
+#AppVersionContainer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    padding: 5px;
+}
+
+#AppVersionLabelPosition {
+    opacity: 0.5;
+}
+
+#SPLogoPosition {
+    height: 35px;
+}
+
+.SPLogo {
+
+}
+
+/* Fablet Layout *******************************************/
+@media only screen and (min-width: 481px) {
+
+    #SettingsWrapper {
+        min-height: calc(100% - 45px - 55px);
+    }
+    
+    #ReportingSettingsWrapper th,
+    #InfoWrapper th {
+        font-size: 16px;
+    }
+
+    #AppVersionContainer {
+        width: 98%;
+        margin-left: 1%;
+    }
+}
+
+/* Tablet Layout *******************************************/
+@media only screen and (min-width: 761px) {
+
+    #SettingsWrapper {
+        min-height: calc(100% - 50px - 60px);
+    }
+    
+    #ReportingSettingsWrapper th,
+    #InfoWrapper th {
+        font-size: 18px;
+    }
+
+    #AppVersionContainer {
+        width: 95%;
+        margin-left: 2.5%;
+    }
+}

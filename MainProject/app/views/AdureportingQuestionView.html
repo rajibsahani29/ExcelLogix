@@ -1,0 +1,139 @@
+﻿<div id="questionReport_{{ErQC.Question.QuestionID}}" class="questionReportWrapper" data-ng-hide="ErQC.GoogleChartsObjectList == 0 && ErQC.CommentList.length == 0">
+    <div class="expandableWrapper">
+        <div class="scissorSwitchContainer">
+            <div class="scissorSwitchWrapper">
+                <input id="questionReportCheckbox_{{ErQC.Question.QuestionID}}" type="checkbox" class="ScissorSwitch" data-ng-model="ErQC.Show" />
+                <label for="questionReportCheckbox_{{ErQC.Question.QuestionID}}"></label>
+            </div>
+        </div>
+        <div class="questionTextHeader">
+            <div>{{ErQC.Question.CleanQuestionText}}</div>
+        </div>
+        <div style="position: absolute; right: 0px; width:50px; height:50px;" ng-click="" ng-hide="ErQC.Show == false">
+            <!--<label class="" style="height:48px; width: 48px; margin-right:2px; margin-top:2px; color: white; position: absolute; padding-top:13px; padding-left:5px;"><span class="blueButton">PDF</span></label>-->
+        </div>
+    </div>
+
+    <div class="dataWrapper displayContent" data-ng-hide="ErQC.Show == false">
+        <div class="DataFormatChangeWrapper" data-ng-hide="ErQC.ContainsOnlyComments == true">
+            <div class="InactiveFormat" data-ng-if="ErQC.DataFormat == 'History' || ErQC.DataFormat == 'HistoryPercent'" data-ng-click="ErQC.ChangeDataFormat('Totals')">
+                <div class="InactiveFormatLabel">
+                    <label>Totals</label>
+                </div>
+            </div>
+            <div data-ng-if="ErQC.DataFormat == 'Totals' || ErQC.DataFormat == 'TotalsPercent'" class="ActiveFormat">
+                <div class="DataFormatFreqLabelWrapper" data-ng-class="ErQC.DataFormat == 'Totals' ? 'ActiveDataFormat' : 'InactiveDataFormat'" data-ng-click="ErQC.ChangeDataFormat('Totals')">
+                    <label data-ng-if="(ErQC.DataFormat == 'Totals' || ErQC.DataFormat == 'TotalsPercent')">Frequency</label>
+                </div>
+                <div class="ActiveFormatLabel">
+                    <label>Totals</label>
+                </div>
+                <div class="DataFormatPercentLabelWrapper" data-ng-class="ErQC.DataFormat == 'TotalsPercent' ? 'ActiveDataFormat' : 'InactiveDataFormat'" data-ng-click="ErQC.ChangeDataFormat('Totals')">
+                    <label data-ng-if="(ErQC.DataFormat == 'Totals' || ErQC.DataFormat == 'TotalsPercent')">Percent</label>
+                </div>
+            </div>
+            <div class="InactiveFormat" data-ng-if="ErQC.DataFormat == 'Totals' || ErQC.DataFormat == 'TotalsPercent'" data-ng-click="ErQC.ChangeDataFormat('History')">
+                <div class="InactiveFormatLabel">
+                    <label>History</label>
+                </div>
+            </div>
+            <div data-ng-if="ErQC.DataFormat == 'History' || ErQC.DataFormat == 'HistoryPercent'" class="ActiveFormat">
+                <div class="DataFormatFreqLabelWrapper" data-ng-class="ErQC.DataFormat == 'History' ? 'ActiveDataFormat' : 'InactiveDataFormat'" data-ng-click="ErQC.ChangeDataFormat('History')">
+                    <label data-ng-if="(ErQC.DataFormat == 'History' || ErQC.DataFormat == 'HistoryPercent' )">Frequency</label>
+                </div>
+                <div class="ActiveFormatLabel">
+                    <label class="ActiveFormatLabelHistory">History:&nbsp;</label>
+                    <select data-ng-if="ErQC.DataFormat == 'History' || ErQC.DataFormat == 'HistoryPercent'" data-ng-model="ErQC.TimeInterval" data-ng-options="o.string as o.string for o in ErQC.TimeIntervals"></select>
+                </div>
+                <div class="DataFormatPercentLabelWrapper" data-ng-class="ErQC.DataFormat == 'HistoryPercent' ? 'ActiveDataFormat' : 'InactiveDataFormat'" data-ng-click="ErQC.ChangeDataFormat('History')">
+                    <label data-ng-if="(ErQC.DataFormat == 'History' || ErQC.DataFormat == 'HistoryPercent' )">Percent</label>
+                </div>
+            </div>
+        </div>
+        <div data-ng-repeat="googleChartsObject in ErQC.GoogleChartsObjectList">
+            <div data-ng-if="ErQC.ContainsOnlyComments == false">
+                <div class="ChangeChartTypeButtonsWrapper"
+                     data-ng-if="ErQC.DataFormat == 'Totals'">
+                    <div class="ChangeChartButtonFlexWrapper">
+                        <div>
+                            <label data-ng-click="ErQC.ChangeChartType('ColumnChart');"></label>
+                        </div>
+                        <div>
+                            <label data-ng-click="ErQC.ChangeChartType('PieChart');"></label>
+                        </div>
+                        <div>
+                            <label data-ng-click="ErQC.RenderSingleReport()"><img src="assets/images/pdf-icon.svg"/></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="ChangeChartTypeButtonsWrapper"
+                     data-ng-if="ErQC.DataFormat == 'TotalsPercent'">
+                    <div class="ChangeChartButtonFlexWrapper">
+                        <div>
+                            <label data-ng-click="ErQC.ChangeChartType('ColumnChart');"></label>
+                        </div>
+                        <div>
+                            <label data-ng-click="ErQC.RenderSingleReport()"><img src="assets/images/pdf-icon.svg" /></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="ChangeChartTypeButtonsWrapper"
+                     data-ng-if="ErQC.DataFormat == 'History'">
+                    <div class="ChangeChartButtonFlexWrapper">
+                        <div>
+                            <label data-ng-click="ErQC.ChangeChartType('ColumnChart');"></label>
+                        </div>
+                        <div>
+                            <label data-ng-click="ErQC.ChangeChartType('LineChart');"></label>
+                        </div>
+                        <div>
+                            <label data-ng-click="ErQC.RenderSingleReport()"><img src="assets/images/pdf-icon.svg" /></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="ChangeChartTypeButtonsWrapper"
+                     data-ng-if="ErQC.DataFormat == 'HistoryPercent'">
+                    <div class="ChangeChartButtonFlexWrapper">
+                        <div>
+                            <label data-ng-click="ErQC.ChangeChartType('ColumnChart');"></label>
+                        </div>
+                        <div>
+                            <label data-ng-click="ErQC.ChangeChartType('LineChart');"></label>
+                        </div>
+                        <div>
+                            <label data-ng-click="ErQC.RenderSingleReport()"><img src="assets/images/pdf-icon.svg" /></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="GoogleChartsObject" google-chart chart="googleChartsObject" on-ready="ErQC.DrawImage(chartWrapper, chart)"></div>
+                <!--<canvas id="Canvas_{{ErQC.Question.QuestionID}}" width="1280" height="720"></canvas>-->
+            </div>
+        </div>
+        <div data-ng-show="ErQC.CommentList.length > 0">
+            <div class="hideCommentsWrapper" data-ng-hide="ErQC.ContainsOnlyComments == true">
+                <div data-ng-show="ErQC.ShowComments == false" data-ng-click="ErQC.DisplayComments(1);">
+                    <label>Show Comments</label>
+                </div>
+                <div data-ng-show="ErQC.ShowComments == true" data-ng-click="ErQC.DisplayComments(0);">
+                    <label>Hide Comments</label>
+                </div>
+            </div>
+            <div class="commentsWrapper" data-ng-show="ErQC.ShowComments == true" id="comments-{{ErQC.Question.QuestionID}}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Last Submission Date</th>
+                            <th>Comments</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-repeat="comment in ErQC.CommentList" class="questionComment">
+                            <td class="CommentDateColumn">{{comment.VoterStartDate}}</td>
+                            <td class="CommentText">{{comment.CommentText}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

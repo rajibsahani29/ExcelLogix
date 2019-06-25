@@ -1,0 +1,44 @@
+﻿<head>
+
+</head>
+<body data-ng-controller="AppController as AppC">
+    <div class="VideoBackground">
+        <link href="assets/css/login.css" rel="stylesheet" />
+
+        <div data-ng-class="loginC.BGClass == true ? 'bgvid bgImageKids' : 'bgvid bgImageBsns'"></div>
+        <div class="LoginBox" id="LoginBoxPosition">
+            <div class="LogoBox" id="LogoBoxPosition">
+                <img class="Logo" src="assets\images\iAspire-logo-2.png" />
+            </div>
+            <div id="EmailPasswordLoginContainer">
+                <div>
+                    <input type="email" name="Email" class="EmailTextbox" id="EmailTextboxPosition" placeholder="Email"
+                           data-ng-keypress="loginC.keyPressedEmail($event);"
+                           data-ng-model="loginC.UserLoginUserName" removengemailvalidation>
+                </div>
+                <div>
+                    <input type="password" name="Password" class="PasswordTextbox" id="PasswordTextboxPosition" placeholder="Password"
+                           data-ng-keypress="loginC.keyPressedPassword($event);"
+                           data-ng-model="loginC.UserLoginPassword">
+                </div>
+                <div>
+                    <button name="Login" class="LoginButton" id="LoginButtonPosition"
+                            data-ng-disabled="loginC.userClickedButton == true"
+                            data-ng-click="loginC.Login();">
+                        <span>Login</span>
+                    </button>
+
+                    <div class="spincontainer LoadingImageSmall Spinner-Login" data-ng-class="loginC.userClickedButton == true ? 'spincontainer-shown' : ''">
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="BottomButtonsPosition">
+                <button name="ForgotPassword" class="ForgotButton" id="ForgotButtonPosition" onclick="window.location.hash='#/forgotPassword'">Forgot Password?</button>
+                <button name="CreateAccount" class="CreateAccountButton" id="CreateAccountButtonPosition" onclick="window.location.hash='#/createAccount'">Create Account</button>
+                <div class="GroupFloats"></div>
+            </div>
+        </div>
+    </div>
+</body>
+

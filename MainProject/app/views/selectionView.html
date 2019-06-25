@@ -1,0 +1,275 @@
+﻿
+
+
+
+
+
+<div class="loader-bg">
+    <div class="loader-bar"></div>
+</div>
+<div id="pcoded" class="pcoded">
+    <div class="pcoded-overlay-box"></div>
+    <div class="pcoded-container navbar-wrapper">
+        <nav class="navbar header-navbar pcoded-header" style="background:#abe0f9">
+            <div class="navbar-wrapper">
+                <div class="navbar-logo" style="background: #abe0f9;">
+                    <a href="index.html">
+                        <img src="images/Shaeronlogo.png" />
+
+                    </a>
+                </div>
+                <div class="navbar-container container-fluid">
+                    <ul class="nav-left" style="font-family:monospace">
+                        <li onclick="window.location.hash = '#/selection'">
+                            <a>Dashboard</a>
+                        </li>
+                        <li class="header-search" onclick="window.location.hash = '#/selectForm'">
+                            <a>Forms</a>
+                        </li>
+                        <li onclick="window.location.hash = '#/openSavedDoc'">
+                            <a>Document</a>
+                        </li>
+                        <li onclick="window.location.hash = '#/reports'">
+                            <a>Reports</a>
+                        </li>
+                        <li>
+                            <a>Accounts</a>
+                        </li>
+                        <!--<li>
+                        <a href="#!" onclick="if (!window.__cfRLUnblockHandlers) return false; javascript:toggleFullScreen()" class="waves-effect waves-light" data-cf-modified-e6c7b7630547578705dbf55e-="">
+                            <i class="full-screen feather icon-maximize"></i>
+                        </a>
+                    </li>-->
+                    </ul>
+                    <ul class="nav-right">
+
+                        <li class="user-profile header-notification">
+
+                            <div class="dropdown-primary dropdown">
+                                <div class="dropdown-toggle" data-toggle="dropdown">
+                                    <span style="font-size:15px;font-family:monospace">{{selectionC.LoginUser}}</span>
+                                    <i class="feather icon-chevron-down"></i>
+                                </div>
+                                <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                                    <!--<li>
+                                    <a href="#!">
+                                        <i class="feather icon-settings"></i> Settings
+
+                                    </a>
+                                </li>-->
+                                    <li>
+                                        <a href="#">
+                                            <i class="feather icon-user"></i> Profile
+
+                                        </a>
+                                    </li>
+                                    <!--<li>
+                                    <a href="email-inbox.html">
+                                        <i class="feather icon-mail"></i> My Messages
+
+                                    </a>
+                                </li>-->
+                                    <li>
+                                        <a href="auth-lock-screen.html">
+                                            <i class="feather icon-lock"></i> Lock Screen
+
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a ng-click="selectionC.logout();">
+                                            <i class="feather icon-log-out"></i> Logout
+
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="pcoded-main-container">
+            <div class="pcoded-wrapper">
+                <div class="pcoded-content">
+                    <div class="pcoded-inner-content">
+                        <div class="main-body">
+                            <div class="page-wrapper">
+                                <div class="page-body">
+                                    <!-- [ page content ] start -->
+                                    <div class="row">
+                                        <div class="col-md-12 col-xl-4">
+                                            <div class="card comp-card">
+                                                <div class="card-body">
+                                                    <div id="container" style="height:348px"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-md-12">
+                                            <div class="card comp-card">
+                                                <div class="card-body">
+                                                    <div class="row align-items-center">
+                                                        <div class="col">
+                                                            <h6 class="m-b-25">Total Employee</h6>
+                                                            <h3 class="f-w-700 text-c-blue">{{selectionC.TotalEmployee}}</h3>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <i class="fas fa-plus-square bg-c-blue"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card comp-card">
+                                                <div class="card-body">
+                                                    <div class="row align-items-center">
+                                                        <div class="col">
+                                                            <h6 class="m-b-25">Active</h6>
+                                                            <h3 class="f-w-700 text-c-green">{{selectionC.ActiveEmployee}}</h3>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <i class="fas fa-check-square bg-c-green"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card comp-card">
+                                                <div class="card-body">
+                                                    <div class="row align-items-center">
+                                                        <div class="col">
+                                                            <h6 class="m-b-25">Archived</h6>
+                                                            <h3 class="f-w-700 text-c-yellow">{{selectionC.ArcivedEmployee}}</h3>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <i class="fas fa-archive bg-c-yellow"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-md-6">
+                                            <div class="card latest-update-card">
+                                                <div class="card-header">
+                                                    <h5>Latest Activity</h5>
+                                                    <div class="card-header-right">
+                                                        <ul class="list-unstyled card-option">
+                                                            <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i></li>
+                                                            <li><i class="feather icon-maximize full-card"></i></li>
+                                                            <li><i class="feather icon-minus minimize-card"></i></li>
+                                                            <li><i class="feather icon-refresh-cw reload-card"></i></li>
+                                                            <li><i class="feather icon-trash close-card"></i></li>
+                                                            <li><i class="feather icon-chevron-left open-card-option"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="card-block">
+                                                    <div class="scroll-widget">
+                                                        <div class="latest-update-box">
+
+                                                            <div class="row p-t-20 p-b-30" ng-repeat="data in selectionC.ActivityData">
+                                                                <div class="col-auto text-right update-meta p-r-0">
+                                                                    <i class="b-primary update-icon ring"></i>
+                                                                </div>
+                                                                <div class="col p-l-5">
+                                                                    <a href="#!"><h6>Vote Submitted</h6></a>
+                                                                    <p class="text-muted m-b-0">{{data.SubmittedBy}} has submitted {{data.FormName}}  <a href="#!" class="text-c-blue"> </a></p>
+                                                                </div>
+                                                            </div>
+                                                            <!--<div class="row p-b-30">
+                                                            <div class="col-auto text-right update-meta p-r-0">
+                                                                <i class="b-primary update-icon ring"></i>
+                                                            </div>
+                                                            <div class="col p-l-5">
+                                                                <a href="#!"><h6>Showcases</h6></a>
+                                                                <p class="text-muted m-b-0">Lorem dolor sit amet, <a href="#!" class="text-c-blue"> More</a></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row p-b-30">
+                                                            <div class="col-auto text-right update-meta p-r-0">
+                                                                <i class="b-success update-icon ring"></i>
+                                                            </div>
+                                                            <div class="col p-l-5">
+                                                                <a href="#!"><h6>Miscellaneous</h6></a>
+                                                                <p class="text-muted m-b-0">Lorem ipsum dolor sit ipsum amet, <a href="#!" class="text-c-green"> More</a></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row p-b-30">
+                                                            <div class="col-auto text-right update-meta p-r-0">
+                                                                <i class="b-danger update-icon ring"></i>
+                                                            </div>
+                                                            <div class="col p-l-5">
+                                                                <a href="#!"><h6>Your Manager Posted.</h6></a>
+                                                                <p class="text-muted m-b-0">Lorem ipsum dolor sit amet, <a href="#!" class="text-c-red"> More</a></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row p-b-30">
+                                                            <div class="col-auto text-right update-meta p-r-0">
+                                                                <i class="b-primary update-icon ring"></i>
+                                                            </div>
+                                                            <div class="col p-l-5">
+                                                                <a href="#!"><h6>Showcases</h6></a>
+                                                                <p class="text-muted m-b-0">Lorem dolor sit amet, <a href="#!" class="text-c-blue"> More</a></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-auto text-right update-meta p-r-0">
+                                                                <i class="b-success update-icon ring"></i>
+                                                            </div>
+                                                            <div class="col p-l-5">
+                                                                <a href="#!"><h6>Miscellaneous</h6></a>
+                                                                <p class="text-muted m-b-0">Lorem ipsum dolor sit ipsum amet, <a href="#!" class="text-c-green"> More</a></p>
+                                                            </div>
+                                                        </div>-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xl-12">
+                                            <div class="card proj-progress-card">
+                                                <div class="card-block">
+                                                    <div class="row">
+                                                        <div class="col-xl-3 col-md-6">
+                                                            <h6>Total Survey</h6>
+                                                            <h5 class="m-b-30 f-w-700">{{selectionC.TotalSurvey}}<span class="text-c-green m-l-10">{{ ((selectionC.TotalSurvey/selectionC.TotalSurvey)*100) }}%</span></h5>
+                                                            <div class="progress">
+                                                                <div class="progress-bar bg-c-red" style="width:{{ ((selectionC.TotalSurvey/selectionC.TotalSurvey)*100) }}%"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-3 col-md-6">
+                                                            <h6>Completed Survey</h6>
+                                                            <h5 class="m-b-30 f-w-700">{{selectionC.CompletedSurvey}}<span class="text-c-red m-l-10">{{ ((selectionC.CompletedSurvey/selectionC.TotalSurvey)*100).toFixed(2) }}%</span></h5>
+                                                            <div class="progress">
+                                                                <div class="progress-bar bg-c-blue" style="width:{{ ((selectionC.CompletedSurvey/selectionC.TotalSurvey)*100) }}%"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-3 col-md-6">
+                                                            <h6>Resume Survey</h6>
+                                                            <h5 class="m-b-30 f-w-700">{{selectionC.ResumedSurvey}}<span class="text-c-green m-l-10">{{ ((selectionC.ResumedSurvey/selectionC.TotalSurvey)*100).toFixed(2) }}%</span></h5>
+                                                            <div class="progress">
+                                                                <div class="progress-bar bg-c-green" style="width:{{ ((selectionC.ResumedSurvey/selectionC.TotalSurvey)*100) }}%"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-3 col-md-6">
+                                                            <h6>Inactive Survey</h6>
+                                                            <h5 class="m-b-30 f-w-700">{{selectionC.inActiveSurvey}}<span class="text-c-green m-l-10">{{ ((selectionC.inActiveSurvey/selectionC.TotalSurvey)*100).toFixed(2) }}%</span></h5>
+                                                            <div class="progress">
+                                                                <div class="progress-bar bg-c-yellow" style="width:{{ ((selectionC.inActiveSurvey/selectionC.TotalSurvey)*100) }}%"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- [ page content ] end -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"C:\\Workspace\\Assembla\\iAspire_www\\www_iAspire_App\\app\\services\\SurveyGenerator\\AnswerType.Angular.min.js",
+"lineCount":1,
+"mappings":"AAAC,SAAS,EAAG,CAITA,OAAAC,OAAA,CACY,YADZ,CAC0B,EAD1B,CAGAD,QAAAC,OAAA,CACY,YADZ,CAAAC,OAAA,CAOAA,QAAe,EAAG,EAPlB,CAAAC,IAAA,CAWAA,QAAY,EAAG,EAXf,CAAAC,QAAA,CAIa,mBAJb,CAeAC,QAA0B,EAAG,CAKzB,MAFUC,KAHe,CAf7B,CAAAC,WAAA,CAKgB,sBALhB,CAwBAC,QAA6B,EAAG,CAGlBC,IAeVC,cAAA,CAfUD,IAcVE,aACA,CAfUF,IAaVG,cAEA,CAfUH,IAYVI,oBAGA,CAfUJ,IAWVK,eAIA,CAfUL,IAUVM,uBAKA,CAfUN,IASVO,YAMA,CAfUP,IAQVQ,QAOA,CAfUR,IAOVS,mBAQA,CAfUT,IAMVU,SASA,CAfUV,IAKVW,YAUA,CAfUX,IAIVY,YAWA,CAfUZ,IAGVa,WAYA,CAfUb,IAEVc,aAaA,CAbmB,IA0CnB,OA5CUd,KAHkB,CAxBhC,CAPS,CAAZ,CAAD;",
+"sources":["C:/Workspace/Assembla/iAspire_www/www_iAspire_App/app/services/SurveyGenerator/AnswerType.Angular.js"],
+"names":["angular","module","config","run","factory","answerTypeFactory","aTF","controller","answerTypeController","aTC","XMLDataSource","TypeAssembly","TypeNameSpace","JavascriptErrorCode","JavascriptCode","JavascriptFunctionName","Description","BuiltIn","PublicFieldResults","TypeMode","FieldLength","FieldHeight","FieldWidth","AnswerTypeID"]
+}

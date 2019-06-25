@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"C:\\Workspace\\Assembla\\iAspire_www\\www_iAspire_App\\app\\iAspireApp.min.js",
+"lineCount":1,
+"mappings":"AAAC,SAAS,EAAG,CAITA,OAAAC,OAAA,CACY,YADZ,CAC0B,sFAAA,MAAA,CAAA,GAAA,CAD1B,CAJS,CAAZ,CAAD;",
+"sources":["C:/Workspace/Assembla/iAspire_www/www_iAspire_App/app/iAspireApp.js"],
+"names":["angular","module"]
+}

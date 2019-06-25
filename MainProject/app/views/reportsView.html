@@ -1,0 +1,224 @@
+﻿
+<style type="text/css">
+    input[type=checkbox], input[type=radio] {
+        display: none;
+    }
+    .page-body{
+        font-size:15px;
+    }
+</style>
+
+<div id="pcoded" class="pcoded">
+    <div class="pcoded-overlay-box"></div>
+    <div class="pcoded-container navbar-wrapper">
+        <!-- [ Header ] start -->
+        <nav class="navbar header-navbar pcoded-header" style="background:#abe0f9">
+            <div class="navbar-wrapper">
+                <div class="navbar-logo" style="background: #abe0f9;">
+                    <a href="index.html">
+                        <img src="images/Shaeronlogo.png" />
+
+                    </a>
+                </div>
+                <div class="navbar-container container-fluid">
+                    <ul class="nav-left" style="font-family:monospace">
+                        <li onclick="window.location.hash = '#/selection'">
+                            <a>Dashboard</a>
+                        </li>
+                        <li class="header-search" onclick="window.location.hash = '#/selectForm'">
+                            <a>Forms</a>
+                        </li>
+                        <li onclick="window.location.hash = '#/openSavedDoc'">
+                            <a>Document</a>
+                        </li>
+                        <li onclick="window.location.hash = '#/reports'">
+                            <a>Reports</a>
+                        </li>
+                        <li>
+                            <a>Accounts</a>
+                        </li>
+                    </ul>
+                    <ul class="nav-right">
+                        <li class="user-profile header-notification">
+
+                            <div class="dropdown-primary dropdown">
+                                <div class="dropdown-toggle" data-toggle="dropdown">
+                                    <span style="font-size:15px;font-family:monospace">John Doe</span>
+                                    <i class="feather icon-chevron-down"></i>
+                                </div>
+                                <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                                    <li>
+                                        <a href="#">
+                                            <i class="feather icon-user"></i> Profile
+
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="auth-lock-screen.html">
+                                            <i class="feather icon-lock"></i> Lock Screen
+
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a ng-click="selectionC.logout();">
+                                            <i class="feather icon-log-out"></i> Logout
+
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="pcoded-main-container">
+            <div class="pcoded-wrapper">
+                <div class="pcoded-content">
+                    <div class="pcoded-inner-content">
+                        <div class="main-body">
+                            <div class="page-wrapper">
+                                <div class="page-body">
+                                 
+                                    <div id="TrialVersionWrapper" data-ng-if="AppC.IsTrialVersion == true || repC.AreReportsReady == false">
+                                        <div id="ReportsPreviewImageWrapper">
+                                            <img id="ReportsPreviewImage" src="assets/images/reports-mockup.jpg" />
+                                        </div>
+                                    </div>
+                                    <div id="ReportsWrapper" data-ng-if="AppC.IsTrialVersion == false && repC.AreReportsReady == true">
+                                        <div style="padding-top:.5%">
+                                            <nav class="navbar header-navbar" id="FilterSectionPosition" style="background:#d3d3d3;min-height: 105px;">
+                                                <div class="col-md-4">
+                                                    <label for="FromDate">From Date</label>
+                                                    <input type="text" data-ng-model="repC.StartDateString" datetimepicker required />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label for="FromDate">To Date</label>
+                                                    <input type="text" data-ng-model="repC.EndDateString" datetimepicker required />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <select data-ng-model="repC.SurveyID" required style="width: 100%;"
+                                                            data-ng-options="o.SurveyID as o.Title for o in repC.SurveyList"></select>
+                                                    <button data-ng-if="repC.ActiveSurvey != null && repC.NeedNewDataObject.NeedNewData == true"
+                                                            data-ng-click="repC.GetNewData()">
+                                                        Apply Changes
+                                                    </button>
+                                                </div>
+                                            </nav>
+                                        </div>
+                                        <div style="padding-top:.5%">
+                                            <nav class="navbar header-navbar" id="FilterSectionPosition" style="background:#abe0f9;min-height: 25px;">
+                                                
+                                            </nav>
+                                        </div>
+                                        <!--<div id="FilterWrapper">
+        <table id="FormSelectTable">
+            <tbody>
+                <tr>
+                    <td class="FilterLabelCell">
+                        <label>Date & Time</label>
+                    </td>
+                    <td>
+                        <label>From</label>
+                        <input class="dateInput" data-ng-model="repC.StartDateString" datetimepicker required type="text" />
+                    </td>
+                    <td>
+                        <label>To</label>
+                        <input class="dateInput" data-ng-model="repC.EndDateString" datetimepicker required type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="FilterLabelCell">
+                        <label>Form</label>
+                    </td>
+                    <td class="spincontainer LoadingImageSmall Spinner-Login" data-ng-class="repC.SurveysListIsLoading == true ? 'spincontainer-shown' : ''">
+                        <div style="width:15px;height:15px" class="spinner"></div>
+                    </td>
+                    <td data-ng-if="repC.SurveysListIsLoading == true">
+                        <select></select>
+                    </td>
+                    <td colspan="2" data-ng-if="repC.SurveysListIsLoading == false">
+                        <select data-ng-model="repC.SurveyID" required class="surveySelect"
+                                data-ng-options="o.SurveyID as o.Title for o in repC.SurveyList"></select>
+                        <button data-ng-if="repC.ActiveSurvey != null && repC.NeedNewDataObject.NeedNewData == true"
+                                data-ng-click="repC.GetNewData()">
+                            Apply Changes
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="FilterOptionsTable" data-ng-if="repC.FilterOptions.length > 0 && repC.ReportDataIsLoading == false">
+            <tbody>
+                <tr>
+                    <td class="FilterLabelCell">
+                        <label>Filter Options:</label>
+                    </td>
+                    <td class="FilterOptionCell" data-ng-repeat="filterOption in repC.FilterOptions">
+                        <label data-ng-click="repC.AddFilter(filterOption)">+&nbsp;{{filterOption.RequestText}}</label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="AppliedFiltersTable" data-ng-if="repC.ActiveFilters.length > 0 && repC.ReportDataIsLoading == false">
+            <tbody>
+                <tr data-ng-repeat="filter in repC.ActiveFilters"
+                    filter="filter" parentnddo="repC.NeedNewDataObject" on-remove="repC.ActiveFilters.splice($index,1)" activefilter></tr>
+            </tbody>
+        </table>
+    </div>-->
+                                        <div class="NoDataWrapper" data-ng-if="repC.SurveyID == -1 || repC.AllVotes.length == 0">
+                                            <div data-ng-if="repC.SurveyID == -1">
+                                                <div class="EmptyResultsLabel">SELECT FORM</div>
+                                                <div class="EmptyResultsMessage">Please select a form from the list.</div>
+                                            </div>
+                                            <div data-ng-if="repC.SurveyID != -1 && repC.ReportDataIsLoading != true">
+                                                <div class="EmptyResultsLabel">EMPTY RESULTS</div>
+                                                <div class="EmptyResultsMessage">No data could be found by the given c
+riteria.
+                                                </div>
+                                                 c
+                                            </div>
+                                        </div>
+                                        <div id="ReportViewWrapper" data-ng-if="repC.SurveyID != -1">
+                                            <div colspan="2" class="spincontainer Spinner-Login" data-ng-class="repC.ReportDataIsLoading == true ? 'spincontainer-shown' : ''">
+                                                <div class="spinner" style="position: fixed;z-index: 999;height: 2em;width: 2em;overflow: visible;margin: auto;top: 0;left: 0;bottom: 0;right: 0;"></div>
+                                            </div>
+                                            <div id="ReportLoadedWrapper" data-ng-if="repC.ReportDataIsLoading == false">
+                                                <div id="VoteListWrapper" data-ng-if="repC.HeaderDataTable.Rows.length > 0">
+                                                    <table>
+                                                        <thead>
+                                                            <tr>
+                                                                <th data-ng-repeat="headerValue in repC.HeaderDataTable.Headers">{{headerValue}}</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr data-ng-repeat="voteRow in repC.HeaderDataTable.Rows">
+                                                                <td data-ng-repeat="voteCell in voteRow">{{voteCell}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div id="ReportCountWrapper"><label>Total submissions: {{repC.HeaderDataTable.Rows.length}}</label></div>
+                                                <div style="text-align:right;margin-top:15px;padding-right:1%;">
+                                                    <button class="blueButton" ng-click="repC.RenderReport()">Download PDF</button>
+                                                    <!--START NILESH-TSK65-->
+                                                    <button class="blueButton" ng-click="repC.RenderCSV()">Download CSV</button>
+                                                    <!--END NILESH-TSK65-->
+                                                </div>
+                                                <div data-ng-repeat="question in repC.ReportingQuestions">
+                                                    <reportingquestion question="question"></reportingquestion>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  
+                                </div>
+                                </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

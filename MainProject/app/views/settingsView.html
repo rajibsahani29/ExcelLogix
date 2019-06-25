@@ -1,0 +1,163 @@
+﻿<div class="MainContainer">
+    <div class="TopBanner" id="TopBannerPosition" data-ng-show="AppC.ShowHeader">
+        <div class="FlexContainer" id="FlexContainerPosition">
+            <div class="FlexItem" id="MenuCogWrapper">
+                <div class="FlexItemInner" id="MenuBackContainer">
+                    <button class="BackButton" onclick="window.location.hash='#/selection'"><span><</span>&nbsp;HOME</button>
+                </div>
+            </div>
+            <div class="FlexItem" id="iAspireBoxWrapper">
+                <div class="FlexItemInner" id="MenuTitleContainer">
+                    <label class="PageTitleText">{{AppC.ActivePageName}}</label>
+                </div>
+            </div>
+            <div class="FlexItem" id="EmptyFlex">
+                <div class="FlexItemInner NearTransparentWhite" >
+                    <div class="SettingsContainer">
+                        <img id="MenuCogImage" src="assets/images/settings.png" />
+                        <label class="SettingsText">SETTINGS</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="SettingsWrapper">
+        <div id="ReportingSettingsWrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="2">Device Settings - Reporting</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--<tr>
+                        <td colspan="2">
+                            <label>Note: These settings are lost on logout</label>
+                        </td>
+                    </tr>-->
+                    <tr>
+                        <td>
+                            <label>Default Date Range: </label>
+                        </td>
+                        <td>
+                              <label>From</label>
+                            <input class="dateInput" data-ng-model="setC.ReportingSettings_DateRangeDate" datetimepicker required type="text" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Collapse Comment-Only Sections By Default: </label>
+                        </td>
+                        <td>
+                            <label><input type="radio" data-ng-model="setC.ReportingSettings_CollapseComments" value="true" />Yes</label>
+                            <label><input type="radio" data-ng-model="setC.ReportingSettings_CollapseComments" value="false" />No</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Default Data View</label>
+                        </td>
+                        <td>
+                            <label><input type="radio" data-ng-model="setC.ReportingSettings_DataFormat" data-ng-value="'Totals'"/>Totals</label>
+                            <label><input type="radio" data-ng-model="setC.ReportingSettings_DataFormat" data-ng-value="'History'"/>History</label>
+                            <label ng-show="businessrpt"><input type="radio" data-ng-model="setC.ReportingSettings_DataFormat" data-ng-value="'Distribution'" />Distribution</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Default Data Type</label>
+                        </td>
+                        <td>
+                            <label><input type="radio" data-ng-model="setC.ReportingSettings_DataType" data-ng-value="'Frequency'" />Frequency</label>
+                            <label><input type="radio" data-ng-model="setC.ReportingSettings_DataType" data-ng-value="'Percent'" />Percent</label>
+                        </td>
+                    </tr>
+                    <tr ng-hide="setC.EmailHide=='38c24807-99e1-41ff-a7a6-87822fd66f31'">
+                        <td>Automatically Email Employees by Default:</td>
+                        <td><input type="checkbox" ng-click="setC.SetEmailStatus()" ng-model="setC.Emailstat"/></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="InfoWrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="2">Info</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>App Version:</td>
+                        <td>{{AppC.AppVersion}}</td>
+                    </tr>
+                    <tr>
+                        <td>Logged In As:</td>
+                        <td>{{AppC.ActiveUser.UserName}}</td>
+                    </tr>
+                    <!--<tr>
+                        <td>Powered By</td>
+                        <td><img id="SPLogoPosition" class="SPLogo" src="assets/images/SpLogo.png" /></td>
+                    </tr>-->
+                    <tr ng-show="AppC.Merchant.CustomerID > 0">
+                        <td>Find a bug?<br /> Need help?</td>
+                        <!--START NILESH-TSK29-->
+                        <td>
+                            <button class="blueButton" ng-click="setC.MakeSupportPopup()">Contact us!</button>
+                            <!--<button class="gray" ng-click="setC.MakeSupportPopup()">Submit Help Ticket</button>-->
+                        </td>
+                        <!--END NILESH-TSK29-->
+                    </tr>
+                    <tr ng-show="AppC.ActiveUser.UserID ==43">
+                        <td></td>
+                        <!--START NILESH-TSK29-->
+                        <td>
+                            <div id="NotificationButtonContainer" name="NotificationButtonContainer">
+                                <!--<div> <button name="btnnotificatiion" data-ng-click="setC.notification();">Notification</button></div>-->
+                            </div>
+                        </td>
+                        <!--END NILESH-TSK29-->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="LogoutButtonContainer">
+            <div>
+                <button data-ng-click="setC.logout();">LOGOUT</button>
+            </div>
+        </div>
+        <!--<div id="AppVersionContainer">
+            <label id="AppVersionLabelPosition">App Version: {{AppC.AppVersion}}</label>
+        </div>-->
+    </div>
+    <div id="BottomBannerWrapperPosition" class="BottomBannerWrapper" data-ng-show="AppC.ShowFooter">
+        <div class="BottomBanner" id="BottomBannerPosition">
+            <img id="BottomLogoImage" src="assets/images/iAspire-logo-2.png" />
+            <label id="LegalInfoLabelPostiion" class="LegalInfoLabel">{{AppC.LegalInformation}}</label>
+        </div>
+    </div>
+<!--START NILESH-TSK29-->
+    <style type="text/css">
+        .gray {
+            display: inline-block;
+            background: #d9dce0;
+            background: -webkit-gradient(linear,left top,left bottom,from(#f4f3f3),to(#d9dce0));
+            background: -moz-linear-gradient(top, #f4f3f3, #d9dce0);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f3f3', endColorstr='#d9dce0');
+            border: 1px solid #9C9C9C;
+            box-shadow: 0 1px #FEFEFE inset;
+            color: #434343;
+            text-shadow: 1px 1px 0 #FFFFFF;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            margin-top: 3px;
+            padding: 7px 14px;
+            cursor: pointer;
+            font-family: arial;
+            font-size: 13px;
+        }
+    </style>
+    <!--<script type="text/javascript" src="https://forms.zohopublic.com/eric22/form/ZohoDeskHelpTicketCreator/jsperma/B00022b1jhg5Ah59kh5J7a0A7" id="ZFScript"></script>-->
+    <!--END NILESH-TSK29-->
+</div>

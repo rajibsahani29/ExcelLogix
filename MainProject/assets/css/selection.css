@@ -1,0 +1,332 @@
+﻿
+/* Mobile Layout *******************************************/
+
+.MainContainer {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: gray;
+}
+
+.PictureContainer {
+    height: 100%;
+    float: left;
+    overflow: hidden;
+    background: gray url('../images/Group-Of-Students-Doing-Online-63229357.png') center center no-repeat;
+    background-size: cover;
+}
+.PictureContainerFrBusiness {
+    height: 100%;
+    float: left;
+    overflow: hidden;
+    background: gray url('../images/IBS-Background.png') center center no-repeat;
+    background-size: cover;
+}
+.SideBar {
+    height: 100%;
+    width: 35%;
+    background-color: none;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+#SideBarPosition {
+    float: right;
+}
+
+.SelectionContainer {
+    height: 25%;
+    width: 100%;
+    position: relative;
+    transition: all 100ms;
+    box-shadow: inset 10px 0px 15px -7px rgba(0,0,0,0.5), inset 0px 0px 10px -7px rgba(0,0,0,0.5);
+}
+
+    .SelectionContainer:hover {
+        cursor: pointer;
+        /*box-shadow: inset 130px 0px 200px -50px rgba(0,0,0,0.5), inset 0px 0px 10px -7px rgba(0,0,0,0.5);*/
+    }
+
+.IconContainer {
+    height: 65px;
+    width: 105px;
+    background-color: none;
+}
+
+.Icon {
+    height: 45px;
+    width: 45px;
+}
+
+.Label {
+    margin: auto;
+    font-family: LatoRegular;
+    color: white;
+    font-size: 9px;
+}
+
+.LabelContainer {
+    margin-top: 1px;
+}
+
+#NewDocumentIconContainer {
+    margin: auto;
+    text-align: center;
+    position: relative;
+    display: block;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+#SelectFormIconContainer {
+    margin: auto;
+    text-align: center;
+    position: relative;
+    display: block;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+#OpenSavedDocumentIconContainer {
+    margin: auto;
+    text-align: center;
+    position: relative;
+    display: block;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+#ReportsIconContainer {
+    margin: auto;
+    text-align: center;
+    position: relative;
+    display: block;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+#SettingsIconContainer {
+    margin: auto;
+    text-align: center;
+    position: relative;
+    display: block;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.ColorOne {
+    background-color: #00DBF2;
+}
+
+.ColorTwo {
+    background-color: #00D1E9;
+}
+
+.ColorThree {
+    background-color: #00BCDB;
+}
+
+.ColorFour {
+    background-color: #00A8C6;
+}
+
+.PositioningContainer {
+    width: calc(100% - 35%);
+    height: 100%;
+}
+
+.iAspireLogo {
+    width: 175px;
+    height: 155px;
+    top: 50%;
+    position: relative;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    margin: auto;
+    background: url('../images/iAspire-logo.png');
+    background-size: 100% 100%;
+}
+
+.SettingsButton {
+    height: 25px;
+    width: 25px;
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    cursor: pointer;
+    background: url('../images/settings.png');
+    background-size: 100% 100%;
+}
+
+/* Tablet Layout ********************************************/
+
+@media only screen and (min-width: 481px) {
+    .MainContainer {
+    }
+
+    .PictureContainer {
+    }
+
+    .SideBar {
+        width: 25%;
+    }
+
+    #SideBarPosition {
+    }
+
+    .SelectionContainer {
+    }
+
+    .IconContainer {
+        height: 75px;
+        width: 135px;
+    }
+
+    .Icon {
+        height: 55px;
+        width: 55px;
+    }
+
+    .Label {
+        font-size: 10px;
+    }
+
+    .LabelContainer {
+        margin-top: 3px;
+    }
+
+    #NewDocumentIconContainer {
+    }
+
+    #SelectFormIconContainer {
+    }
+
+    #OpenSavedDocumentIconContainer {
+    }
+
+    #ReportsIconContainer {
+    }
+
+    #SettingsIconContainer {
+    }
+
+    .ColorOne {
+    }
+
+    .ColorTwo {
+    }
+
+    .ColorThree {
+    }
+
+    .ColorFour {
+    }
+
+    .PositioningContainer {
+        width: calc(100% - 25%);
+    }
+
+    .iAspireLogo {
+        width: 335px;
+        height: 315px;
+    }
+
+    .SettingsButton {
+        height: 30px;
+        width: 30px;
+        bottom: 35px;
+        left: 35px;
+    }
+}
+
+/* Desktop Layout ********************************************/
+
+@media only screen and (min-width: 761px) {
+
+    .MainContainer {
+    }
+
+    .PictureContainer {
+    }
+
+    .SideBar {
+        width: 250px;
+    }
+
+    #SideBarPosition {
+    }
+
+    .SelectionContainer {
+    }
+
+    .IconContainer {
+        height: 130px;
+        width: 145px;
+    }
+
+    .Icon {
+        height: 100px;
+        width: 100px;
+    }
+
+    .Label {
+        font-size: 12px;
+    }
+
+    .LabelContainer {
+        margin-top: 5px;
+    }
+
+    #NewDocumentIconContainer {
+    }
+
+    #SelectFormIconContainer {
+    }
+
+    #OpenSavedDocumentIconContainer {
+    }
+
+    #ReportsIconContainer {
+    }
+
+    #SettingsIconContainer {
+    }
+
+    .ColorOne {
+    }
+
+    .ColorTwo {
+    }
+
+    .ColorThree {
+    }
+
+    .ColorFour {
+    }
+
+    .PositioningContainer {
+        width: calc(100% - 250px);
+    }
+
+    .iAspireLogo {
+        width: 435px;
+        height: 415px;
+    }
+
+    .SettingsButton {
+        height: 40px;
+        width: 40px;
+        bottom: 55px;
+        left: 55px;
+    }
+}
+
+
+   
+

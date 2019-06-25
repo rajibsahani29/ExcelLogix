@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"C:\\Workspace\\Assembla\\iAspire_www\\www_iAspire_App\\app\\services\\SurveyGenerator\\ChildQuestion.Angular.min.js",
+"lineCount":1,
+"mappings":"AAAC,SAAS,EAAG,CAITA,OAAAC,OAAA,CACY,eADZ,CAC6B,EAD7B,CAGAD,QAAAC,OAAA,CACY,eADZ,CAAAC,OAAA,CAOAA,QAAe,EAAG,EAPlB,CAAAC,IAAA,CAWAA,QAAY,EAAG,EAXf,CAAAC,QAAA,CAIa,sBAJb,CAeAC,QAA6B,EAAG,CAK5B,MAFUC,KAHkB,CAfhC,CAAAC,WAAA,CAKgB,yBALhB,CAK2C,CAAC,QAAD,CAmB3CC,QAAgC,CAACC,CAAD,CAAS,CAGrC,IAAIC,EAAM,IAEVA,EAAAC,aAAA,CAAmB,IACnBD,EAAAE,iBAAA,CAAuB,IAEvBF,EAAAG,eAAA,CAAqB,IAErBH,EAAAI,kBAAA,CAIAC,QAA0B,EAAG,CACzBL,CAAAG,eAAA,CAAqBJ,CAAAO,QACrBP,EAAAO,QAAAC,oBAAA,CAAmCP,CAAnC,CAFyB,CAF7B,OAAOA,EAZ8B,CAnBE,CAL3C,CAPS,CAAZ,CAAD;",
+"sources":["C:/Workspace/Assembla/iAspire_www/www_iAspire_App/app/services/SurveyGenerator/ChildQuestion.Angular.js"],
+"names":["angular","module","config","run","factory","childQuestionFactory","cQF","controller","childQuestionController","$scope","cQC","QuestionText","ParentQuestionID","ParentQuestion","SetParentQuestion","setParentQuestion","$parent","AttachChildQuestion"]
+}

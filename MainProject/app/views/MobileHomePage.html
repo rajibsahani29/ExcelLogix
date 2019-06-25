@@ -1,0 +1,176 @@
+﻿<style type="text/css">
+    .footerbuttons {
+        border-top: 1px solid #bfbebe;
+    }
+     .footerbuttons {
+        height:55px;\9
+        height: initial;
+        bottom: 0;
+        position: fixed;
+    }
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        .footerbuttons {
+            height: 55px;
+        }
+    }
+</style>
+<div class="MainContainer PictureContainerFrBusiness" ng-if="businessrpt">
+    <div class="PositioningContainer">
+        <div class="iAspireLogo"></div>
+        <!--<div class="SettingsButton"
+             data-ng-click="selectionC.Logout()"></div>-->
+    </div>
+    <div class="PositioningContainer footerbuttons" id="footerbtns">
+        <div style="float: left; width: 33%;text-align: left;">
+            <img src="assets/images/DashboardIcon/1_Help icon.png" style="width: 54px;cursor: pointer;" ng-click="selectionM.MakeSupportPopup()" />
+        </div>
+
+        <div style="float: right; width: 33%;text-align: right;">
+            <img src="assets/images/DashboardIcon/1_Setting icon.png" style="width: 54px;cursor: pointer;" onclick="window.location.hash = '#/settings'" />
+        </div>
+    </div>
+    <div class="SideBar" id="SideBarPosition">
+        <div class="SelectionContainer ColorOne" id="NewDocument"
+             onclick="window.location.hash = '#/selectForm'">
+            <div class="IconContainer" id="NewDocumentIconContainer">
+                <img class="Icon" id="NewDocumentIcon" src="assets/images/start-new.png" />
+                <div class="LabelContainer">
+                    <label class="Label">Start New Document</label>
+                </div>
+            </div>
+        </div>
+        <!--<div class="SelectionContainer ColorTwo" id="SelectForm">
+            <div class="IconContainer" id="SelectFormIconContainer">
+                <img class="Icon" id="SelectFormIcon" src="assets/images/select-form.png" />
+                <div class="LabelContainer">
+                    <label class="Label">Select Form</label>
+                </div>
+            </div>
+        </div>-->
+        <div class="SelectionContainer ColorTwo" id="OpenSavedDocument"
+             onclick="window.location.hash = '#/openSavedDoc'">
+            <div class="IconContainer" id="OpenSavedDocumentIconContainer">
+                <img class="Icon" id="OpenSavedDocumentIcon" src="assets/images/open-saved.png" />
+                <div class="LabelContainer">
+                    <label class="Label">Open Saved Document</label>
+                </div>
+            </div>
+        </div>
+        <div class="SelectionContainer ColorThree" id="Reports"
+             onclick="window.location.hash = '#/reports'" ng-if="eductnrpt">
+            <div class="IconContainer" id="ReportsIconContainer">
+                <img class="Icon" id="ReportsIcon" src="assets/images/reports.png" />
+                <div class="LabelContainer">
+                    <label class="Label">Reports</label>
+                </div>
+            </div>
+        </div>
+        <div class="SelectionContainer ColorThree" id="Reports"
+             onclick="window.location.hash = '#/BusinessReport'" ng-if="businessrpt">
+            <div class="IconContainer" id="ReportsIconContainer">
+                <img class="Icon" id="ReportsIcon" src="assets/images/reports.png" />
+                <div class="LabelContainer">
+                    <label class="Label">Reports</label>
+                </div>
+            </div>
+        </div>
+        <div class="SelectionContainer ColorFour" id="Settings"
+             data-ng-click="selectionM.toSurveyPage(selectionM.HighFiveSurveyID,selectionM.HighFiveSurveyGUID)">
+            <div class="IconContainer" id="SettingsIconContainer">
+                <img class="Icon" id="SettingsIcon" src="assets/images/DashboardIcon/1_Hi5 icon.png" />
+                <div class="LabelContainer">
+                    <label class="Label">High Five</label>
+                </div>
+            </div>
+        </div>
+        <!--<div class="SelectionContainer ColorFour" id="Settings"
+             onclick="window.location.hash = '#/settings'">
+            <div class="IconContainer" id="SettingsIconContainer">
+                <img class="Icon" id="SettingsIcon" src="assets/images/white-cog.png" />
+                <div class="LabelContainer">
+                    <label class="Label">Settings</label>
+                </div>
+            </div>
+        </div>-->
+    </div>
+</div>
+<div class="MainContainer PictureContainer" ng-if="eductnrpt">
+    <div class="PositioningContainer">
+        <div class="iAspireLogo"></div>
+        <!--<div class="SettingsButton"
+             data-ng-click="selectionC.Logout()"></div>-->
+    </div>
+    <div class="PositioningContainer footerbuttons" id="footerbtns">
+        <div style="float: left; width: 33%;text-align: left;">
+            <img src="assets/images/DashboardIcon/1_Help icon.png" style="width: 54px;cursor: pointer;" ng-click="selectionM.MakeSupportPopup()" />
+        </div>
+       
+        <div style="float: right; width: 33%;text-align: right;">
+            <img src="assets/images/DashboardIcon/1_Setting icon.png" style="width: 54px;cursor: pointer;" onclick="window.location.hash = '#/settings'" />
+        </div>
+    </div>
+    <div class="SideBar" id="SideBarPosition">
+        <div class="SelectionContainer ColorOne" id="NewDocument"
+             onclick="window.location.hash = '#/selectForm'">
+            <div class="IconContainer" id="NewDocumentIconContainer">
+                <img class="Icon" id="NewDocumentIcon" src="assets/images/start-new.png" />
+                <div class="LabelContainer">
+                    <label class="Label">Start New Document</label>
+                </div>
+            </div>
+        </div>
+        <!--<div class="SelectionContainer ColorTwo" id="SelectForm">
+            <div class="IconContainer" id="SelectFormIconContainer">
+                <img class="Icon" id="SelectFormIcon" src="assets/images/select-form.png" />
+                <div class="LabelContainer">
+                    <label class="Label">Select Form</label>
+                </div>
+            </div>
+        </div>-->
+        <div class="SelectionContainer ColorTwo" id="OpenSavedDocument"
+             onclick="window.location.hash = '#/openSavedDoc'">
+            <div class="IconContainer" id="OpenSavedDocumentIconContainer">
+                <img class="Icon" id="OpenSavedDocumentIcon" src="assets/images/open-saved.png" />
+                <div class="LabelContainer">
+                    <label class="Label">Open Saved Document</label>
+                </div>
+            </div>
+        </div>
+        <div class="SelectionContainer ColorThree" id="Reports"
+             onclick="window.location.hash = '#/reports'" ng-if="eductnrpt">
+            <div class="IconContainer" id="ReportsIconContainer">
+                <img class="Icon" id="ReportsIcon" src="assets/images/reports.png" />
+                <div class="LabelContainer">
+                    <label class="Label">Reports</label>
+                </div>
+            </div>
+        </div>
+        <div class="SelectionContainer ColorThree" id="Reports"
+             onclick="window.location.hash = '#/BusinessReport'" ng-if="businessrpt">
+            <div class="IconContainer" id="ReportsIconContainer">
+                <img class="Icon" id="ReportsIcon" src="assets/images/reports.png" />
+                <div class="LabelContainer">
+                    <label class="Label">Reports</label>
+                </div>
+            </div>
+        </div>
+        <div class="SelectionContainer ColorFour" id="Settings"
+             data-ng-click="selectionM.toSurveyPage(selectionM.HighFiveSurveyID,selectionM.HighFiveSurveyGUID)">
+            <div class="IconContainer" id="SettingsIconContainer">
+                <img class="Icon" id="SettingsIcon" src="assets/images/DashboardIcon/1_Hi5 icon.png" />
+                <div class="LabelContainer">
+                    <label class="Label">High Five</label>
+                </div>
+            </div>
+        </div>
+        <!--<div class="SelectionContainer ColorFour" id="Settings"
+             onclick="window.location.hash = '#/settings'">
+            <div class="IconContainer" id="SettingsIconContainer">
+                <img class="Icon" id="SettingsIcon" src="assets/images/white-cog.png" />
+                <div class="LabelContainer">
+                    <label class="Label">Settings</label>
+                </div>
+            </div>
+        </div>-->
+    </div>
+</div>

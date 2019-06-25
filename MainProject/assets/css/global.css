@@ -1,0 +1,1153 @@
+﻿/* Styling Reset */
+    /*START NILESH-TSK77*/
+@import url('global.css');
+.loaderContainer { background-color: #ffffffe6 ;/*background-color: white;*/z-index: 1100;position: fixed;width: 100%;height: 100%; }
+    .spincontainer-shown {
+        display:initial !important;
+    }
+    .spincontainer {
+        display:none;
+        width: 60px; height: 60px;
+        /*position: absolute;
+        top: 0;left: 0;bottom: 60px;right: 0;*/
+        margin: auto;
+        -webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;
+        user-select: none;
+      }
+      .spinner {
+        width: 40px;
+        height: 40px;
+        background-color: #00a8c5;
+        margin: 5px auto;
+        -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+        animation: sk-rotateplane 1.2s infinite ease-in-out;
+      }
+      
+      @-webkit-keyframes sk-rotateplane {
+        0% { -webkit-transform: perspective(120px) }
+        50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+        100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+      }
+      
+      @keyframes sk-rotateplane {
+        0% { 
+          transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+          -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
+        } 50% { 
+          transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+          -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
+        } 100% { 
+          transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+          -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+        }
+      }
+      /*END NILESH-TSK77*/
+*,
+*::after,
+*::before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+/* Makes padding behave correctly */
+
+body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+/* removes browser-default styling*/
+
+input[type="number"],
+input[type="text"],
+select,
+select {
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    -webkit-appearance: none;
+    border: 1px solid rgb(180, 180, 180);
+}
+/* removes the rounded edges on iOS */
+
+table, thead, tbody, tfoot, th, tr, td {
+    border: none;
+    border-collapse: collapse;
+    border-spacing: 0;
+    -webkit-appearance: none;
+    -webkit-border-horizontal-spacing: 0;
+    -webkit-border-vertical-spacing: 0;
+}
+/* resets browser-default table styling */
+
+html, button, input {
+    font-family: LatoRegular;
+    font-size: 9px;
+}
+
+    button::-moz-focus-inner {
+        border: 0;
+    }
+
+    button:focus {
+        outline: none;
+        outline-style: none;
+        outline-width: 0px;
+        outline-color: transparent;
+    }
+
+.GroupFloats {
+}
+
+    .GroupFloats:after {
+        content: ' ';
+        display: table;
+        clear: both;
+        visibility: hidden;
+    }
+
+@font-face {
+    font-family: LatoBlack;
+    src: url(../fonts/Lato-Black.ttf);
+}
+
+@font-face {
+    font-family: LatoBlackItalic;
+    src: url(../fonts/Lato-BlackItalic.ttf);
+}
+
+@font-face {
+    font-family: LatoBold;
+    src: url(../fonts/Lato-Bold.ttf);
+}
+
+@font-face {
+    font-family: LatoBoldItalic;
+    src: url(../fonts/Lato-BoldItalic.ttf);
+}
+
+@font-face {
+    font-family: LatoHarline;
+    src: url(../fonts/Lato-Hairline.ttf);
+}
+
+@font-face {
+    font-family: LatoHarlineItalic;
+    src: url(../fonts/Lato-HairlineItalic.ttf);
+}
+
+@font-face {
+    font-family: LatoItalic;
+    src: url(../fonts/Lato-Italic.ttf);
+}
+
+@font-face {
+    font-family: LatoLight;
+    src: url(../fonts/Lato-Light.ttf);
+}
+
+@font-face {
+    font-family: LatoLightItalic;
+    src: url(../fonts/Lato-LightItalic.ttf);
+}
+
+@font-face {
+    font-family: LatoRegular;
+    src: url(../fonts/Lato-Regular.ttf);
+}
+
+/* Animations **********************************************/
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes slideIn {
+    0% {
+        -webkit-transform: translateY(-100%);
+    }
+
+    100% {
+        -webkit-transform: translateY(0%);
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+@-webkit-keyframes slideOut {
+    0% {
+        -webkit-transform: translateY(0%);
+    }
+
+    100% {
+        -webkit-transform: translateY(-100%);
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        transform: translateY(0%);
+    }
+
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+@-webkit-keyframes spinAndBounce {
+    0% {
+        visibility: visible;
+    }
+
+    33% {
+        -webkit-transform: rotateZ(120deg) scale(1.25);
+    }
+
+    66% {
+        -webkit-transform: rotateZ(240deg) scale(-1.25);
+    }
+
+    100% {
+        visibility: visible;
+        -webkit-transform: rotateZ(360deg) scale(1);
+    }
+}
+
+@keyframes spinAndBounce {
+    0% {
+        visibility: visible;
+    }
+
+    33% {
+        transform: rotateZ(120deg) scale(1.25);
+    }
+
+    66% {
+        transform: rotateZ(240deg) scale(0.75);
+    }
+
+    100% {
+        visibility: visible;
+        transform: rotateZ(360deg) scale(1);
+    }
+}
+
+.pageTransitionAnimation.ng-enter {
+    -webkit-animation: fadeIn;
+    animation: fadeIn;
+    -webkit-animation-duration: 0.2s;
+    animation-duration: 0.2s;
+    /*-webkit-animation: slideIn;
+    animation: slideIn;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;*/
+}
+
+.pageTransitionAnimation.ng-leave {
+    -webkit-animation: fadeOut;
+    animation: fadeOut;
+    -webkit-animation-duration: 0.2s;
+    animation-duration: 0.2s;
+    /*-webkit-animation: slideOut;
+    animation: slideOut;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;*/
+}
+
+/* Angular Animation Classes *******************************/
+
+.slider {
+    height: 100%;
+    line-height: initial;
+    transform: translateY(0%);
+    -webkit-transform: translateY(0%);
+}
+
+    .slider.ng-hide-add.ng-hide-add-active,
+    .slider.ng-hide-remove.ng-hide-remove-active {
+        -webkit-transition: all ease-in 100ms;
+        transition: all ease-in 100ms;
+    }
+
+    .slider.ng-hide {
+        height: 0px;
+        line-height: none;
+        transform: translateY(-100%);
+        -webkit-transform: translateY(-100%);
+    }
+
+/* Other Angular things */
+
+input.ng-invalid {
+    border: inset 2px red;
+}
+
+/* Mobile Layout *******************************************/
+
+.ViewContainer {
+    /*height: calc(100% - 90px);
+    position: relative;
+    width: 100%;
+    background-color: gray;*/
+}
+
+.VideoBackground {
+    background-color: gray;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    position: absolute;
+    z-index: 999;
+    overflow: auto;
+}
+
+.bgvid {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+}
+
+.bgImageKids {
+    background: gray url(../images/ipad-kids.png) center center;
+    background-size: cover;
+}
+
+.bgImageBsns {
+	background: gray url(../images/IBS-Background-Login.png) center center;
+    background-size: cover;
+}
+
+
+.LoginBox {
+    /*height: 325px;*/
+    width: 95%;
+    background-color: rgba(255, 255, 255, .5);
+    /*Drop shadow*/
+    -webkit-box-shadow: 0px 0px 41px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 41px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 41px 0px rgba(0,0,0,0.75);
+}
+
+#LoginBoxPosition {
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 40px;
+}
+
+.LogoBox {
+    height: 179px;
+    width: 110px;
+}
+
+#LogoBoxPosition {
+    margin: auto;
+    position: absolute;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    -webkit-transform: translate3d(-50%, -50%, 0);
+}
+
+.Logo {
+    height: 179px;
+    width: 110px;
+}
+
+#EmailPasswordLoginContainer {
+    padding-top: 115px;
+    padding-bottom: 15px;
+}
+
+.EmailTextbox {
+    width: 95%;
+    height: 45px;
+    background-color: #ffffff;
+    font-family: LatoRegular;
+    font-size: 12pt;
+    padding-left: 10px;
+    border: none;
+}
+
+#EmailTextboxPosition {
+    margin: auto;
+    display: block;
+}
+
+.PasswordTextbox {
+    width: 95%;
+    height: 45px;
+    background-color: #ffffff;
+    font-family: LatoRegular;
+    font-size: 12pt;
+    padding-left: 10px;
+    border: none;
+}
+
+#PasswordTextboxPosition {
+    margin: auto;
+    margin-top: 15px;
+    display: block;
+}
+
+/*Placeholder text color*/
+::-webkit-input-placeholder {
+    color: black;
+}
+
+::-moz-placeholder {
+    color: black;
+}
+/* firefox 19+ */
+:-ms-input-placeholder {
+    color: black;
+}
+/* ie */
+input:-moz-placeholder {
+    color: black;
+}
+
+.blueButton {
+        width: 50%;
+        max-width: 150px;
+        padding: 7px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        background-color: #265a88;
+        background-image: linear-gradient(to bottom,#00A8C6 0,#265a88 100%);
+        background-repeat: repeat-x;
+        background-position: 0px -10px;
+        transition: all 100ms;
+}
+
+    .blueButton:hover {
+        background-position: 0px 0px;
+    }
+
+#BottomButtonsPosition {
+}
+
+.ForgotButton {
+    height: 65px;
+    width: 50%;
+    background-color: #00A8C6;
+    font-family: LatoLight;
+    color: #ffffff;
+    font-size: 14pt;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    /*Inset top only shadow*/
+    -webkit-box-shadow: inset 0 15px 15px -15px rgba(0,0,0,0.8);
+    -moz-box-shadow: inset 0 15px 15px -15px rgba(0,0,0,0.8);
+    box-shadow: inset 0 15px 15px -15px rgba(0,0,0,0.8);
+}
+
+#ForgotButtonPosition {
+    float: left;
+}
+
+.CreateAccountButton {
+    height: 65px;
+    width: 50%;
+    background-color: #00D1E9;
+    font-family: LatoLight;
+    color: #ffffff;
+    font-size: 14pt;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    /*Inset top only shadow*/
+    -webkit-box-shadow: inset 0 20px 20px -20px rgba(0,0,0,0.8);
+    -moz-box-shadow: inset 0 20px 20px -20px rgba(0,0,0,0.8);
+    box-shadow: inset 0 15px 15px -15px rgba(0,0,0,0.8);
+}
+
+#CreateAccountButtonPosition {
+    float: left;
+}
+
+#TopBannerPosition {
+    width: 100%;
+    height: 50px;
+}
+
+.TopBanner {
+    position: relative;
+    background-color: black;
+    box-shadow: 0px 2px 10px 2px rgba(0,0,0,0.8);
+    overflow: visible;
+    z-index: 100;
+}
+
+.FlexContainer {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row;
+    flex-flow: row;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+}
+
+#FlexContainerPosition {
+}
+
+.FlexItem {
+    display: inline-block;
+    width: 25%;
+    max-width: 200px;
+}
+
+.BackButton {
+    background-color: transparent;
+    border: 0px;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    color: rgba(255,255,255,0.75);
+    font-size: 12px;
+}
+
+    .BackButton:focus {
+        outline: none;
+        outline-style: none;
+        outline-width: 0px;
+        outline-color: transparent;
+    }
+
+/*.BackButton > span {
+        font-size: 0px;
+        height: 30px;
+        width: 30px;
+    }
+
+        .BackButton > span::after,
+        .BackButton > span::before {
+            content: ' ';
+            height: 8px;
+            width: 25px;
+            background-color: rgba(255,255,255,0.75);
+            transform-origin: left center;
+        }
+
+        .BackButton > span::before {
+            transform: rotate(45deg);
+        }
+
+        .BackButton > span::after {
+            transform: rotate(-45deg);
+        }*/
+
+.PageTitleText {
+    text-transform: uppercase;
+    display: block;
+    position: relative;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    font-size: 14px;
+}
+
+#MenuCogWrapper {
+}
+
+#iAspireBoxWrapper {
+}
+
+.FlexItemInner {
+    height: 50px;
+    color: white;
+    text-align: center;
+}
+
+#MenuBackContainer {
+    background-color: #00A8C6;
+}
+
+#MenuCogImage {
+    height: 35px;
+    margin-top: 7px;
+    position: relative;
+}
+
+.SettingsText {
+    font-size: 12px;
+    color: rgba(255,255,255,0.75);
+    display: none;
+}
+
+.NearTransparentWhite {
+    background-color: rgba(255,255,255, 0.25);
+}
+
+#iAspireBoxWrapper {
+}
+
+#MenuLogoContainer {
+}
+
+#BottomBannerWrapperPosition {
+    height: 40px;
+    margin: auto;
+    max-width: 1024px;
+}
+
+.BottomBannerWrapper {
+    background-color: black;
+    z-index: 2;
+}
+
+#BottomBannerPosition {
+    position: relative;
+    top: 10px;
+    float: right;
+    padding: 0px 10px;
+}
+
+.BottomBanner {
+    color: grey;
+}
+
+#BottomLogoImage {
+    height: 20px;
+    position: relative;
+    vertical-align: middle;
+}
+
+#LegalInfoLabelPosition {
+}
+
+.LegalInfoLabel {
+    vertical-align: middle;
+    font-size: 8px;
+}
+
+.HelperTextPosition {
+    -webkit-transform: translateY(12px);
+    -moz-transform: translateY(12px);
+    -o-transform: translateY(12px);
+    transform: translateY(12px);
+    width: 95%;
+    margin: auto;
+}
+
+.PasswordHelpText {
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+/* Disabled buttons */
+
+.disabledButton {
+    background-color: gray !important;
+    opacity: 0.2;
+}
+
+/* Font colors */
+
+.RedText {
+    color: red;
+}
+
+.GreenText {
+    color: green;
+}
+
+/* loading image */
+
+@-webkit-keyframes spinner {
+    0% {
+        visibility: visible;
+    }
+
+    100% {
+        visibility: visible;
+        -webkit-transform: rotateZ(-360deg);
+    }
+}
+
+@keyframes spinner {
+    0% {
+        visibility: visible;
+    }
+
+    100% {
+        visibility: visible;
+        transform: rotateZ(-360deg);
+    }
+}
+
+@-webkit-keyframes spinnerReverse {
+    0% {
+        visibility: visible;
+    }
+
+    100% {
+        visibility: visible;
+        -webkit-transform: rotateZ(360deg);
+    }
+}
+
+@keyframes spinnerReverse {
+    0% {
+        visibility: visible;
+    }
+
+    100% {
+        visibility: visible;
+        transform: rotateZ(360deg);
+    }
+}
+
+.BackgroundSpinner {
+    background: url(../images/circle_spinner.png) no-repeat center center;
+    -webkit-animation-name: spinner;
+    animation-name: spinner;
+}
+
+.Spin,
+.SpinBackwards,
+.SpinAndBounce {
+    visibility: hidden;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 0s;
+    -webkit-animation-iteration-count: infinite;
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+}
+
+.Spin {
+    -webkit-animation-name: spinner;
+    animation-name: spinner;
+}
+
+.SpinBackwards {
+    -webkit-animation-name: spinnerReverse;
+    animation-name: spinnerReverse;
+}
+
+.SpinAndBounce {
+    -webkit-animation-name: spinAndBounce;
+    animation-name: spinAndBounce;
+}
+
+.LoadingImageSmall {
+    width: 50px;
+    height: 50px;
+}
+
+.LoadingImageMedium {
+    width: 75px;
+    height: 75px;
+}
+
+.LoadingImageLarge {
+    width: 100px;
+    height: 100px;
+}
+
+.LoadingImageXLarge {
+    width: 200px;
+    height: 200px;
+}
+
+.LoadingImageFull {
+    width: 400px;
+    height: 400px;
+}
+
+/* Phablet Layout ********************************************/
+
+@media only screen and (min-width: 481px) {
+
+    html, button, input, select {
+        font-size: 12px;
+    }
+
+    .LoginBox {
+        /*height: 415px;*/
+        width: 90%;
+    }
+
+    #LoginBoxPosition {
+        margin-top: 150px;
+        margin-bottom: 45px;
+    }
+
+    .LogoBox {
+        height: 209px;
+        width: 130px;
+    }
+
+    #LogoBoxPosition {
+    }
+
+    .Logo {
+        height: 209px;
+        width: 130px;
+    }
+
+    #EmailPasswordLoginContainer {
+        padding-top: 125px;
+        padding-bottom: 25px;
+    }
+
+    .EmailTextbox {
+        width: 90%;
+        height: 55px;
+        font-size: 14pt;
+    }
+
+    .PasswordTextbox {
+        width: 90%;
+        height: 55px;
+        font-size: 14pt;
+    }
+
+    #PasswordTextboxPosition {
+        margin-top: 25px;
+    }
+
+    .ForgotButton {
+        height: 75px;
+        font-size: 18pt;
+    }
+
+    .CreateAccountButton {
+        height: 75px;
+        font-size: 18pt;
+    }
+
+    #TopBannerPosition {
+        height: 55px;
+    }
+
+    .TopBanner {
+    }
+
+    .FlexContainer {
+    }
+
+    #FlexContainerPosition {
+    }
+
+    .FlexItem {
+    }
+
+    .BackButton {
+        font-size: 14px;
+    }
+
+    .PageTitleText {
+        font-size: 16px;
+    }
+
+    #MenuCogWrapper {
+    }
+
+    .FlexItemInner {
+        height: 55px;
+    }
+
+    #MenuBackContainer {
+    }
+
+    .SettingsContainer {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+    }
+
+    #MenuCogImage {
+        margin-top: 0px;
+        height: 35px;
+        vertical-align: middle;
+        padding-top: 0px;
+    }
+
+    .SettingsText {
+        display: inline-block;
+        vertical-align: middle;
+        padding-left: 10px;
+    }
+
+    #iAspireBoxWrapper {
+    }
+
+    #MenuLogoContainer {
+    }
+
+    #BottomBannerWrapperPosition {
+        height: 45px;
+    }
+
+    .BottomBannerWrapper {
+    }
+
+    #BottomBannerPosition {
+    }
+
+    .BottomBanner {
+    }
+
+    #BottomLogoImage {
+        height: 25px;
+    }
+
+    #LegalInfoLabelPosition {
+    }
+
+    .LegalInfoLabel {
+        font-size: 9px;
+    }
+
+    .HelperTextPosition {
+        width: 90%;
+    }
+
+    .PasswordHelpText {
+    }
+}
+
+/* Tablet Layout ********************************************/
+
+@media only screen and (min-width: 761px) {
+
+    html, button {
+        font-size: 14px;
+    }
+
+    .LoginBox {
+        /*height: 511px;*/
+        width: 728px;
+    }
+
+    #LoginBoxPosition {
+        margin-top: 175px;
+        margin-bottom: 50px;
+    }
+
+    .LogoBox {
+        height: 229px;
+        width: 150px;
+    }
+
+    #LogoBoxPosition {
+    }
+
+    .Logo {
+        height: 229px;
+        width: 150px;
+    }
+
+    #EmailPasswordLoginContainer {
+        padding-top: 125px;
+        padding-bottom: 25px;
+    }
+
+    .EmailTextbox {
+        width: 550px;
+        height: 60px;
+        font-size: 16pt;
+        padding-left: 15px;
+    }
+
+    .PasswordTextbox {
+        width: 550px;
+        height: 60px;
+        font-size: 16pt;
+        padding-left: 15px;
+    }
+
+    #PasswordTextboxPosition {
+        margin-top: 30px;
+    }
+
+    #BottomButtonsPosition {
+    }
+
+    .ForgotButton {
+        height: 90px;
+        width: 364px;
+        font-size: 20pt;
+    }
+
+    .CreateAccountButton {
+        height: 90px;
+        width: 364px;
+        font-size: 20pt;
+    }
+
+    #TopBannerPosition {
+        height: 60px;
+    }
+
+    .TopBanner {
+    }
+
+    .FlexContainer {
+    }
+
+    #FlexContainerPosition {
+    }
+
+    .FlexItem {
+    }
+
+    .BackButton {
+        font-size: 16px;
+    }
+
+    .PageTitleText {
+        font-size: 18px;
+    }
+
+    #MenuCogWrapper {
+    }
+
+    .FlexItemInner {
+        height: 60px;
+    }
+
+    #MenuBackContainer {
+    }
+
+    .SettingsContainer {
+    }
+
+    #MenuCogImage {
+        height: 40px;
+    }
+
+    .SettingsText {
+        font-size: 16px;
+    }
+
+    #iAspireBoxWrapper {
+    }
+
+    #MenuLogoContainer {
+    }
+
+    #BottomBannerWrapperPosition {
+        height: 50px;
+    }
+
+    .BottomBannerWrapper {
+    }
+
+    #BottomBannerPosition {
+    }
+
+    .BottomBanner {
+    }
+
+    #BottomLogoImage {
+        height: 30px;
+    }
+
+    #LegalInfoLabelPosition {
+    }
+
+    .LegalInfoLabel {
+        font-size: 10px;
+    }
+
+    .HelperTextPosition {
+        -webkit-transform: translateY(20px);
+        -moz-transform: translateY(20px);
+        -o-transform: translateY(20px);
+        transform: translateY(20px);
+        width: 550px;
+    }
+
+    .PasswordHelpText {
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+
+    .pointer {
+        cursor:pointer;
+    }
+    .friends {
+  border-collapse: collapse;
+}
+
+.friends th {
+  border-bottom: 1px solid;
+}
+.friends td, .friends th {
+  border-left: 1px solid;
+  padding: 5px 10px;
+}
+.friends td:first-child, .friends th:first-child {
+  border-left: none;
+}
+
+.sortorder:after {
+  content: '\25b2';   /*// BLACK UP-POINTING TRIANGLE*/
+}
+.sortorder.reverse:after {
+  content: '\25bc';   /*// BLACK DOWN-POINTING TRIANGLE*/
+}
+
+}

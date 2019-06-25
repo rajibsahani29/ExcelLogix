@@ -1,0 +1,365 @@
+﻿
+<style type="text/css">
+    input[type=checkbox], input[type=radio] {
+        display: none;
+    }
+</style>
+
+<div class="MainContainer">
+    <div class="TopBanner" id="TopBannerPosition" data-ng-show="AppC.ShowHeader">
+        <div class="FlexContainer" id="FlexContainerPosition">
+            <div class="FlexItem" id="MenuCogWrapper">
+                <div class="FlexItemInner" id="MenuBackContainer">
+                    <button class="BackButton" onclick="window.location.hash='#/selection'"><span><</span>&nbsp;HOME</button>
+                </div>
+            </div>
+            <div class="FlexItem" id="iAspireBoxWrapper">
+                <div class="FlexItemInner" id="MenuTitleContainer">
+                    <label class="PageTitleText">{{AppC.ActivePageName}}</label>
+                </div>
+            </div>
+            <div class="FlexItem" id="EmptyFlex"
+                 onclick="window.location.hash = '#/settings'">
+                <div class="FlexItemInner NearTransparentWhite">
+                    <div class="SettingsContainer">
+                        <img id="MenuCogImage" src="assets/images/settings.png" />
+                        <label class="SettingsText">SETTINGS</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div id="TrialVersionWrapper">
+        <div id="ReportsPreviewImageWrapper">
+            <img id="ReportsPreviewImage" src="assets/images/reports-mockup.jpg" />
+        </div>
+    </div>-->
+    <div id="TrialVersionWrapper" data-ng-if="AppC.IsTrialVersion == true || repC.AreReportsReady == false">
+        <div id="ReportsPreviewImageWrapper">
+            <img id="ReportsPreviewImage" src="assets/images/reports-mockup.jpg" />
+        </div>
+    </div>
+    <!-- START NILESH-TSK21-6 -->
+    <div data-ng-if="IsPremiumUser == true && repC.SurveyID != -1 && RUValue != 0" data-ng-hide="repC.ReportDataIsLoading == true"
+         style="position: fixed;right: 24px;top: 50%;height: 50px;width: 130px;border: 1px solid #b9b9b9; background-color: #ffffff;padding: 15px;z-index: 0;">
+        RUV = {{RUValue | number:2}}
+    </div>
+    <!-- END NILESH-TSK21-6 -->
+    <div id="ReportsWrapper" data-ng-if="AppC.IsTrialVersion == false && repC.AreReportsReady == true" style="z-index: 0;position: relative;">
+        <div id="FilterWrapper">
+            <table id="FormSelectTable">
+                <tbody>
+                    <tr>
+                        <td class="FilterLabelCell">
+                            <label>Date & Time</label>
+                        </td>
+                        <td>
+                            <label>From</label>
+                            <!-- START NILESH-TSK33 -->
+                            <!--<input class="dateInput" data-ng-model="repC.StartDateString" datetimepicker required type="text" />-->
+                            <!--<div id="dvStartDate" datetimez style="display: inline;" ng-model="repC.TmpStartDateString">
+                                <input id="txtStartDate" value="{{repC.TmpStartDateString}}" data-format="MM/dd/yyyy" type="text" class="add-on dateInput" />
+                            </div>-->
+                            <input class="dateInput" data-ng-model="repC.StartDateString" datetimepicker required type="text" />
+                            <!-- END NILESH-TSK33 -->
+                        </td>
+                        <td>
+                            <label>To</label>
+                            <!-- START NILESH-TSK33 -->
+                            <!--<input class="dateInput" data-ng-model="repC.EndDateString" datetimepicker required type="text" />-->
+                            <!--<div id="dvEndDate" datetimez ng-model="repC.TmpEndDateString" style="display: inline;">
+                                <input value="{{repC.TmpEndDateString}}" data-format="MM/dd/yyyy" type="text" class="add-on dateInput" />
+                            </div>-->
+                            <input class="dateInput" data-ng-model="repC.EndDateString" datetimepicker required type="text" />
+                            <!-- END NILESH-TSK33 -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="FilterLabelCell">
+                            <label>Form</label>
+                        </td>
+                        <td colspan="2"  class="spincontainer Spinner-Login" data-ng-class="repC.SurveysListIsLoading == true ? 'spincontainer-shown' : ''">
+                            <div style="width: 15px;height:15px" class="spinner"></div>                            
+                        </td>
+                        <td data-ng-if="repC.SurveysListIsLoading == true">
+                            <select></select>
+                        </td>
+                        <td colspan="2" data-ng-if="repC.SurveysListIsLoading == false">
+                            <select data-ng-model="repC.SurveyID" required class="surveySelect"
+                                    data-ng-options="o.SurveyID as o.Title for o in repC.SurveyList"></select>
+                            <button data-ng-if="repC.ActiveSurvey != null && repC.NeedNewDataObject.NeedNewData == true"
+                                    data-ng-click="repC.GetNewData()">
+                                Apply Changes
+                            </button>                                                        
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table id="FilterOptionsTable" data-ng-if="repC.FilterOptions.length > 0 && repC.ReportDataIsLoading == false">
+                <tbody>
+                    <tr>
+                        <td class="FilterLabelCell">
+                            <label>Filter Options:</label>
+                        </td>
+                        <td class="FilterOptionCell" data-ng-repeat="filterOption in repC.FilterOptions">
+                            <label data-ng-click="repC.AddFilter(filterOption)">+&nbsp;{{filterOption.RequestText}}</label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table id="AppliedFiltersTable" data-ng-if="repC.ActiveFilters.length > 0 && repC.ReportDataIsLoading == false">
+                <tbody>
+                    <tr data-ng-repeat="filter in repC.ActiveFilters"
+                        filter="filter" parentnddo="repC.NeedNewDataObject" on-remove="repC.ActiveFilters.splice($index,1)" activefilter></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="NoDataWrapper" data-ng-if="repC.SurveyID == -1 || repC.AllVotes.length == 0">
+            <!--<img src="assets/images/loading.gif" style="position: absolute;margin: auto;top: 0;left: 0;right: 0;bottom: 0;height:100px" ng-if="repC.showspinner==true"/>-->
+            <div data-ng-if="repC.SurveyID == -1">
+                <div class="EmptyResultsLabel">SELECT FORM</div>
+                <div class="EmptyResultsMessage">Please select a form from the list.</div>
+            </div>
+            <div data-ng-if="repC.SurveyID != -1 && repC.ReportDataIsLoading != true">
+                <div class="EmptyResultsLabel">EMPTY RESULTS</div>
+                <div class="EmptyResultsMessage">No data could be found by the given criteria.</div>
+            </div>
+        </div>
+        <div id="ReportViewWrapper" data-ng-if="repC.SurveyID != -1">
+             <div colspan="2" class="spincontainer Spinner-Login" data-ng-class="repC.ReportDataIsLoading == true ? 'spincontainer-shown' : ''">
+                <div class="spinner" style="position: fixed;z-index: 999;height: 2em;width: 2em;overflow: visible;margin: auto;top: 0;left: 0;bottom: 0;right: 0;"></div>
+            </div>
+            <div id="ReportLoadedWrapper" data-ng-if="repC.ReportDataIsLoading == false">
+                <div id="VoteListWrapper" data-ng-if="repC.HeaderDataTable.Rows.length > 0">
+                     <table>
+                        <thead>
+                            <tr>
+                                <th data-ng-repeat="headerValue in repC.HeaderDataTable.Headers">{{headerValue}}</th>
+                                <!--START NILESH-TSK21-3-->
+                                <th style="text-align: right;" data-ng-if="IsPremiumUser == true">Remove</th>
+                                <!--END NILESH-TSK21-3-->       
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!--START NILESH-TSK21-3 -->
+                            <tr data-ng-repeat="voteRow in repC.HeaderDataTable.Rows">
+                                <!--END NILESH-TSK21-3 -->
+                                <!--MP
+                                <td data-ng-repeat="voteCell in voteRow">{{voteCell}}</td>-->
+                                <td data-ng-repeat="voteCell in voteRow track by $index">{{voteCell}}</td>
+                                <!--START NILESH-TSK21-3 -->
+                                <td style="text-align: right;" data-ng-if="IsPremiumUser == true">
+                                    <img id="SurveyListLoadingImage" data-ng-if="voteRow.IsLoading == true" class="Spin" src="assets/images/circle_spinner.png" />
+                                    <label class="removeActiveFilterButton" data-ng-click="repC.RemoveVoterFilter(voteRow)">remove</label>
+                                </td>
+                                <!--END NILESH-TSK21-3-->
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="ReportCountWrapper"><label>Total submissions: {{repC.HeaderDataTable.Rows.length}}</label></div>
+                <div style="text-align:right;margin-top:15px;padding-right:1%;">
+                    <button class="blueButton" ng-click="repC.RenderReport()">Download PDF</button>
+					<!--START NILESH-TSK65-->
+					<button class="blueButton" ng-click="repC.RenderCSV()">Download CSV</button>
+					<!--END NILESH-TSK65-->
+                </div>
+				
+                <!--START NILESH-TSK21-9-->
+                <div data-ng-if="IsPremiumUser == true" data-ng-hide="repC.HCQuestionGroupChart == null">
+                    <div id="groupQ_0" class="questionReportWrapper">
+                        <div class="expandableWrapper">
+                            <div class="scissorSwitchContainer">
+                                <div class="scissorSwitchWrapper">
+                                    <input id="GroupReportCheckbox_0" type="checkbox" class="ScissorSwitch" data-ng-model="GroupShow" />
+                                    <label for="GroupReportCheckbox_0"></label>
+                                </div>
+                            </div>
+                            <div class="questionTextHeader">
+                                <div>Demographics / Meeting / Marketing</div>
+                            </div>
+                            <div style="position: absolute; right: 0px; width:50px; height:50px;" ng-click="" ng-hide="GroupShow == false">
+                                <!--<label class="" style="height:48px; width: 48px; margin-right:2px; margin-top:2px; color: white; position: absolute; padding-top:13px; padding-left:5px;"><span class="blueButton">PDF</span></label>-->
+                            </div>
+                        </div>
+                        <div class="dataWrapper displayContent" data-ng-hide="GroupShow == false">
+                            <highchart class="clsHighChart" config="repC.HCQuestionGroupChart" displayorder="{{DisplayOrder}}" questionid="{{QuestionID}}"></highchart>
+                        </div>
+                    </div>
+                </div>
+                <!--END NILESH-TSK21-9-->
+                <div data-ng-repeat="question in repC.ReportingQuestions">
+                    <reportingquestion question="question"></reportingquestion>
+                </div>
+                <!--START NILESH-TSK21-8-->
+                <div id="MedianAnswerList" data-ng-if="IsPremiumUser == true && repC.FooterTableData.length > 0">
+                    <table>
+                        <tr>
+                            <th>Question Text</th>
+                            <th>Answer with High Median Value</th>
+                            <th>Median Value</th>
+                        </tr>
+                        <tr data-ng-repeat="row in repC.FooterTableData">
+                            <td>{{row.question}}</td>
+                            <td>{{row.answer}}</td>
+                            <td>{{row.median}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <!--END NILESH-TSK21-8-->
+            </div>
+        </div>
+    </div>
+    <div id="BottomBannerWrapperPosition" class="BottomBannerWrapper" data-ng-show="AppC.ShowFooter">
+        <div class="BottomBanner" id="BottomBannerPosition">
+            <img id="BottomLogoImage" src="assets/images/iAspire-logo-2.png" />
+            <label id="LegalInfoLabelPostiion" class="LegalInfoLabel">{{AppC.LegalInformation}}</label>
+        </div>
+    </div>
+    <!--START NILESH-TSK33-->
+    <style type="text/css">
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            display: none;
+            float: left;
+            min-width: 160px;
+            padding: 5px 0;
+            margin: 2px 0 0;
+            font-size: 14px;
+            text-align: left;
+            list-style: none;
+            background-color: #fff;
+            -webkit-background-clip: padding-box;
+            background-clip: padding-box;
+            border: 1px solid #ccc;
+            border: 1px solid rgba(0, 0, 0, .15);
+            border-radius: 4px;
+            -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+        }
+
+            .dropdown-menu.pull-right {
+                right: 0;
+                left: auto;
+            }
+
+            .dropdown-menu .divider {
+                height: 1px;
+                margin: 9px 0;
+                overflow: hidden;
+                background-color: #e5e5e5;
+            }
+
+            .dropdown-menu > li > a {
+                display: block;
+                padding: 3px 20px;
+                clear: both;
+                font-weight: normal;
+                line-height: 1.42857143;
+                color: #333;
+                white-space: nowrap;
+            }
+
+                .dropdown-menu > li > a:hover,
+                .dropdown-menu > li > a:focus {
+                    color: #262626;
+                    text-decoration: none;
+                    background-color: #f5f5f5;
+                }
+
+            .dropdown-menu > .active > a,
+            .dropdown-menu > .active > a:hover,
+            .dropdown-menu > .active > a:focus {
+                color: #fff;
+                text-decoration: none;
+                background-color: #337ab7;
+                outline: 0;
+            }
+
+            .dropdown-menu > .disabled > a,
+            .dropdown-menu > .disabled > a:hover,
+            .dropdown-menu > .disabled > a:focus {
+                color: #777;
+            }
+
+                .dropdown-menu > .disabled > a:hover,
+                .dropdown-menu > .disabled > a:focus {
+                    text-decoration: none;
+                    cursor: not-allowed;
+                    background-color: transparent;
+                    background-image: none;
+                    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+                }
+
+        .open > .dropdown-menu {
+            display: block;
+        }
+
+        .open > a {
+            outline: 0;
+        }
+
+        .dropdown-menu-right {
+            right: 0;
+            left: auto;
+        }
+
+        .dropdown-menu-left {
+            right: auto;
+            left: 0;
+        }
+
+        .dropdown-header {
+            display: block;
+            padding: 3px 20px;
+            font-size: 12px;
+            line-height: 1.42857143;
+            color: #777;
+            white-space: nowrap;
+        }
+
+        .dropdown-backdrop {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 990;
+        }
+
+        .pull-right > .dropdown-menu {
+            right: 0;
+            left: auto;
+        }
+
+
+        .bootstrap-datetimepicker-widget ul {
+            margin-top: 0;
+            margin-bottom: 10px;
+            padding: 0px;
+        }
+
+        .bootstrap-datetimepicker-widget table {
+            background-color: transparent;
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+
+        .bootstrap-datetimepicker-widget .table-condensed > thead > tr > th,
+        .bootstrap-datetimepicker-widget .table-condensed > tbody > tr > th,
+        .bootstrap-datetimepicker-widget .table-condensed > tfoot > tr > th,
+        .bootstrap-datetimepicker-widget .table-condensed > thead > tr > td,
+        .bootstrap-datetimepicker-widget .table-condensed > tbody > tr > td,
+        .table-condensed > tfoot > tr > td {
+            padding: 5px;
+        }
+
+        .timepicker {
+            display: none;
+        }
+    </style>
+    <!-- END NILESH-TSK33 -->
+</div>

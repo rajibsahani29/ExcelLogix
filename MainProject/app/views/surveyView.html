@@ -1,0 +1,86 @@
+﻿<div class="MainContainer">
+    <div class="TopBanner" id="TopBannerPosition" data-ng-show="AppC.ShowHeader">
+        <div class="FlexContainer" id="FlexContainerPosition">
+            <div class="FlexItem" id="MenuCogWrapper">
+                <div class="FlexItemInner" id="MenuBackContainer">
+                    <button class="BackButton" data-ng-click="survC.backToSelectionPage($event);"><span><</span>&nbsp;BACK</button>
+                </div>
+            </div>
+            <div class="FlexItem" id="iAspireBoxWrapper">
+                <div class="FlexItemInner" id="MenuTitleContainer">
+                    <label class="PageTitleText">{{AppC.ActivePageName}}</label>
+                </div>
+            </div>
+            <div class="FlexItem" id="EmptyFlex"
+                 data-ng-click="survC.toSettingsPage($event);">
+                <div class="FlexItemInner NearTransparentWhite">
+                    <div class="SettingsContainer">
+                        <img id="MenuCogImage" src="assets/images/settings.png" />
+                        <label class="SettingsText">SETTINGS</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-ng-if="survC.displayLoadingSpinner == true" style="background-color: white; max-width: 1024px; margin: auto;">
+        <div style="display: table; margin: auto; padding: 2%;">
+            <div class="spincontainer LoadingImageSmall Spinner-Login" data-ng-class="survC.displayLoadingSpinner == true ? 'spincontainer-shown' : ''">
+                <div class="spinner" style="position: fixed;z-index: 999;height: 4em;width: 4em;overflow: visible;margin: auto;top: 0;left: 0;bottom: 0;right: 0;"></div>
+            </div> 
+        </div>
+    </div>
+    <!--<div id="PreSurveySurveyContainerPosition" class="PreSurveySurveyContainer" data-ng-show="survC.surveyHasPreSurveyQuestions == true">
+        <div class="PreSurveySurveyWrapper">
+            <div class="HeaderRow">
+                <p>&nbsp;</p>
+            </div>
+            <div class="QuestionRow" data-ng-repeat="q in survC.preSurveySurveyQuestions">
+                <div class="LeftSide">
+                    <label>{{q.RequestText}}</label>
+                </div>
+                <div class="RightSide" data-ng-if="q.Options.length > 0 || !q.InputType || q.InputType == null">
+                    <select data-ng-if="q.Options.length == 1"
+                            data-ng-model="q.SelectedOption"
+                            data-ng-options="o.Value as o.Name for o in q.Options"
+                            data-ng-disabled="survC.isGettingNewData == true"
+                            data-ng-init="q.SelectedOption = q.Options[0].Value; survC.getUpdatedSurveyData(q);"></select>
+                    <select data-ng-if="q.Options.length > 1"
+                            data-ng-model="q.SelectedOption"
+                            data-ng-options="o.Value as o.Name for o in q.Options"
+                            data-ng-change="survC.getUpdatedSurveyData(q)"
+                            data-ng-disabled="survC.isGettingNewData == true"></select>
+                </div>
+                <div class="RightSide" data-ng-if="q.InputType != null" data-ng-switch="q.InputType">
+                    <div data-ng-switch-when="datepicker">
+                        <input data-ng-model="q.SelectedOption" id="{{q.ValueVariableName}}" type="{{q.InputType}}" datepicker />
+                    </div>
+                    <div data-ng-switch-when="datetimepicker">
+                        <input data-ng-model="q.SelectedOption" id="{{q.ValueVariableName}}" type="{{q.InputType}}" datetimepicker />
+                    </div>
+                    <div data-ng-switch-default>
+                        <input data-ng-model="q.SelectedOption" id="{{q.ValueVariableName}}" type="{{q.InputType}}" />
+                    </div>
+                </div>
+            </div>
+            <div id="SubmitButtonWrapperPosition" class="SubmitButtonWrapper">
+                <button class="SubmitButton" data-ng-click="survC.getSurvey()">Continue >></button>
+
+				<img src="assets/images/circle_spinner.png" class="LoadingImageSmall Spinner-Login"
+                     data-ng-class="survC.continueClickedButton == true ? 'Spin' : ''"
+                     data-ng-show="survC.continueClickedButton == true" />
+            </div>
+            <div id="ResetSelectionButtonWrapperPosition" class="ResetSelectionButtonWrapper">
+                <button class="SubmitButton" data-ng-click="survC.resetPreSurveySurveyQuestionAnswers()">Reset</button>
+            </div>
+        </div>
+    </div>-->
+    <div class="SurveyWrapper" id="SurveyWrapperPosition" data-ng-show="true == true">
+        <iframe id="surveyIFrame" iframe-onload="survC.iframeLoadedCallback();" style="border: 0; width: 100%;"  allow="microphone; camera"></iframe>
+    </div>
+    <div id="BottomBannerWrapperPosition" class="BottomBannerWrapper" data-ng-show="AppC.ShowFooter">
+        <div class="BottomBanner" id="BottomBannerPosition">
+            <img id="BottomLogoImage" src="assets/images/iAspire-logo-2.png" />
+            <label id="LegalInfoLabelPostiion" class="LegalInfoLabel">{{AppC.LegalInformation}}</label>
+        </div>
+    </div>
+</div>

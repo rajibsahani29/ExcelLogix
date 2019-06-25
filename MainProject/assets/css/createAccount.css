@@ -1,0 +1,291 @@
+﻿
+/* Mobile Layout *******************************************/
+.VideoBackground {
+}
+
+.bgvid {
+}
+
+.LoginBox {
+    /*height: 571px;*/
+}
+
+#LoginBoxPosition {
+}
+
+.LogoBox {
+}
+
+#LogoBoxPosition {
+}
+
+.Logo {
+}
+
+#EmailPasswordLoginContainer {
+}
+
+.EmailTextbox {
+}
+
+#EmailTextboxPosition {
+}
+
+.PasswordTextbox {
+}
+
+#PasswordTextboxPosition {
+}
+
+#NameTextboxPosition,
+#SchoolCorporationTextboxPosition,
+#StateTextboxPosition,
+#PhoneNumberTextboxPosition,
+#CountyTextboxPosition {
+    margin: auto;
+    margin-top: 15px;
+    display: block;
+}
+
+/*Placeholder text color*/
+::-webkit-input-placeholder {
+}
+
+::-moz-placeholder {
+}
+/* firefox 19+ */
+:-ms-input-placeholder {
+}
+/* ie */
+input:-moz-placeholder {
+}
+
+
+.DarkCreateAccountButton {
+    height: 65px;
+    width: 95%;
+    background-color: #1E3C4C;
+    font-family: LatoBold;
+    color: #ffffff;
+    font-size: 18pt;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+
+#DarkCreateAccountButtonPosition {
+    margin: auto;
+    margin-top: 15px;
+    display: block;
+}
+
+#BottomButtonsPosition {
+}
+
+.ForgotButton {
+}
+
+#ForgotButtonPosition {
+}
+
+.CreateAccountButton {
+}
+
+#CreateAccountButtonPosition {
+}
+
+.createAccountButtonClickedSpinner {
+    position: absolute;
+    margin-top: -58px;
+    right: 7%;
+}
+
+
+/* Tablet Layout ********************************************/
+
+@media only screen and (min-width: 481px) {
+    .VideoBackground {
+    }
+
+    .bgvid {
+    }
+
+    .LoginBox {
+        /*height: 741px;*/
+    }
+
+    #LoginBoxPosition {
+    }
+
+    .LogoBox {
+    }
+
+    #LogoBoxPosition {
+    }
+
+    .Logo {
+    }
+
+    #EmailPasswordLoginContainer {
+    }
+
+    .EmailTextbox {
+    }
+
+    #EmailTextboxPosition {
+    }
+
+    .PasswordTextbox {
+    }
+
+    #PasswordTextboxPosition {
+    }
+
+    #NameTextboxPosition,
+    #SchoolCorporationTextboxPosition,
+    #StateTextboxPosition,
+    #PhoneNumberTextboxPosition,
+    #CountyTextboxPosition {
+        margin-top: 25px;
+    }
+
+    /*Placeholder text color*/
+    ::-webkit-input-placeholder {
+    }
+
+    ::-moz-placeholder {
+    }
+    /* firefox 19+ */
+    :-ms-input-placeholder {
+    }
+    /* ie */
+    input:-moz-placeholder {
+    }
+
+
+    .DarkCreateAccountButton {
+        height: 75px;
+        width: 90%;
+        font-size: 21pt;
+    }
+
+    #DarkCreateAccountButtonPosition {
+        margin-top: 25px;
+    }
+
+    #BottomButtonsPosition {
+    }
+
+    .ForgotButton {
+    }
+
+    #ForgotButtonPosition {
+    }
+
+    .CreateAccountButton {
+    }
+
+    #CreateAccountButtonPosition {
+    }
+
+    .createAccountButtonClickedSpinner {
+        margin-top: -63px;
+        right: 11%;
+    }
+}
+
+/* Desktop Layout ********************************************/
+
+@media only screen and (min-width: 761px) {
+
+    .VideoBackground {
+    }
+
+    .bgvid {
+    }
+
+    .LoginBox {
+    }
+
+    #LoginBoxPosition {
+    }
+
+    .LogoBox {
+    }
+
+    #LogoBoxPosition {
+    }
+
+    .Logo {
+    }
+
+    #EmailPasswordLoginContainer {
+    }
+
+    .EmailTextbox {
+    }
+
+    #EmailTextboxPosition {
+    }
+
+    .PasswordTextbox {
+    }
+
+    #PasswordTextboxPosition {
+    }
+
+    #NameTextboxPosition,
+    #SchoolCorporationTextboxPosition,
+    #StateTextboxPosition,
+    #PhoneNumberTextboxPosition,
+    #CountyTextboxPosition {
+        margin-top: 30px;
+    }
+
+    /*Placeholder text color*/
+    ::-webkit-input-placeholder {
+    }
+
+    ::-moz-placeholder {
+    }
+    /* firefox 19+ */
+    :-ms-input-placeholder {
+    }
+    /* ie */
+    input:-moz-placeholder {
+    }
+
+
+    .DarkCreateAccountButton {
+        height: 90px;
+        width: 550px;
+        font-size: 23pt;
+    }
+
+    #DarkCreateAccountButtonPosition {
+        margin-top: 35px;
+    }
+
+    #BottomButtonsPosition {
+    }
+
+    .ForgotButton {
+    }
+
+    #ForgotButtonPosition {
+    }
+
+    .CreateAccountButton {
+    }
+
+    #CreateAccountButtonPosition {
+    }
+
+    .createAccountButtonClickedSpinner {
+        position: relative;
+        float: right;
+        margin-top: -71px;
+        margin-right: 105px;
+        right: initial;
+    }
+}

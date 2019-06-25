@@ -1,0 +1,261 @@
+﻿
+/* Mobile Layout *******************************************/
+.VideoBackground {
+}
+
+.bgvid {
+}
+
+.LoginBox {
+}
+
+#LoginBoxPosition {
+}
+
+.LogoBox {
+}
+
+#LogoBoxPosition {
+}
+
+.Logo {
+}
+
+#EmailPasswordLoginContainer {
+}
+
+.EmailTextbox {
+}
+
+#EmailTextboxPosition {
+}
+
+.PasswordTextbox {
+}
+
+#PasswordTextboxPosition {
+}
+
+/*Placeholder text color*/
+::-webkit-input-placeholder {
+}
+
+::-moz-placeholder {
+}
+/* firefox 19+ */
+:-ms-input-placeholder {
+}
+/* ie */
+input:-moz-placeholder {
+}
+
+
+.LoginButton {
+    height: 65px;
+    width: 95%;
+    background-color: #1E3C4C;
+    font-family: LatoBold;
+    color: #ffffff;
+    font-size: 18pt;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+
+#LoginButtonPosition {
+    margin: auto;
+    margin-top: 15px;
+    display: block;
+}
+
+#BottomButtonsPosition {
+}
+
+.ForgotButton {
+}
+
+#ForgotButtonPosition {
+}
+
+.CreateAccountButton {
+}
+
+#CreateAccountButtonPosition {
+}
+
+.Spinner-Login {
+    right: 7%;
+    margin-top: -57px;
+    position: absolute;
+}
+
+
+/* Tablet Layout ********************************************/
+
+@media only screen and (min-width: 481px) {
+    .VideoBackground {
+    }
+
+    .bgvid {
+    }
+
+    .LoginBox {
+    }
+
+    #LoginBoxPosition {
+    }
+
+    .LogoBox {
+    }
+
+    #LogoBoxPosition {
+    }
+
+    .Logo {
+    }
+
+    #EmailPasswordLoginContainer {
+    }
+
+    .EmailTextbox {
+    }
+
+    #EmailTextboxPosition {
+    }
+
+    .PasswordTextbox {
+    }
+
+    #PasswordTextboxPosition {
+    }
+
+    /*Placeholder text color*/
+    ::-webkit-input-placeholder {
+    }
+
+    ::-moz-placeholder {
+    }
+    /* firefox 19+ */
+    :-ms-input-placeholder {
+    }
+    /* ie */
+    input:-moz-placeholder {
+    }
+
+
+    .LoginButton {
+        height: 75px;
+        width: 90%;
+        font-size: 21pt;
+    }
+
+    #LoginButtonPosition {
+        margin-top: 25px;
+    }
+
+    #BottomButtonsPosition {
+    }
+
+    .ForgotButton {
+    }
+
+    #ForgotButtonPosition {
+    }
+
+    .CreateAccountButton {
+    }
+
+    #CreateAccountButtonPosition {
+    }
+
+    .Spinner-Login {
+        margin-top: -62px;
+        right: 12%;
+    }
+}
+
+/* Desktop Layout ********************************************/
+
+@media only screen and (min-width: 761px) {
+
+    .VideoBackground {
+    }
+
+    .bgvid {
+    }
+
+    .LoginBox {
+    }
+
+    #LoginBoxPosition {
+    }
+
+    .LogoBox {
+    }
+
+    #LogoBoxPosition {
+    }
+
+    .Logo {
+    }
+
+    #EmailPasswordLoginContainer {
+    }
+
+    .EmailTextbox {
+    }
+
+    #EmailTextboxPosition {
+    }
+
+    .PasswordTextbox {
+    }
+
+    #PasswordTextboxPosition {
+    }
+
+    /*Placeholder text color*/
+    ::-webkit-input-placeholder {
+    }
+
+    ::-moz-placeholder {
+    }
+    /* firefox 19+ */
+    :-ms-input-placeholder {
+    }
+    /* ie */
+    input:-moz-placeholder {
+    }
+
+
+    .LoginButton {
+        height: 90px;
+        width: 550px;
+        font-size: 23pt;
+    }
+
+    #LoginButtonPosition {
+        margin-top: 35px;
+    }
+
+    #BottomButtonsPosition {
+    }
+
+    .ForgotButton {
+    }
+
+    #ForgotButtonPosition {
+    }
+
+    .CreateAccountButton {
+    }
+
+    #CreateAccountButtonPosition {
+    }
+
+    .Spinner-Login {
+        right: 50%;
+        margin-top: -70px;
+        margin-right: -250px;
+    }
+}

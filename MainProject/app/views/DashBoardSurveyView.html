@@ -1,0 +1,42 @@
+﻿<div class="MainContainer">
+    <div class="TopBanner" id="TopBannerPosition" data-ng-show="AppC.ShowHeader">
+        <div class="FlexContainer" id="FlexContainerPosition">
+            <div class="FlexItem" id="MenuCogWrapper">
+                <div class="FlexItemInner" id="MenuBackContainer">
+                    <button class="BackButton" data-ng-click="dashsurvC.backToSelectionPage($event);"><span><</span>&nbsp;BACK</button>
+                </div>
+            </div>
+            <div class="FlexItem" id="iAspireBoxWrapper">
+                <div class="FlexItemInner" id="MenuTitleContainer">
+                    <label class="PageTitleText">{{AppC.ActivePageName}}</label>
+                </div>
+            </div>
+            <div class="FlexItem" id="EmptyFlex"
+                 data-ng-click="dashsurvC.toSettingsPage($event);">
+                <div class="FlexItemInner NearTransparentWhite">
+                    <div class="SettingsContainer">
+                        <img id="MenuCogImage" src="assets/images/settings.png" />
+                        <label class="SettingsText">SETTINGS</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-ng-if="dashsurvC.displayLoadingSpinner == true" style="background-color: white; max-width: 1024px; margin: auto;">
+        <div style="display: table; margin: auto; padding: 2%;">
+            <div class="spincontainer LoadingImageSmall Spinner-Login" data-ng-class="dashsurvC.displayLoadingSpinner == true ? 'spincontainer-shown' : ''">
+                <div class="spinner" style="position: fixed;z-index: 999;height: 4em;width: 4em;overflow: visible;margin: auto;top: 0;left: 0;bottom: 0;right: 0;"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="SurveyWrapper" id="SurveyWrapperPosition" data-ng-show="true == true">
+        <iframe id="surveyIFrame" iframe-onload="dashsurvC.iframeLoadedCallback();" style="border: 0; width: 100%;" allow="microphone; camera"></iframe>
+    </div>
+    <div id="BottomBannerWrapperPosition" class="BottomBannerWrapper" data-ng-show="AppC.ShowFooter">
+        <div class="BottomBanner" id="BottomBannerPosition">
+            <img id="BottomLogoImage" src="assets/images/iAspire-logo-2.png" />
+            <label id="LegalInfoLabelPostiion" class="LegalInfoLabel">{{AppC.LegalInformation}}</label>
+        </div>
+    </div>
+</div>

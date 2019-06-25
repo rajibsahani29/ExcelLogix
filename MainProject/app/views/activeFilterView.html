@@ -1,0 +1,26 @@
+﻿<tr>
+    <td class="FilterLabelCell"><label>{{activeFilter.PSSQ.RequestText}}</label></td>
+    <td>
+        <label>Filter Type:&nbsp;</label>
+        <select class="filterTypeSelect" data-ng-model="activeFilter.FilterTypePlaceholder">
+            <option value="1">Include</option>
+            <option value="-1">Exclude</option>
+        </select>
+    </td>
+    <td>
+        <label>Selection:&nbsp;</label>
+        <select data-ng-if="activeFilter.PSSQ.Options.length == 1"
+                data-ng-model="activeFilter.PSSQ.SelectedOption"
+                ng-init="activeFilter.PSSQ.SelectedOption = activeFilter.PSSQ.Options[0].Value;"
+                data-ng-options="o.Value as o.Name for o in activeFilter.PSSQ.Options"
+                class="filterOptionSelect"></select>
+        <select data-ng-if="activeFilter.PSSQ.Options.length > 1"
+                data-ng-model="activeFilter.PSSQ.SelectedOption"
+                data-ng-options="o.Value as o.Name for o in activeFilter.PSSQ.Options"
+                class="filterOptionSelect"></select>
+    </td>
+    <td>
+        <label class="removeActiveFilterButton"
+               data-ng-click="onRemove()">remove</label>
+    </td>
+</tr>
