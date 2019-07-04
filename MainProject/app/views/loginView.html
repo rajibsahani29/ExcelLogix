@@ -1,8 +1,8 @@
 ﻿<head>
 
 </head>
-<body data-ng-controller="AppController as AppC">
-    <div class="VideoBackground">
+<body data-ng-controller="AppController as AppC" style="background-color: #666666;">
+    <!--<div class="VideoBackground">
         <link href="assets/css/login.css" rel="stylesheet" />
 
         <div data-ng-class="loginC.BGClass == true ? 'bgvid bgImageKids' : 'bgvid bgImageBsns'"></div>
@@ -37,6 +37,67 @@
                 <button name="ForgotPassword" class="ForgotButton" id="ForgotButtonPosition" onclick="window.location.hash='#/forgotPassword'">Forgot Password?</button>
                 <button name="CreateAccount" class="CreateAccountButton" id="CreateAccountButtonPosition" onclick="window.location.hash='#/createAccount'">Create Account</button>
                 <div class="GroupFloats"></div>
+            </div>
+        </div>
+    </div>-->
+    <link rel="stylesheet" type="text/css" href="fonts/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/util.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+            <div class="wrap-login100" style="height:60em;background:-webkit-linear-gradient(top, #7579f3, #7ce0d2)">
+                <form class="login100-form validate-form">
+                    <span class="login100-form-logo">
+                        <img class="zmdi zmdi-landscape" style="width: 131%;" src="images/Shaeronlogo.png" />
+                        <!--<i class="zmdi zmdi-landscape"></i>-->
+                    </span>
+
+                    <span class="login100-form-title p-b-34 p-t-27">
+                        Log in
+                    </span>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter username">
+                        <input type="email" name="Email" class="input100" id="EmailTextboxPosition" placeholder="Email"
+                               data-ng-keypress="loginC.keyPressedEmail($event);"
+                               data-ng-model="loginC.UserLoginUserName" removengemailvalidation>
+                        <!--<input class="input100" type="text" name="username" placeholder="Username">-->
+                        <span class="focus-input100" data-placeholder="&#xf007;"></span>
+                    </div>
+                     
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <input type="password" name="Password" class="input100" id="PasswordTextboxPosition" placeholder="Password"
+                               data-ng-keypress="loginC.keyPressedPassword($event);"
+                               data-ng-model="loginC.UserLoginPassword">
+                        <!--<input class="input100" type="password" name="pass" placeholder="Password">-->
+                        <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                    </div>
+
+                    <div class="contact100-form-checkbox">
+                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                        <label class="label-checkbox100" for="ckb1">
+                            Remember me
+                        </label>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button name="Login" class="login100-form-btn" id="LoginButtonPosition"
+                                data-ng-disabled="loginC.userClickedButton == true"
+                                data-ng-click="loginC.Login();">
+                            <span>Login</span>
+                        </button>
+                        <!--<button class="login100-form-btn">
+                            Login
+                        </button>-->
+                    </div>
+
+                    <div class="text-center p-t-90">
+                        <a class="txt1" href="#">
+                            Forgot Password?
+                        </a>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
