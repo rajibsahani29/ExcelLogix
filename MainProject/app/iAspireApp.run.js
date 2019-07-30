@@ -21,9 +21,26 @@
         //    return this.charAt(0).toUpperCase() + this.slice(1);
         //}
         $rootScope.$on('$routeChangeSuccess', function (e, current, pre) {
-            ////alert(current.$$route.originalPath.indexOf("/login")); 
-            //var Path = current.$$route.originalPath
-            //$rootScope.Path = Path;
+            //alert(current.$$route.originalPath.indexOf("/login")); 
+            var Path = current.$$route.originalPath;
+            $rootScope.Path = Path;
+            var prePath = pre.$$route.originalPath;
+            if (prePath == '/selectForm') {
+                $rootScope.PrePath = "Forms";
+            } else if (prePath == '/openSavedDoc') {
+                $rootScope.PrePath = "Document";
+            } else if (prePath == '/reports') {
+                $rootScope.PrePath = "Reports";
+            }
+            else if (prePath == '/accounts') {
+                $rootScope.PrePath = "Account";
+            }
+            else if (prePath.indexOf('survey')>-1) {
+                $rootScope.PrePath = "Survey";
+            }
+            else {
+                $rootScope.PrePath = "Dashboard";
+            }
             //if (Path == "/login" && typeof $rootScope.ID != 'undefined' &&   $rootScope.ID!=null) {
             //    var id = $rootScope.ID;                
             //        $location.path("/selection");                

@@ -19,14 +19,17 @@
 
     function config($routeProvider) {
         $routeProvider
-            // home
 
             .when("/login", {
                 templateUrl: "app/views/loginView.html",
                 controller: "LoginController",
                 controllerAs: "loginC"
             })
-
+            .when("/header", {
+                templateUrl: "app/views/HeaderView.html",
+                controller: "HeaderController",
+                controllerAs: "headC"
+            })
             .when("/selection", {
                 templateUrl: "app/views/selectionView.html",
                 controller: "SelectionController",
@@ -90,13 +93,11 @@
                 controller: "notificationsController",
                 controllerAs: "notiC"
             })
-            .when("/MobileView", {
-                templateUrl: "app/views/MobileHomePage.html",
-                controller: "MobileViewController",
-                controllerAs: "selectionM"
+            .when("/accounts", {
+                templateUrl: "app/views/AccountView.html",
+                controller: "AccountController",
+                controllerAs: "accountC"
             })
-            // fallback
-
             .otherwise({
                 //redirectTo: function () {
                 //    return (localStorage.getItem("AccessID") === null) ? "/login" : "/selection";
