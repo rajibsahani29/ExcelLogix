@@ -3,130 +3,7 @@
 <!-- END NILESH-TSK16 -->
 
 <style>
-    .loading {
-        position: fixed;
-        z-index: 999;
-        height: 2em;
-        width: 2em;
-        overflow: show;
-        margin: auto;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-    }
-
-        .loading:before {
-            content: '';
-            display: block;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.3);
-        }
-        /* :not(:required) hides these rules from IE9 and below */
-        .loading:not(:required) {
-            /* hide "loading..." text */
-            font: 0/0 a;
-            color: transparent;
-            text-shadow: none;
-            background-color: transparent;
-            border: 0;
-        }
-
-            .loading:not(:required):after {
-                content: '';
-                display: block;
-                font-size: 10px;
-                width: 1em;
-                height: 1em;
-                margin-top: -0.5em;
-                -webkit-animation: spinner 1500ms infinite linear;
-                -moz-animation: spinner 1500ms infinite linear;
-                -ms-animation: spinner 1500ms infinite linear;
-                -o-animation: spinner 1500ms infinite linear;
-                animation: spinner 1500ms infinite linear;
-                border-radius: 0.5em;
-                -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
-                box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
-            }
-
-    /* Animation */
-
-    @-webkit-keyframes spinner {
-        0% {
-            -webkit-transform: rotate(0deg);
-            -moz-transform: rotate(0deg);
-            -ms-transform: rotate(0deg);
-            -o-transform: rotate(0deg);
-            transform: rotate(0deg);
-        }
-
-        100% {
-            -webkit-transform: rotate(360deg);
-            -moz-transform: rotate(360deg);
-            -ms-transform: rotate(360deg);
-            -o-transform: rotate(360deg);
-            transform: rotate(360deg);
-        }
-    }
-
-    @-moz-keyframes spinner {
-        0% {
-            -webkit-transform: rotate(0deg);
-            -moz-transform: rotate(0deg);
-            -ms-transform: rotate(0deg);
-            -o-transform: rotate(0deg);
-            transform: rotate(0deg);
-        }
-
-        100% {
-            -webkit-transform: rotate(360deg);
-            -moz-transform: rotate(360deg);
-            -ms-transform: rotate(360deg);
-            -o-transform: rotate(360deg);
-            transform: rotate(360deg);
-        }
-    }
-
-    @-o-keyframes spinner {
-        0% {
-            -webkit-transform: rotate(0deg);
-            -moz-transform: rotate(0deg);
-            -ms-transform: rotate(0deg);
-            -o-transform: rotate(0deg);
-            transform: rotate(0deg);
-        }
-
-        100% {
-            -webkit-transform: rotate(360deg);
-            -moz-transform: rotate(360deg);
-            -ms-transform: rotate(360deg);
-            -o-transform: rotate(360deg);
-            transform: rotate(360deg);
-        }
-    }
-
-    @keyframes spinner {
-        0% {
-            -webkit-transform: rotate(0deg);
-            -moz-transform: rotate(0deg);
-            -ms-transform: rotate(0deg);
-            -o-transform: rotate(0deg);
-            transform: rotate(0deg);
-        }
-
-        100% {
-            -webkit-transform: rotate(360deg);
-            -moz-transform: rotate(360deg);
-            -ms-transform: rotate(360deg);
-            -o-transform: rotate(360deg);
-            transform: rotate(360deg);
-        }
-    }
-
+   
     div.container {
         width: 100%;
         overflow-x: auto;
@@ -143,267 +20,205 @@
         font-size: 15px;
     }
 </style>
-<div id="pcoded" class="pcoded">
-    <div class="pcoded-overlay-box"></div>
-    <div class="pcoded-container navbar-wrapper">
-        <!-- [ Header ] start -->
-        <nav class="navbar header-navbar pcoded-header" style="background:#abe0f9">
-            <div class="navbar-wrapper">
-                <div class="navbar-logo" style="background: #abe0f9;">
-                    <a href="index.html">
-                        <img src="images/Shaeronlogo.png" />
-
-                    </a>
-                </div>
-                <div class="navbar-container container-fluid">
-                    <ul class="nav-left" style="font-family:monospace">
-                        <li onclick="window.location.hash = '#/selection'">
-                            <a>Dashboard</a>
-                        </li>
-                        <li class="header-search" onclick="window.location.hash = '#/selectForm'">
-                            <a>Forms</a>
-                        </li>
-                        <li ng-show="oSD.BackButton==false" onclick="window.location.hash = '#/openSavedDoc'">
-                            <a>Document</a>
-                        </li>
-                        <li ng-show="oSD.BackButton" ng-click="oSD.backToSelectionPage($event);">
-                            <a>Back</a>
-                        </li>
-                        <li onclick="window.location.hash = '#/reports'">
-                            <a>Reports</a>
-                        </li>
-                        <li>
-                            <a>Accounts</a>
-                        </li>
-                    </ul>
-                    <ul class="nav-right">
-                        <li class="user-profile header-notification">
-
-                            <div class="dropdown-primary dropdown">
-                                <div class="dropdown-toggle" data-toggle="dropdown">
-                                    <span style="font-size:15px;font-family:monospace">John Doe</span>
-                                    <i class="feather icon-chevron-down"></i>
+<div class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+        <div class="pcoded-content">
+            <div class="pcoded-inner-content">
+                <div class="main-body">
+                    <div class="page-wrapper">
+                        <div class="page-body"> 
+                            <div id="SurveyListContainerPosition" class="SurveyListContainer" data-ng-hide="oSD.surveyIsLoaded == true">
+                                <div class="bs-example">
+                                    <ol class="breadcrumb" style="margin-bottom:.2em">
+                                        <li class="breadcrumb-item" ng-if="PrePath!='Dashboard'"><a href="#">Dashboard</a></li>
+                                        <li class="breadcrumb-item"><a href="#">{{PrePath}}</a></li>
+                                        <li class="breadcrumb-item"><a href="#">Document</a></li>
+                                    </ol>
                                 </div>
-                                <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                                    <li>
-                                        <a href="#">
-                                            <i class="feather icon-user"></i> Profile
+                                <!--<nav class="navbar header-navbar" id="FilterSectionPosition" style="background:#abe0f9;min-height: 10px;">
+                                </nav>-->
+                                <div style="padding-top:.3%">
+                                    <nav class="navbar header-navbar" id="FilterSectionPosition" style="background:#d3d3d3;min-height: 105px;">
+                                        <div class="col-md-3">
+                                            <label for="FromDate">From Date</label>
+                                            <input id="FromDate" type="text" datetimepicker class="form-control"
+                                                   data-ng-model="oSD.SearchData.startDate" />
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="FromDate">To Date</label>
+                                            <input id="ToDate" type="text" datetimepicker class="form-control"
+                                                   data-ng-model="oSD.SearchData.endDate" />
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="FromDate">Search Text</label>
+                                            <input name="SearchEmployee" id="SearchEmployeebs" class="form-control"
+                                                   style=""
+                                                   type="text" placeholder="Search by Employee, Department"
+                                                   data-ng-model="oSD.FilterSettings.SelectedEmployee"
+                                                   data-ng-change="oSD.FilterSettings.SearchEmployeeByName()">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="FromDate"></label>
+                                            <input type="button" value="Search" class="form-control" ng-click="oSD.FilterbyData()" style="background-color:#4099ff;margin-top:9%" />
+                                        </div>
+                                    </nav>
+                                </div>
+                                <div style="padding-top:.5%">
+                                    <nav class="navbar header-navbar" id="FilterSectionPosition" style="background:#abe0f9;min-height: 25px;">
 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="auth-lock-screen.html">
-                                            <i class="feather icon-lock"></i> Lock Screen
+                                    </nav>
+                                </div>
+                                <div class="SurveyItem" data-ng-repeat="surv in oSD.SurveyList">
+                                    <div class="SurveyTitle" ng-if="surv.Archive==false">
+                                        <div class="SurveyTitleTextContainer VerticalAlign">
+                                            <label class="SurveyTitleText">{{surv.Title}}</label>
+                                        </div>
+                                        <div class="OpenCloseCheckboxWrapper VerticalAlign">
+                                            <div>
+                                                <button class="btn btn-primary" style="padding: 0px 28px;border-radius: 9px;" id="show{{$index}}"
+                                                        ng-click="oSD.getVotBySurveyID(surv,'divtag',$index);">
+                                                    Show
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="TitleBarPlaceholder VerticalAlign"></div>
+                                    </div>
+                                    <div data-ng-show="surv.ShowVotes" class="container">
+                                        <table id="tab1" class="SurveyVoteTable" data-ng-if="surv.VoteList.length > 0 && surv.VoteList[0].VoterAnswerFilterValues.length == 0">
+                                            <thead>
+                                                <tr>
+                                                    <th class="VoteNameHeader">Name:</th>
+                                                    <th class="LastEditDateHeader">Last Modified:</th>
+                                                    <th class="IsVoteOpenHeader"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- START NILESH_TSK16  // Add Condition in data-ng-if -> && vote.IsInvalidEmployee != true  -->
+                                                <tr class="VoteRow" data-ng-repeat="vote in surv.VoteList"
+                                                    data-ng-if="vote.IsInValidDateRange != true && vote.IsInvalidEmployee != true && vote.VoterAnswerFilterValues != null">
+                                                    <!-- END NILESH_TSK16 -->
+                                                    <td class="VoteName" data-ng-click="oSD.loadPrintableSurvey($event, vote.VoterID, surv.SurveyGuid, vote.ResumeUID);">{{vote.UniqueSurveyTitle}}</td>
+                                                    <td class="LastEditDate" data-ng-click="oSD.loadPrintableSurvey($event, vote.VoterID, surv.SurveyGuid, vote.ResumeUID);">{{vote.StrFrmtLastEditDate}}</td>
+                                                    <!--//MP comment changes-->
+                                                    <td data-ng-if="(vote.Validated == false) && vote.VoterAnswerFilterValues != null">
+                                                        <button data-ng-click="oSD.setVoterToOpen($event, vote.VoterID, surv.SurveyGuid, vote.ResumeUID,vote);" class="ResumeButton">Resume</button>
+                                                    </td>
+                                                    <!-- START NILESH_TSK10 -->
+                                                    <td data-ng-if="vote.Validated == true && vote.VoterAnswerFilterValues != null" style="min-width:100px;">
+                                                        <!--//MP comment changes-->
+                                                        <div style="float:left;"><button data-ng-click="oSD.setVoterToOpen($event, vote.VoterID, surv.SurveyGuid, vote.ResumeUID);" class="EditButton"></button></div>
+                                                        <div style="float:left;"><button data-ng-click="oSD.openPrintPage($event, vote.VoterID, surv.SurveyGuid, vote.ResumeUID);" class="PrintButton"></button></div>
+                                                    </td>
+                                                    <!-- END NILESH_TSK10 -->
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table class="SurveyVoteTable" data-ng-if="surv.VoteList.length > 0 && surv.VoteList[0].VoterAnswerFilterValues.length > 0">
+                                            <thead>
+                                                <tr data-ng-repeat="vote in surv.VoteList" data-ng-if="$index == 0">
+                                                    <!-- START NILESH-TSK91 -->
+                                                    <!-- START NILESH-TSK92 -->
+                                                    <th ng-if="vote.TyLyCheckbox == undefined && vote.isActive==false && role!=true && oSD.ShowMailStatusColumn == true && isSelfReflectionRole == false" class="IsVoteOpenHeader"></th>
+                                                    <!-- END NILESH-TSK92 -->
+                                                    <th ng-if="isSelfReflectionRole == true" class="IsVoteOpenHeader"></th>
+                                                    <!-- END NILESH-TSK91 -->
+                                                    <!-- START NILESH-TSK92 -->
+                                                    <th ng-if="vote.TyLyCheckbox != undefined " class="IsVoteOpenHeader"></th>
+                                                    <!-- END NILESH-TSK92 -->
+                                                    <th class=""
+                                                        data-ng-repeat="columnHeader in vote.VoterAnswerFilterValues" ng-click="oSD.ChangeFilterSettings(columnHeader.VariableName, vote.SurveyID)" ng-if="vote.SurveyTitle=='High Five a Teammate!' && columnHeader.VariableName!='Submitted By'">{{columnHeader.VariableName}}<span style="display: inline-block; position: relative; top: 3px;" ng-class="(oSD.FilterOptions.columnName == columnHeader.VariableName.replace(' ', '').replace('&', '') && oSD.FilterOptions.surveyID == vote.SurveyID) ? ((oSD.FilterOptions.descending == true) ? 'ui-icon ui-icon-triangle-1-n' : 'ui-icon ui-icon-triangle-1-s') : ''"></span></th>
+                                                    <th class=""
+                                                        data-ng-repeat="columnHeader in vote.VoterAnswerFilterValues" ng-click="oSD.ChangeFilterSettings(columnHeader.VariableName, vote.SurveyID)" ng-if="vote.SurveyTitle!='High Five a Teammate!'">{{columnHeader.VariableName}}<span style="display: inline-block; position: relative; top: 3px;" ng-class="(oSD.FilterOptions.columnName == columnHeader.VariableName.replace(' ', '').replace('&', '') && oSD.FilterOptions.surveyID == vote.SurveyID) ? ((oSD.FilterOptions.descending == true) ? 'ui-icon ui-icon-triangle-1-n' : 'ui-icon ui-icon-triangle-1-s') : ''"></span></th>
+                                                    <!-- START NILESH-TSK68 -->
+                                                    <!-- END NILESH-TSK68 -->
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- START NILESH_TSK16  // Add Condition in data-ng-if -> && vote.IsInvalidEmployee != true  -->
+                                                <tr class="VoteRow"
+                                                    data-ng-repeat="vote in surv.VoteList | orderBy : oSD.CustomFilter : oSD.FilterOptions.descending=true:oSD.FilterOptions.columnName = 'LastSubmitted'"
+                                                    data-ng-if="vote.IsInValidDateRange != true && vote.IsInvalidEmployee != true && vote.VoterAnswerFilterValues != null" id="{{vote.VoterID}}">
+                                                    <!-- END NILESH_TSK16 -->
+                                                    <!-- START NILESH-TSK91 -->
+                                                    <!-- START NILESH-TSK92 -->
+                                                    <td ng-if="vote.TyLyCheckbox == undefined && vote.isSR == false && vote.isActive==false && role!=true && oSD.ShowMailStatusColumn == true && isSelfReflectionRole == false"><button ng-if="vote.isActive==false && role!=true && oSD.ShowMailStatusColumn == true" data-ng-click="oSD.loadPrintableSurvey($event, vote.VoterID, surv.SurveyGuid, vote.ResumeUID,vote);" data-ng-class="vote.EmailStatus=='success' ? 'EmailSentButton' : 'EmailNotSentButton'"></button></td>
+                                                    <!-- END NILESH-TSK92 -->
+                                                    <td ng-if="vote.isSR == true" class="EmailNotSentButton">SR</td>
+                                                    <!-- END NILESH-TSK91 -->
+                                                    <!-- START NILESH-TSK92 -->
+                                                    <td ng-if="vote.TyLyCheckbox != undefined">
+                                                        <img src="assets/images/Checked.png" ng-if="vote.TyLyCheckbox" style="height:30px;color: #0c7b0cad;" />
+                                                        <!--<img src="assets/images/uncheck.png" ng-if="!vote.TyLyCheckbox" style="height:26px;" />-->
+                                                    </td>
+                                                    <!-- END NILESH-TSK92 -->
+                                                    <!--M0014--><!-- END NILESH_TSK16 -->
+                                                    <td data-ng-repeat="columnValue in vote.VoterAnswerFilterValues" ng-class="{tdwidth :columnValue.VariableName=='Free text synopsis'}" ng-if="vote.isActive==false && vote.SurveyTitle!='High Five a Teammate!'" ng-click="oSD.loadPrintableSurvey($event, vote.VoterID, surv.SurveyGuid, vote.ResumeUID,vote);">
+                                                        <label ng-show="!expanded">{{vote[columnValue.VariableName.replace(' ', '').replace('&', '')]| cut:true:50:' ...'}}</label>
+                                                        <label ng-show="expanded">{{vote[columnValue.VariableName.replace(' ', '').replace('&', '')]}}</label>
+                                                        <button ng-show="oSD.DisplayButton(vote[columnValue.VariableName.replace(' ', '').replace('&', '')],columnValue.VariableName)" ng-click="expanded = !expanded;$event.stopPropagation();" expand>
+                                                            <span ng-bind="expanded ? '-' : '+'"></span>
+                                                        </button>
+                                                    </td>
+                                                    <td data-ng-repeat="columnValue in vote.VoterAnswerFilterValues" ng-hide="$first" ng-class="{tdwidth :columnValue.VariableName=='Free text synopsis'}" ng-if="vote.isActive==false && vote.SurveyTitle=='High Five a Teammate!'" ng-click="oSD.loadPrintableSurvey($event, vote.VoterID, surv.SurveyGuid, vote.ResumeUID,vote);">
+                                                        <label ng-show="!expanded">{{vote[columnValue.VariableName.replace(' ', '').replace('&', '')]| cut:true:50:' ...'}}</label>
+                                                        <label ng-show="expanded">{{vote[columnValue.VariableName.replace(' ', '').replace('&', '')]}}</label>
+                                                        <button ng-show="oSD.DisplayButton(vote[columnValue.VariableName.replace(' ', '').replace('&', '')],columnValue.VariableName)" ng-click="expanded = !expanded;$event.stopPropagation();" expand>
+                                                            <span ng-bind="expanded ? '-' : '+'"></span>
+                                                        </button>
+                                                    </td>
 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a ng-click="selectionC.logout();">
-                                            <i class="feather icon-log-out"></i> Logout
+                                                    <td d data-ng-if="vote.Validated == false">
+                                                        <div style="float:left;" ng-if="role!=true"><button data-ng-click="oSD.setVoterToOpen($event, vote.VoterID, surv.SurveyGuid, vote.ResumeUID,vote);" class="ResumeButton">Resume</button></div>
+                                                        <div style="float:left;"><span></span></div>
+                                                        <div style="float:left;" ng-if="role!=true"><button data-ng-click="oSD.deActivateVote(vote.VoterID,surv.SurveyID);" class="DeleteButton"></button></div>
 
-                                        </a>
-                                    </li>
-                                </ul>
+                                                    </td>
+                                                    <!-- START NILESH_TSK10 -->
+                                                    <td data-ng-if="vote.Validated == true && vote.isActive == false" style="min-width:150px;">
+                                                        <div style="float:left;" ng-if="role!=true||isSelfReflectionRole==true"><button data-ng-click="oSD.setVoterToOpen($event, vote.VoterID, surv.SurveyGuid, vote.ResumeUID,vote);" class="EditButton"></button></div>
+                                                        <div style="float:left;"><button data-ng-click="oSD.openPrintPage($event, vote.VoterID, surv.SurveyGuid, vote.ResumeUID,vote);" class="PrintButton"></button></div>
+                                                        <div style="float:left;" ng-if="role!=true"><button data-ng-click="oSD.deActivateVote(vote.VoterID,surv.SurveyID);" class="DeleteButton"></button></div>
+                                                    </td>
+
+                                                    <td ng-if="$last"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table class="SurveyVoteTable" data-ng-if="surv.VoteList.length < 1">
+                                            <thead>
+                                                <tr style="text-align: center;">
+                                                    <th>{{oSD.responseResult}}</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                        <table class="SurveyVoteTable" data-ng-if="surv.ShowSpinner == true">
+                                            <tfoot>
+                                                <tr>
+                                                    <td>
+                                                        <!--<img src="assets/images/circle_spinner.png" class="LoadingImageSmall"
+                                 data-ng-class="surv.ShowSpinner == true ? 'Spin' : ''" />-->
+                                                    </td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div></div>
+                                <div data-ng-if="oSD.ShowOverallSpinner == true">
+                                    <div style="display: table; margin: auto; padding-top: 2%">
+                                    </div>
+                                </div>
                             </div>
-                        </li>
-                    </ul>
+
+                            <div data-ng-show="oSD.surveyIsLoaded == true" class="iFrameWrapper">
+                                <iframe id="surveyResumeIFrame" iframe-onload="oSD.resumeiFrameLoadedCallback();"></iframe>
+                            </div>
+
+
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
-        <div class="pcoded-main-container">
-            <div class="pcoded-wrapper">
-                <div class="pcoded-content">
-                    <div class="pcoded-inner-content">
-                        <div class="main-body">
-                            <div class="page-wrapper">
-                                <div class="page-body">
-                                    <div class="spincontainer Spinner-Login" data-ng-class="oSD.Spinner==true ? 'spincontainer-shown' : ''">
-                                        <div class="spinner" style="position: fixed;z-index: 999;height: 2em;width: 2em;overflow: visible;margin: auto;top: 0;left: 0;bottom: 0;right: 0;"></div>
-                                    </div>   
-                                        
-                                    <div id="SurveyListContainerPosition" class="SurveyListContainer" data-ng-hide="oSD.surveyIsLoaded == true">
-                                        <div style="padding-top:.5%">
-                                            <nav class="navbar header-navbar" id="FilterSectionPosition" style="background:#d3d3d3;min-height: 105px;">
-                                                <div class="col-md-3">
-                                                    <label for="FromDate">From Date</label>
-                                                    <input id="FromDate" type="text" datetimepicker class="form-control"
-                                                           data-ng-model="oSD.SearchData.startDate" />
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label for="FromDate">To Date</label>
-                                                    <input id="ToDate" type="text" datetimepicker class="form-control"
-                                                           data-ng-model="oSD.SearchData.endDate" />
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label for="FromDate">Search Text</label>
-                                                    <input name="SearchEmployee" id="SearchEmployeebs" class="form-control"
-                                                           style="margin-left:2%"
-                                                           type="text" placeholder="Search by Employee, Department"
-                                                           data-ng-model="oSD.FilterSettings.SelectedEmployee"
-                                                           data-ng-change="oSD.FilterSettings.SearchEmployeeByName()">
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label for="FromDate"></label>
-                                                <input type="button" value="Search" class="form-control" ng-click="oSD.FilterbyData()" style="background-color:#4099ff;" /></div>
-                                            </nav>
-                                        </div>
-                                        <div style="padding-top:.5%">
-                                            <nav class="navbar header-navbar" id="FilterSectionPosition" style="background:#abe0f9;min-height: 25px;">
-                                              
-                                            </nav>
-                                        </div>
-                                        <div class="SurveyItem" data-ng-repeat="surv in oSD.SurveyList">
-                                            <div class="SurveyTitle" ng-if="surv.Archive==false">
-                                                <div class="SurveyTitleTextContainer VerticalAlign">
-                                                    <label class="SurveyTitleText">{{surv.Title}}</label>
-                                                </div>
-                                                <div class="OpenCloseCheckboxWrapper VerticalAlign">
-                                                    <div ng-init="{{oSD.show='hide'+$index}}">
-                                                        <button class="btn btn-primary" style="padding: 0px 28px;border-radius: 9px;" id="show{{$index}}" ng-click="oSD.getVotBySurveyID(surv,'divtag');oSD.showhide('show',$index)" ng-if="oSD.show=='hide'+$index">Show</button>
-                                                        <button class="btn btn-primary" style="padding: 0px 28px;border-radius: 9px;display:none" id="hide{{$index}}" ng-click="oSD.getVotBySurveyID(surv,'divtag');oSD.showhide('hide',$index)" ng-show="oSD.show=='show'+$index">Hide</button>
-                                                    </div>
-                                                </div>
-                                                <div class="TitleBarPlaceholder VerticalAlign"></div>
-                                            </div>
-                                            <div data-ng-show="surv.ShowVotes" class="container">
-                                                <table id="tab1" class="SurveyVoteTable" data-ng-if="surv.VoteList.length > 0 && surv.VoteList[0].VoterAnswerFilterValues.length == 0">
-                                                    <thead>
-                                                        <tr>
-                                                            <th class="VoteNameHeader">Name:</th>
-                                                            <th class="LastEditDateHeader">Last Modified:</th>
-                                                            <th class="IsVoteOpenHeader"></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <!-- START NILESH_TSK16  // Add Condition in data-ng-if -> && vote.IsInvalidEmployee != true  -->
-                                                        <tr class="VoteRow" data-ng-repeat="vote in surv.VoteList"
-                                                            data-ng-if="vote.IsInValidDateRange != true && vote.IsInvalidEmployee != true && vote.VoterAnswerFilterValues != null">
-                                                            <!-- END NILESH_TSK16 -->
-                                                            <td class="VoteName" data-ng-click="oSD.loadPrintableSurvey($event, vote.VoterID, surv.SurveyGuid, vote.ResumeUID);">{{vote.UniqueSurveyTitle}}</td>
-                                                            <td class="LastEditDate" data-ng-click="oSD.loadPrintableSurvey($event, vote.VoterID, surv.SurveyGuid, vote.ResumeUID);">{{vote.StrFrmtLastEditDate}}</td>
-
-                                                            <!--//MP comment changes-->
-                                                            <td data-ng-if="(vote.Validated == false) && vote.VoterAnswerFilterValues != null">
-                                                                <button data-ng-click="oSD.setVoterToOpen($event, vote.VoterID, surv.SurveyGuid, vote.ResumeUID,vote);" class="ResumeButton">Resume</button>
-                                                            </td>
-                                                            <!-- START NILESH_TSK10 -->
-                                                            <td data-ng-if="vote.Validated == true && vote.VoterAnswerFilterValues != null" style="min-width:100px;">
-                                                                <!--//MP comment changes-->
-                                                                <div style="float:left;"><button data-ng-click="oSD.setVoterToOpen($event, vote.VoterID, surv.SurveyGuid, vote.ResumeUID);" class="EditButton"></button></div>
-                                                                <div style="float:left;"><button data-ng-click="oSD.openPrintPage($event, vote.VoterID, surv.SurveyGuid, vote.ResumeUID);" class="PrintButton"></button></div>
-                                                            </td>
-                                                            <!-- END NILESH_TSK10 -->
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                                <table class="SurveyVoteTable" data-ng-if="surv.VoteList.length > 0 && surv.VoteList[0].VoterAnswerFilterValues.length > 0">
-                                                    <thead>
-                                                        <tr data-ng-repeat="vote in surv.VoteList" data-ng-if="$index == 0">
-                                                            <!-- START NILESH-TSK91 -->
-                                                            <!-- START NILESH-TSK92 -->
-                                                            <th ng-if="vote.TyLyCheckbox == undefined && vote.isActive==false && role!=true && oSD.ShowMailStatusColumn == true && isSelfReflectionRole == false" class="IsVoteOpenHeader"></th>
-                                                            <!-- END NILESH-TSK92 -->
-                                                            <th ng-if="isSelfReflectionRole == true" class="IsVoteOpenHeader"></th>
-                                                            <!-- END NILESH-TSK91 -->
-                                                            <!-- START NILESH-TSK92 -->
-                                                            <th ng-if="vote.TyLyCheckbox != undefined " class="IsVoteOpenHeader"></th>
-                                                            <!-- END NILESH-TSK92 -->
-                                                            <th class=""
-                                                                data-ng-repeat="columnHeader in vote.VoterAnswerFilterValues" ng-click="oSD.ChangeFilterSettings(columnHeader.VariableName, vote.SurveyID)" ng-if="vote.SurveyTitle=='High Five a Teammate!' && columnHeader.VariableName!='Submitted By'">{{columnHeader.VariableName}}<span style="display: inline-block; position: relative; top: 3px;" ng-class="(oSD.FilterOptions.columnName == columnHeader.VariableName.replace(' ', '').replace('&', '') && oSD.FilterOptions.surveyID == vote.SurveyID) ? ((oSD.FilterOptions.descending == true) ? 'ui-icon ui-icon-triangle-1-n' : 'ui-icon ui-icon-triangle-1-s') : ''"></span></th>
-                                                            <th class=""
-                                                                data-ng-repeat="columnHeader in vote.VoterAnswerFilterValues" ng-click="oSD.ChangeFilterSettings(columnHeader.VariableName, vote.SurveyID)" ng-if="vote.SurveyTitle!='High Five a Teammate!'">{{columnHeader.VariableName}}<span style="display: inline-block; position: relative; top: 3px;" ng-class="(oSD.FilterOptions.columnName == columnHeader.VariableName.replace(' ', '').replace('&', '') && oSD.FilterOptions.surveyID == vote.SurveyID) ? ((oSD.FilterOptions.descending == true) ? 'ui-icon ui-icon-triangle-1-n' : 'ui-icon ui-icon-triangle-1-s') : ''"></span></th>
-                                                            <!-- START NILESH-TSK68 -->
-                                                            <!-- END NILESH-TSK68 -->
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <!-- START NILESH_TSK16  // Add Condition in data-ng-if -> && vote.IsInvalidEmployee != true  -->
-                                                        <tr class="VoteRow"
-                                                            data-ng-repeat="vote in surv.VoteList | orderBy : oSD.CustomFilter : oSD.FilterOptions.descending=true:oSD.FilterOptions.columnName = 'LastSubmitted'"
-                                                            data-ng-if="vote.IsInValidDateRange != true && vote.IsInvalidEmployee != true && vote.VoterAnswerFilterValues != null" id="{{vote.VoterID}}">
-                                                            <!-- END NILESH_TSK16 -->
-                                                            <!-- START NILESH-TSK91 -->     
-                                                            <!-- START NILESH-TSK92 -->
-                                                            <td ng-if="vote.TyLyCheckbox == undefined && vote.isSR == false && vote.isActive==false && role!=true && oSD.ShowMailStatusColumn == true && isSelfReflectionRole == false"><button ng-if="vote.isActive==false && role!=true && oSD.ShowMailStatusColumn == true" data-ng-click="oSD.loadPrintableSurvey($event, vote.VoterID, surv.SurveyGuid, vote.ResumeUID,vote);" data-ng-class="vote.EmailStatus=='success' ? 'EmailSentButton' : 'EmailNotSentButton'"></button></td>
-                                                            <!-- END NILESH-TSK92 -->
-                                                            <td ng-if="vote.isSR == true" class="EmailNotSentButton">SR</td>
-                                                            <!-- END NILESH-TSK91 -->
-                                                            <!-- START NILESH-TSK92 -->
-                                                            <td ng-if="vote.TyLyCheckbox != undefined">
-                                                                <img src="assets/images/Checked.png" ng-if="vote.TyLyCheckbox" style="height:30px;color: #0c7b0cad;" />
-                                                                <!--<img src="assets/images/uncheck.png" ng-if="!vote.TyLyCheckbox" style="height:26px;" />-->
-                                                            </td>
-                                                            <!-- END NILESH-TSK92 -->
-                                                            <!--M0014--><!-- END NILESH_TSK16 -->
-                                                            <td data-ng-repeat="columnValue in vote.VoterAnswerFilterValues" ng-class="{tdwidth :columnValue.VariableName=='Free text synopsis'}" ng-if="vote.isActive==false && vote.SurveyTitle!='High Five a Teammate!'" ng-click="oSD.loadPrintableSurvey($event, vote.VoterID, surv.SurveyGuid, vote.ResumeUID,vote);">
-                                                                <label ng-show="!expanded">{{vote[columnValue.VariableName.replace(' ', '').replace('&', '')]| cut:true:50:' ...'}}</label>
-                                                                <label ng-show="expanded">{{vote[columnValue.VariableName.replace(' ', '').replace('&', '')]}}</label>
-                                                                <button ng-show="oSD.DisplayButton(vote[columnValue.VariableName.replace(' ', '').replace('&', '')],columnValue.VariableName)" ng-click="expanded = !expanded;$event.stopPropagation();" expand>
-                                                                    <span ng-bind="expanded ? '-' : '+'"></span>
-                                                                </button>
-                                                            </td>
-                                                            <td data-ng-repeat="columnValue in vote.VoterAnswerFilterValues" ng-hide="$first" ng-class="{tdwidth :columnValue.VariableName=='Free text synopsis'}" ng-if="vote.isActive==false && vote.SurveyTitle=='High Five a Teammate!'" ng-click="oSD.loadPrintableSurvey($event, vote.VoterID, surv.SurveyGuid, vote.ResumeUID,vote);">
-                                                                <label ng-show="!expanded">{{vote[columnValue.VariableName.replace(' ', '').replace('&', '')]| cut:true:50:' ...'}}</label>
-                                                                <label ng-show="expanded">{{vote[columnValue.VariableName.replace(' ', '').replace('&', '')]}}</label>
-                                                                <button ng-show="oSD.DisplayButton(vote[columnValue.VariableName.replace(' ', '').replace('&', '')],columnValue.VariableName)" ng-click="expanded = !expanded;$event.stopPropagation();" expand>
-                                                                    <span ng-bind="expanded ? '-' : '+'"></span>
-                                                                </button>
-                                                            </td>
-                                                            
-                                                            <td d data-ng-if="vote.Validated == false">
-                                                                <div style="float:left;" ng-if="role!=true"><button data-ng-click="oSD.setVoterToOpen($event, vote.VoterID, surv.SurveyGuid, vote.ResumeUID,vote);" class="ResumeButton">Resume</button></div>
-                                                                <div style="float:left;"><span></span></div>
-                                                                <div style="float:left;" ng-if="role!=true"><button data-ng-click="oSD.deActivateVote(vote.VoterID,surv.SurveyID);" class="DeleteButton"></button></div>
-                                                               
-                                                            </td>
-
-                                                            <!-- START NILESH_TSK10 -->
-                                                            <td data-ng-if="vote.Validated == true && vote.isActive == false" style="min-width:150px;">
-                                                                <div style="float:left;" ng-if="role!=true||isSelfReflectionRole==true"><button data-ng-click="oSD.setVoterToOpen($event, vote.VoterID, surv.SurveyGuid, vote.ResumeUID,vote);" class="EditButton"></button></div>                                                              
-                                                                <div style="float:left;"><button data-ng-click="oSD.openPrintPage($event, vote.VoterID, surv.SurveyGuid, vote.ResumeUID,vote);" class="PrintButton"></button></div>
-                                                                <div style="float:left;" ng-if="role!=true"><button data-ng-click="oSD.deActivateVote(vote.VoterID,surv.SurveyID);" class="DeleteButton"></button></div>
-                                                            </td>
-                                                            
-                                                            <td ng-if="$last" ng-init="oSD.setSpinner()"></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                                <table class="SurveyVoteTable" data-ng-if="surv.VoteList.length < 1 && surv.ShowSpinner != true">
-                                                    <thead>
-                                                        <tr style="text-align: center;">
-                                                            <th>No Data</th>
-                                                        </tr>
-                                                    </thead>
-                                                </table>
-                                                <table class="SurveyVoteTable" data-ng-if="surv.ShowSpinner == true">
-                                                    <tfoot>
-                                                        <tr>
-                                                            <td>
-                                                                <img src="assets/images/circle_spinner.png" class="LoadingImageSmall"
-                                                                     data-ng-class="surv.ShowSpinner == true ? 'Spin' : ''" />
-                                                            </td>
-                                                        </tr>
-                                                    </tfoot>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <div data-ng-if="oSD.ShowOverallSpinner == true">
-                                            <div style="display: table; margin: auto; padding-top: 2%">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                        <div data-ng-show="oSD.surveyIsLoaded == true" class="iFrameWrapper">
-                                            <iframe id="surveyResumeIFrame" iframe-onload="oSD.resumeiFrameLoadedCallback();"></iframe>
-                                        </div>
-                                        
-                                   
-                                    </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+        </div>
+    </div>
 </div>
