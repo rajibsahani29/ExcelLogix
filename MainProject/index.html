@@ -3,9 +3,7 @@
 <head>
     <title>iAspire</title>
     <meta http-equiv="Content-Security-Policy" content="img-src 'self' data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://api.apptivo.com http://localhost:4976; connect-src 'self' api.apptivo.com http://localhost:59795 http://localhost:4976; style-src 'self' 'unsafe-inline' https://www.google.com https://ajax.googleapis.com">
-
     <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' *; img-src 'self' data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://localhost:8081/ https://www.google.com https://api.apptivo.com https://iAspire.azurewebsites.net; connect-src 'self' api.apptivo.com http://localhost:8081/ https://iAspire.azurewebsites.net; style-src 'self' 'unsafe-inline' http://localhost:8081/ https://www.google.com https://ajax.googleapis.com">-->
-
     <link rel="shortcut icon" type="image/ico" sizes="16x16 32x32 48x48 192x192 256x256" href="assets/images/iAspireLogo.ico">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -16,7 +14,6 @@
     <meta http-equiv="Cache-Control" content="no-cache">
     <meta http-equiv="Expires" content="Sat, 01 Dec 2001 00:00:00 GMT">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
     <!-- Style Sheets -->
     <link href="assets/css/global.css" rel="stylesheet" />
     <link href="Scripts/angular-csp.css" rel="stylesheet" />
@@ -37,6 +34,8 @@
     <link href="assets/css/calendar.css" rel="stylesheet" />
     <link href="assets/css/calendar.min.css" rel="stylesheet" />
     <link href="assets/css/normalize.css" rel="stylesheet" />
+    <link href="assets/css/component.css" rel="stylesheet" />
+    <link href="assets/css/animate.css" rel="stylesheet" />
     <!-- Library Scripts -->
     <!--new Dashboard link-->
     <!-- Required Fremwork -->
@@ -64,9 +63,9 @@
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="files/assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="files/assets/css/widget.css">
-
+    <link href="assets/css/main.css" rel="stylesheet" />
+    <link href="assets/css/util.css" rel="stylesheet" />
     <!--------------------------End--------------------------->
-
     <script type="text/javascript" src="Scripts/es5-shim.min.js"></script>
     <script type="text/javascript" src="Scripts/es6-shim.js"></script>
     <script type="text/javascript" src="Scripts/jquery-2.1.4.min.js"></script>
@@ -87,10 +86,10 @@
     <script src="Scripts/HiChartExporting.js"></script>
     <script src="Scripts/highcharts-ng.js"></script>
     <script src="Scripts/highcharts-more.js"></script>
-    <script src="Scripts/drilldown.js"></script>
-    <script src="Scripts/data.js"></script>
+    <!--<script src="Scripts/drilldown.js"></script>
+    <script src="Scripts/data.js"></script>-->
     <!-- Application Script -->
-    <!--START NILESH-TSK16 -->  
+    <!--START NILESH-TSK16 -->
     <script type="text/javascript" src="Scripts/ui-bootstrap-tpls-0.12.0.js"></script>
     <script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
     <!--END NILESH-TSK16 -->
@@ -119,14 +118,13 @@
     <script type="text/javascript" src="app/controllers/openSavedDocController.js"></script><!-- min -->
     <script type="text/javascript" src="app/controllers/reportsController.js"></script><!-- min -->
     <script type="text/javascript" src="app/controllers/activeFilterController.js"></script><!-- min -->
-    <script type="text/javascript" src="app/controllers/MobileViewController.js"></script>
-    <!--<script type="text/javascript" src="app/controllers/AdureportingQuestionController.js"></script>--><!-- min -->
     <script src="app/controllers/BusinessReportingQuestionController.js"></script>
     <script type="text/javascript" src="app/controllers/settingsController.js"></script><!-- min -->
     <script src="app/controllers/BusinessReportController.js"></script>
     <script src="app/controllers/calendar-tpls.js"></script>
     <script src="app/controllers/DashboardSurveyController.js"></script>
-
+    <script src="app/controllers/HeaderController.js"></script>
+    <script src="app/controllers/AccountController.js"></script>
     <!-- External Services -->
     <script type="text/javascript" src="app/services/Google/googlechart.module.js"></script>
     <script type="text/javascript" src="app/services/Google/FormatManager.js"></script>
@@ -138,16 +136,15 @@
     <script type="text/javascript" src="app/services/Google/onReady.js"></script>
     <script type="text/javascript" src="app/services/Google/onSelect.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-
     <script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script type="e6c7b7630547578705dbf55e-text/javascript" src="files/bower_components/jquery/js/jquery.min.js"></script>
+    <!--<script type="e6c7b7630547578705dbf55e-text/javascript" src="files/bower_components/jquery/js/jquery.min.js"></script>-->
     <script type="e6c7b7630547578705dbf55e-text/javascript" src="files/bower_components/jquery-ui/js/jquery-ui.min.js"></script>
     <script type="e6c7b7630547578705dbf55e-text/javascript" src="files/bower_components/popper.js/js/popper.min.js"></script>
     <script type="e6c7b7630547578705dbf55e-text/javascript" src="files/bower_components/bootstrap/js/bootstrap.min.js"></script>
     <!-- waves js -->
     <script src="files/assets/pages/waves/js/waves.min.js" type="e6c7b7630547578705dbf55e-text/javascript"></script>
     <!-- jquery slimscroll js -->
-    <script type="e6c7b7630547578705dbf55e-text/javascript" src="files/bower_components/jquery-slimscroll/js/jquery.slimscroll.js"></script>
+    <!--<script type="e6c7b7630547578705dbf55e-text/javascript" src="files/bower_components/jquery-slimscroll/js/jquery.slimscroll.js"></script>-->
     <!-- Float Chart js -->
     <script src="files/assets/pages/chart/float/jquery.flot.js" type="e6c7b7630547578705dbf55e-text/javascript"></script>
     <script src="files/assets/pages/chart/float/jquery.flot.categories.js" type="e6c7b7630547578705dbf55e-text/javascript"></script>
@@ -173,12 +170,16 @@
 
         gtag('config', 'UA-23581568-13');
     </script>
-
     <script src="ajax.cloudflare.com/cdn-cgi/scripts/a2bd7673/cloudflare-static/rocket-loader.min.js" data-cf-settings="e6c7b7630547578705dbf55e-|49" defer=""></script>
-
-
 </head>
-<body data-ng-controller="AppController as AppC">            
+<body data-ng-controller="AppController as AppC">   
+    <mobileheader ng-if="AppC.ShowMobileHeader == true" ng-include="'app/views/MobileHeaderView.html'"></mobileheader>
+    <div id="" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">            
+            <div ng-if="AppC.ShowSidebar == true" ng-include="'app/views/HeaderView.html'"></div>
             <div data-ng-view class="pageTransitionAnimation ViewContainer"></div>
+        </div>
+        </div>`    
 </body>
 </html>
