@@ -174,8 +174,7 @@
             var titleLabel = document.createElement('label');
             titleLabel.id = divID + "Title";
             titleLabel.className = "TitleLabelPosition TitleLabel";
-            //titleLabel.innerHTML = titleText;
-            titleLabel.innerHTML = titleText == null ? '' : titleText;
+            titleLabel.innerHTML = titleText;
 
             // assemble header
             if (excludeHeaderImageBoolean === false) {
@@ -199,7 +198,7 @@
             bodyContainer.id = divID + "BodyContainer";
             bodyContainer.className = "BodyContainerPosition BodyContainer";
             // this kind of has to be fudged
-            bodyContainer.style.maxHeight = (window.innerHeight - SMAAlertGlobalValues.HeaderImageHeight - 40 - 40 - 40 - 20);
+            bodyContainer.style.maxHeight = 10;//(window.innerHeight - SMAAlertGlobalValues.HeaderImageHeight - 40 - 40 - 40 - 20-100);
 
             var bodyWrapper = document.createElement('div');
             bodyWrapper.id = divID + "BodyWrapper";
@@ -264,8 +263,8 @@
             var innerBlock = document.createElement('div');
             innerBlock.id = divID + "InnerBlock";
             innerBlock.className = "AlertPosition Alert";
-            innerBlock.style.maxHeight = window.innerHeight - 10;
-            innerBlock.style.maxWidth = window.innerWidth - 10;
+            innerBlock.style.maxHeight = 10//window.innerHeight - 10;
+            innerBlock.style.maxWidth = 10//window.innerWidth - 10;
 
             // get header
             var headerContainer = document.createElement("div");
@@ -294,9 +293,9 @@
 
             // set up alert resize
             window.onresize = function () {
-                innerBlock.style.maxHeight = window.innerHeight - 10;
-                innerBlock.style.maxWidth = window.innerWidth - 10;
-                bodyContainer.style.maxHeight = window.innerHeight - headerContainer.offsetHeight - 60;
+                innerBlock.style.maxHeight = 10//window.innerHeight - 10;
+                innerBlock.style.maxWidth = 10//window.innerWidth - 10;
+                bodyContainer.style.maxHeight = 10//window.innerHeight - headerContainer.offsetHeight - 60;
             };
 
             // return element
@@ -384,16 +383,26 @@
             var headText = headerText || "Loading" || SMAAlertGlobalValues.HeaderText;
 
             var block = SMAAlertBaseFactory.CreateBaseAlert(divID, headText, "");
+            //activateModal
             // add info class
             block.firstChild.classList.add("Info");
-
+            // block.setAttribute("class", "SMAClientAlertBlur");
+            // block.setAttribute("class", "SMAClientAlertDarken");
             // create progress element
             var progress = document.createElement("progress");
 
-            block.firstChild.childNodes[1].firstChild.firstChild.innerHTML = "";
-            block.firstChild.childNodes[1].firstChild.firstChild.appendChild(progress);
+            var progrs = document.createElement('div');
+            progrs.id = divID;
+            progrs.className = "SMAClientAlertContainer loader";
 
-            SMAAlertDisplay.ShowAlert(block);
+
+            var innerBlock = document.createElement('div');
+            progrs.appendChild(innerBlock);
+            //var progrs = $("<div id='SMAClientAlert0' class='SMAClientAlertContainer loader' style='margin-left: 45%;margin-top:17%'><div></div></div>")[0]//document.createElement("progress");
+            // block.firstChild.childNodes[1].firstChild.firstChild.innerHTML = "";
+            //block.firstChild.childNodes[1].firstChild.firstChild.appendChild(progrs);
+
+            SMAAlertDisplay.ShowAlert(progrs);
             var returnProm = {
                 resolve: null,
                 reject: null
@@ -414,6 +423,35 @@
             });
 
             return returnProm;
+        }
+        function activateModal() {
+            // initialize modal element
+            var modalEl = document.createElement('h3');
+            modalEl.setAttribute("class", "modal-header");
+            modalEl.style.width = '400px';
+            modalEl.style.height = '300px';
+            modalEl.style.margin = '100px auto';
+            modalEl.style.backgroundColor = '#828282';
+            modalEl.style.color = '#ffffff';
+            modalEl.style.textAlign = 'center'
+
+            // add content
+            var loginTxt = document.createElement("span");
+            loginTxt.innerHTML = 'Attempting to log you in...';
+            modalEl.appendChild(loginTxt);
+
+            //SPINNER START
+            //	modalEl.setAttribute('style', 'text-align: center;'); //extra addition you can remove this
+            var newDiv = document.createElement("div");
+            newDiv.setAttribute('class', 'loader');
+            // i choose to use the svg content as inner html. You may create this as an element
+            newDiv.innerHTML = '<svg class="circular" viewBox="25 25 50 50"> <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg>'
+            modalEl.appendChild(newDiv);
+            //SPINENR END
+
+            // show modal
+            //  mui.overlay('on', modalEl);
+            return modalEl
         }
         function createLoadingAlert() {
 
@@ -470,7 +508,7 @@
         }
         function createConfirmAlert(bodyText, headerText, yesText, noText, successCallback, failCallback) {
             var divID = 'SMAClientAlert' + SMAAlertGlobalValues.GetAlertIndex();
-            //headerText = SMAAlertGlobalValues.HeaderText;
+            headerText = headerText || "Confirm" || SMAAlertGlobalValues.HeaderText;
             yesText = yesText || "YES";
             noText = noText || "NO";
 
@@ -550,7 +588,12 @@
 
             // set body to be the object that was passed
             block.firstChild.childNodes[1].firstChild.innerHTML = "";
-            block.firstChild.childNodes[1].firstChild.appendChild(bodyObject);
+            if (bodyObject.appendChild) {
+                block.firstChild.childNodes[1].firstChild.appendChild(bodyObject);
+            } else {
+                block.firstChild.childNodes[1].firstChild.innerHTML = bodyObject;
+            }
+            //block.firstChild.childNodes[1].firstChild.appendChild(bodyObject);
 
             SMAAlertDisplay.ShowAlert(block);
             var returnProm = {
