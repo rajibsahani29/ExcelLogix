@@ -402,7 +402,7 @@
         function getBarHeight()
         {
           // calculate scrollbar height and make sure it is not too small
-          barHeight = Math.max((me.outerHeight() / me[0].scrollHeight) * me.outerHeight(), minBarHeight);
+          barHeight = Math.max((me.outerHeight() / me[0].scrollHeight) * me.outerHeight(), minBarHeight)+15;
           bar.css({ height: barHeight + 'px' });
 
           // hide scrollbar if content is not long enough
