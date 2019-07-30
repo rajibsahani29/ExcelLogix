@@ -7,12 +7,7 @@
         .controller("AppController", ["$scope","$rootScope", "$http", "DataService", "ProjectConstants", "SMAAlertFactory", "$location", controller]);
 
     function controller($scope,$rootScope, $http, DataService, ProjectConstants, SMAAlertFactory, $location) {
-
-        // init databases
-        //AppDatabase.init();
-        //iAspireDatabase.init();
-
-        /*jshint validthis:true */
+               
         var AppC = this;    
         AppC.ActivePageName = "Home";
         AppC.ShowHeader = false;
@@ -34,7 +29,12 @@
 
         AppC.userLogin = "";
         AppC.userPassword = "";
-    
+
+        $scope.$on('$routeChangeStart', function (next, current) {
+            ManageControls();
+        });
+
+
         $scope.$watch('AppC.ActiveUser', function (newActiveUser, oldActiveUser) {
             if (typeof newActiveUser !== "undefined" && newActiveUser !== oldActiveUser) {
                 if (newActiveUser.UserID) {
@@ -76,11 +76,7 @@
                         var windowWidth = window.innerWidth;
                         var isMobile = windowWidth < 1112;
                         var merchantData = JSON.parse(localStorage.getItem("MainUserData"));
-                        if (isMobile == true) {                            
-                            $location.path("MobileView");
-                        } else {
-                            $location.path("selection");
-                        }
+                        
                     }
                     else {
                         //switch ($location.path()) {
@@ -125,17 +121,9 @@
                     .error(function (data, status, headers, config) {
 
                     });
-                    // get the user's roles with rights
-                    //DataService.getUserRolesWithRights()
-                    //.success(function (data, status, headers, config) {
-                    //    AppC.UserRoles = data;
-                    //})
-                    //.error(function (data, status, headers, config) {
-
-                    //})
+                    
                 } else {
-                    // invalid login
-                    //localStorage.clear();
+                    
                     localStorage.removeItem("AccessID");
                     sessionStorage.clear();
                     AppC.isUserAuthorized = false;
@@ -152,21 +140,7 @@
                     SMAAlertFactory.CreateInfoAlert("You have been logged out!", "Please log in again.");
                 }
             }
-            //else { // this fires constantly, because "if (newActiveUser)" is only true for one loop on login, and is false because it hasn't changed for every loop after
-                //localStorage.clear();
-                //sessionStorage.clear();
-                //AppC.isUserAuthorized = false;
-                //var hash = window.location.hash
-                //switch (hash) {
-                //    case "#/login":
-                //    case "#/createAccount":
-                //    case "#/forgotPassword":
-                //        // do nothing
-                //        return;
-                //    default:
-                //        window.location.hash = "#/login";
-                //}
-            //}
+            
         }, true);
 
         // execute inits
@@ -198,6 +172,7 @@
                 DataService.validateAccessID(accessID)
                 .success(function (data, status, headers, config) {
                     AppC.ActiveUser = data;
+                   // ManageControls(true);
                 })
                 .error(function (data, status, headers, config) {
                     // add alert letting the person know they must log back in 
@@ -206,12 +181,14 @@
                         SMAAlertFactory.CreateInfoAlert(data, "Please contact iAspire for more details");
                     }
                     resetUser();
+                    ManageControls(false);
                     //window.location.hash = "#/login";
                 });
             } else {
                 // user is not remembered, must log in
                 resetUser();
                 //window.location.hash = "#/login";
+                ManageControls(false);
             }
         }
 
@@ -220,6 +197,23 @@
                 return AppC.AccessID;
             };
         }
-        
+        function ManageControls(isVisible) {
+            if (isVisible == undefined) {
+                AppC.ShowMobileHeader = true;
+                AppC.ShowSidebar = true;
+                switch ($location.path()) {
+                    case "/login":
+                        AppC.ShowMobileHeader = false;
+                        AppC.ShowSidebar = false;
+                        break;
+                    default:
+                        break;
+                }                
+            }
+            else {
+                AppC.ShowMobileHeader = isVisible;
+                AppC.ShowSidebar = isVisible;
+            }
+        }
     }
 })();
