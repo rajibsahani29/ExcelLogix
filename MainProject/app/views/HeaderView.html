@@ -1,0 +1,73 @@
+﻿<div ng-model="iAspireApp" ng-controller="HeaderController as headC">
+    <nav class="navbar header-navbar pcoded-header" style="background:#abe0f9">
+        <div class="navbar-wrapper">
+            <div class="navbar-logo" style="background: #abe0f9;">
+                <a href="index.html">
+                    <img src="images/Shaeronlogo.png" />
+                </a>
+            </div>
+            <div class="navbar-container container-fluid">
+                <ul class="nav-left" style="font-family:monospace;margin-top:1.4%">
+                    <li onclick="window.location.hash = '#/selection'">
+                        <a>Dashboard</a>
+                    </li>
+                    <li class="header-search" onclick="window.location.hash = '#/selectForm'">
+                        <a>Forms</a>
+                    </li>
+                    <li onclick="window.location.hash = '#/openSavedDoc'">
+                        <a>Document</a>
+                    </li>
+                    <li onclick="window.location.hash = '#/reports'">
+                        <a>Reports</a>
+                    </li>
+                    <li onclick="window.location.hash = '#/accounts'">
+                        <a>Account</a>
+                    </li>
+                </ul>
+                <ul class="nav-right">
+                    <li class="user-profile header-notification">
+                        <div class="dropdown-primary dropdown">
+                            <div class="dropdown-toggle" data-toggle="dropdown">
+                                <span style="font-size:15px;font-family:monospace">{{UserName}}</span>
+                                <i class="feather icon-chevron-down"></i>
+                            </div>
+                            <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                                <!--<li>
+                                    <a href="#!">
+                                        <i class="feather icon-settings"></i> Settings
+
+                                    </a>
+                                </li>-->
+                                <!--<li>
+                                    <a href="#">
+                                        <i class="feather icon-user"></i> Profile
+
+                                    </a>
+                                </li>-->
+                                <!--<li>
+                                    <a href="email-inbox.html">
+                                        <i class="feather icon-mail"></i> My Messages
+
+                                    </a>
+                                </li>-->
+                                <li>
+                                    <a href="auth-lock-screen.html">
+                                        <i class="feather icon-lock"></i> Lock Screen
+
+                                    </a>
+                                </li>
+                                <li>
+                                    <a ng-click="headC.Logout();">
+                                        <i class="feather icon-log-out"></i> Logout
+
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>   
+</div>
+

@@ -1,0 +1,51 @@
+﻿
+<div class="mobile" ng-controller="HeaderController as headC">
+    <style>
+        @media (min-width: 767px) {
+            #dl-menu{
+                display:none
+            }
+        }
+    </style>
+    <!-- Mobile DropDown !-->
+    <div style="margin: auto; height: 100%;">
+        <div id="dl-menu" dlmenu class="dl-menuwrapper Color2" style="float: left;" ng-model="mobileMenuJson">
+            <div style="position: absolute; top: 0; left: 0; height: 20px; margin: auto; width: 100%;">
+                <div style="position: relative; height: 20px; margin: auto; width: 100px;">
+                </div>
+            </div>
+            <button class="dl-trigger" id="btn" ng-click="headC.AnimateMenu(this)"></button>
+            <ul class="dl-menu" id="ulmenu" style="background-color:#FFF">
+                <li>
+                    <!-- ACCOUNTS -->
+                    <a ng-href="#/selection" style="color:black">
+                        <span class="FontColor2 ToggleText">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <!-- USERS -->
+                    <a ng-href="#/selectForm" style="color:black">
+                        <span class="FontColor2 ToggleText">Forms</span>
+                    </a>
+                </li>
+                <li>
+                    <!-- SITES -->
+                    <a ng-href="#/openSavedDoc" style="color:black">
+                        <span class="FontColor2 ToggleText">Document</span>
+                    </a>
+                </li>
+                <li>
+                    <!-- SITES -->
+                    <a ng-href="#/reports" style="color:black">
+                        <span class="FontColor2 ToggleText">Reports</span>
+                    </a>
+                </li>
+                <li>
+                    <a ng-href="#/" style="color:black">
+                        <span class="FontColor2 ToggleText">Account</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
