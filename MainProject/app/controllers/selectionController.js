@@ -25,28 +25,44 @@
     function SelectionController(DataService, $scope, $rootScope, $http, $interval, $window, $filter, $location, SMAAlertFactory, ProjectConstants) {
         getVoteListForUser();
         var sc = this;        
-        sc.TotalSurvey = null;
-        sc.CompletedSurvey = null;
-        sc.ResumedSurvey = null;
+        sc.TotalSurvey = 0;
+        sc.TotalSurveyResult = 0;
+        sc.CompletedSurvey = 0;
+        sc.ResumedSurvey = 0;
         sc.inActiveSurvey = 0;
-        
+        sc.inActiveSurveyResult = 0;
+        sc.CompletedSurveyResult = 0;
+        sc.ResumedSurveyResult = 0;
+
         sc.TotalEmployee = null;
         sc.ActiveEmployee = null;
         sc.ArcivedEmployee = null;
 
         sc.ActivityData = [];
-
-        sc.logout = logout; 
-
-        sc.LoginUser = $rootScope.UserName;
         function getVoteListForUser(SurveyData) {   
-            $('.loader-bg').fadeOut();            
-            DataService.getDashboardDataNew()
+            $('.loader-bg').fadeOut();   
+            $scope.spinner = SMAAlertFactory.CreateSpinnerAlert();
+            DataService.getDashboardDataNew()            
                 .success(function (data, status, headers, config) {
                     sc.TotalSurvey = data.Voterlist.length;
-                    sc.CompletedSurvey = data.Voterlist.filter(function (e) { return e.Validated == 1 }).length;
-                    sc.ResumedSurvey = data.Voterlist.filter(function (e) { return e.Validated == 0 }).length;
-
+                    //sc.TotalSurvey = angular.isNumber(sc.TotalSurvey) ? sc.TotalSurvey : 1;
+                    if (sc.TotalSurvey == 0) {
+                        sc.TotalSurveyResult = ((sc.TotalSurvey / 1) * 100);
+                        sc.CompletedSurvey = data.Voterlist.filter(function (e) { return e.Validated == 1 }).length;
+                        sc.CompletedSurveyResult = ((sc.CompletedSurvey / 1) * 100).toFixed(2);
+                        sc.ResumedSurvey = data.Voterlist.filter(function (e) { return e.Validated == 0 }).length;
+                        sc.ResumedSurveyResult = ((sc.ResumedSurvey / 1) * 100).toFixed(2);                        
+                        sc.inActiveSurveyResult = ((sc.inActiveSurvey / 1) * 100).toFixed(2);
+                    } else {
+                        sc.TotalSurvey = data.Voterlist.length;
+                        sc.TotalSurveyResult = ((sc.TotalSurvey / sc.TotalSurvey) * 100);
+                        sc.CompletedSurvey = data.Voterlist.filter(function (e) { return e.Validated == 1 && e.isActive != 1 }).length;
+                        sc.CompletedSurveyResult = ((sc.CompletedSurvey / sc.TotalSurvey) * 100).toFixed(2);
+                        sc.ResumedSurvey = data.Voterlist.filter(function (e) { return e.Validated == 0 && e.isActive != 1 }).length;
+                        sc.ResumedSurveyResult = ((sc.ResumedSurvey / sc.TotalSurvey) * 100).toFixed(2);
+                        sc.inActiveSurvey = data.Voterlist.filter(function (e) { return e.isActive == 1 }).length;
+                        sc.inActiveSurveyResult = ((sc.inActiveSurvey / sc.TotalSurvey) * 100).toFixed(2);
+                    }
                     sc.TotalEmployee = data.Userlist.length;
                     sc.ArcivedEmployee = data.Userlist.filter(function (e) { return e.UserName.indexOf("INACTIVE-") > -1 }).length;
                     if ($.isNumeric(sc.ArcivedEmployee)) {
@@ -101,19 +117,15 @@
                 colorByPoint: true,
                 data: data.SurveyChartData
             }
-        ],
-       
-    });
+        ],       
+                    });
+                    $scope.spinner.resolve();
                 }).error(function (data, status, headers, config) {
                     if (status === 0) // timeout
-                    {
-                        if (retryCount < 2) {
-                            retryCount += 1;
-                            //getVoteListForUser();
-                        } else {
-                            SMAAlertFactory.CreateInfoAlert("Alert", "It seems iAspire is overloaded at the moment\n please try again later.");
-                        }
+                    {                       
+                            SMAAlertFactory.CreateInfoAlert("Alert", "It seems system is overloaded at the moment\n please try again later.");
                     }
+                    $scope.spinner.resolve();
                 });
         }
         function getMonthname(monthNumber) { //1 = January
@@ -121,23 +133,6 @@
                 'July', 'August', 'September', 'October', 'November', 'December'];
             return monthNames[monthNumber];
         }
-
-        function logout() {
-            function confirmCallback(val) {
-                if (val === true) {
-                    DataService.userLogout()
-                        .success(function (data, status, headers, config) {
-                            $scope.AppC.ActiveUser.UserID = null;
-                            $rootScope.ID = null;
-                            location.hash = '#login';
-                        })
-                        .error(function (data, status, headers, config) {
-                            $scope.AppC.ActiveUser.UserID = null;
-                            $rootScope.ID = null;
-                        });
-                }
-            }
-            SMAAlertFactory.CreateConfirmAlert("Are you sure you want to log out?", null, null, null, confirmCallback);
-        }
+                
     }
        })();

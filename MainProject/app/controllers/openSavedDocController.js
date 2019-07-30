@@ -8,7 +8,7 @@
         .controller("OpenSavedDocController", ["DataService", "$scope", "$rootScope", "$window", "$timeout", "SMAAlertFactory", "ProjectConstants", openSavedDocController]);
    
     function openSavedDocController(DataService, $scope, $rootScope, $window, $timeout, SMAAlertFactory, ProjectConstants) {
-        checkpart();
+        
         $scope.AppC.ShowHeader = true;
         $scope.AppC.ShowFooter = true;
         $scope.AppC.ActivePageName = "Forms";
@@ -16,9 +16,12 @@
         
         /*jshint validthis:true */
         var oSD = this;
+        oSD.MerchantData = '';
+        getListOfAllSurvey();        
         oSD.isActive = true;
         oSD.dataLoaded = false;
         //oSD.SurveyList = [];
+        oSD.responseResult = "";
         oSD.BackButtonText = "HOME";
         oSD.TESurveyList = [];
         oSD.SESurveyList = [];
@@ -27,7 +30,6 @@
         oSD.surveyIsLoaded = false;
         oSD.resumeiFrameLoadedCallback = iFrameLoaded;
         oSD.setVoterToOpen = setVoterToOpen;
-        oSD.getSurveyListForUser = getSurveyListForUser;
         oSD.deActivateVote = deActivateVote
         oSD.FilterbyData = FilterbyData
         //START NILESH_TSK10
@@ -55,9 +57,8 @@
         oSD.FilterSettings.SerachData = [];
         oSD.FilterSettings.FilterData = null;
         oSD.Spinner = false;
-        oSD.setSpinner = setSpinner
-        oSD.getVotBySurveyID = getVotBySurveyID
-        oSD.MerchantData = JSON.parse(localStorage.getItem("MainUserData"))
+        oSD.setSpinner = setSpinner;        
+        oSD.getVotBySurveyID = getVotBySurveyID       
         //END NILESH-TSK16
         oSD.DisplayButton = DisplayButton;//M0014
         oSD.showhide = showhide;
@@ -178,8 +179,6 @@
 
         oSD.backToSelectionPage = backToSelectionPage;
 
-        //getSurveyListForUser();
-
         window.document.getElementsByTagName('iframe')[0].addEventListener(ProjectConstants.Events.SurveyComplete, function () {
             var iframe = document.getElementById("surveyResumeIFrame");
             setTimeout(function () {
@@ -197,39 +196,16 @@
         }, ProjectConstants.Integers.LoadDelayTime);
 
         var retryCount = 0;
-
-        //window.RenderPDF = renderPDF;
-        function checkpart() {
-            getTESurveyListForUser();
-            getSESurveyListForUser();
-        }
+        
         return oSD;
-
-        //function renderPDF() {
-        //    var iframe = document.getElementById("surveyResumeIFrame");
-        //    var iFrameHeight = $(iframe).contents().find("body").height();
-        //    var iFrameWidth = $(iframe).contents().find("body").width();
-
-        //    var canvas = document.getElementById("reportRenderTest");
-        //    canvas.width = iFrameWidth;
-        //    canvas.height = iFrameHeight;
-        //    var ctx = canvas.getContext("2d");
-
-        //    domvas.toImage($("iframe").contents().find("body")[0], function () {
-        //        ctx.drawImage(this, 20, 20);
-        //    }, iFrameWidth, iFrameHeight);
-        //}
 
         function SortByTitle(x, y) {//M0022
             return ((x.Title == y.Title) ? 0 : ((x.Title > y.Title) ? 1 : -1));
         }
         function getListOfAllSurvey(survey) {
-            oSD.Spinner = true;
-            if ($scope.businessrpt)
-                var MerchantType = "Business";
-            if ($scope.eductnrpt)
-                MerchantType = "Education";
-            DataService.GetSureyListByFormType(oSD.MerchantData.MerchantID, MerchantType)
+            $scope.spinner = SMAAlertFactory.CreateSpinnerAlert();
+            oSD.MerchantData = JSON.parse(localStorage.getItem("MainUserData"))
+            DataService.GetSureyListByFormType(oSD.MerchantData.MerchantID)
                 .success(function (data, status, headers, config) {
                     data.sort(SortByTitle);//M0022
                     for (var i in data) {
@@ -254,67 +230,32 @@
                     else {
                         oSD.Spinner = false;
                     }
+                    $scope.spinner.resolve();
                 })
                 .error(function (data, status, headers, config) {
-
+                    $scope.spinner.resolve();
                 });
         }
-        function FilterbyData(DateInput) {
-            getSurveyListForUser(oSD.SearchData)
-        }
-        function getSurveyListForUser(SearchData) {
-            oSD.Spinner = true;
-            if ($scope.businessrpt)
-                var MerchantType = "Business";
-            if ($scope.eductnrpt)
-                MerchantType = "Education";
-            DataService.GetSureyListByFormType(oSD.MerchantData.MerchantID, MerchantType)
-            .success(function (data, status, headers, config) {
-                oSD.ShowOverallSpinner = false;
-                data.sort(SortByTitle);//M0022
-                data = data.filter(function (e) {//M0022
-                    return e.Archive == false;
-                })
-                for (var i in data) {
-                    data[i].VoteList = [];
-                    data[i].ShowVotes = true;//M0022
-                    data[i].ShowSpinner = true;
-                }
-
-                oSD.SurveyList = data;
-                var SurveyData = {
-                    surveydata: data,
-                    filterdata: SearchData
-                }
-                //data.push({"filterdata":SearchData });
-                getVoteListForUser(SurveyData);
-            })
-            .error(function (data, status, headers, config) {
-
-            });
-        }
-
-
-        function getSEAddinVotes() {
-            if ($scope.AppC.IsTrialVersion === false) {
-                DataService.GetSEAddinsVotesListForUser()
-                    .success(function (data, status, headers, config) {
-                        formatVoteData(data);
-                        for (var k in oSD.SurveyList) {
-                            oSD.SurveyList[k].ShowSpinner = false;
-                        }
-                        oSD.Spinner = false;
-                    })
-                    .error(function (data, status, headers, config) {
-                        for (var k in oSD.SurveyList) {
-                            oSD.SurveyList[k].ShowSpinner = false;
-                        }
-                        oSD.Spinner = false;
-                    });
+        function FilterbyData(DateInput) {            
+            for (var i in oSD.SurveyList) {
+                oSD.SurveyList[i].VoteList = [];
+                oSD.SurveyList[i].ShowVotes = true;
+                oSD.SurveyList[i].ShowSpinner = true;
             }
+
+            var SurveyData = {
+                surveydata: oSD.SurveyList,
+                filterdata: {
+                    searchTerm: oSD.FilterSettings.SelectedEmployee==null?"":oSD.FilterSettings.SelectedEmployee,
+                    startDate: oSD.SearchData.startDate,
+                    endDate: oSD.SearchData.endDate
+                }
+            }            
+            getVoteListForUser(SurveyData);
         }
 
         function getVoteListForUser(SurveyData) {
+            $scope.spinner = SMAAlertFactory.CreateSpinnerAlert();
             var Role = $scope.role ? "Viewer" : "Other";
             DataService.getVoterListAsync(SurveyData, 'OPSDOC')//M0014
                 .success(function (data, status, headers, config) {
@@ -322,19 +263,15 @@
                         data = data.filter(function (e) {
                             return e.isActive == false;
                         })
-                    }
-                    //for (var i in data) {
-                    //    if (data[i].SurveyTitle == "High Five a Teammate!") {                            
-                    //        data[i].VoterAnswerFilterValues.slice(1, 3)                           
-                    //    }
-                    //}
+                    } else {
+                        oSD.responseResult = "No data!";
+                    }                   
                     if (Role == "Viewer") {
                         var UserValue = $scope.AppC.ActiveUser;
                         data = data.filter(function (e, index) {
                             return e.VoterAnswerFilterValues.filter(function (f) {
                                 f.VariableValue == (UserValue.FirstName + " " + UserValue.LastName) == true || f.VariableValue == (UserValue.LastName + ", " + UserValue.FirstName) == true
-                            })
-                            // some(v=>v["VariableValue"] == (UserValue.FirstName + " " + UserValue.LastName)) == true || e.VoterAnswerFilterValues.some(v=>v["VariableValue"] == (UserValue.LastName + ", " + UserValue.FirstName)) == true;
+                            })                            
                         })
                     }
                     if (data.length && data.length > 0) {
@@ -352,12 +289,9 @@
                         //    })
                         //}
                         oSD.surveylist[k].showspinner = false;
-                    }
-                    //oSD.FilterOptions.columnName = "LastSubmitted";
-                    //oSD.FilterOptions.surveyID = oSD.SurveyList[0].SurveyID;
-                    //oSD.FilterOptions.descending = true;
+                    }                   
                     var v = oSD.SurveyList;
-                    getSEAddinVotes();
+                    $scope.spinner.resolve();
                 })
                 .error(function (data, status, headers, config) {
                     if (status === 0) // timeout
@@ -369,6 +303,8 @@
                             SMAAlertFactory.CreateInfoAlert("Alert", "It seems iAspire is overloaded at the moment\n please try again later.");
                         }
                     }
+                    oSD.responseResult = "Sorry something went wrong. Please try again.";
+                    $scope.spinner.resolve();
                 });
         }
 
@@ -394,40 +330,40 @@
                     if (data[i].VoteDate) { dateToUse = data[i].VoteDate; } else { dateToUse = data[i].StartDate; }
                     data[i].StrFrmtLastEditDate = moment(dateToUse).format("ddd MMM Do YYYY hh:mm A");
                     if (data[i].VoterAnswerFilterValues && data[i].VoterAnswerFilterValues.length > 0) {
-                        for (var n in data[i].VoterAnswerFilterValues) {
-                            if (data[i].VoterAnswerFilterValues[n].VariableName === 'Date & Time') {
-                                data[i].VoterAnswerFilterValues[n].VariableValue = moment(parseInt(data[i].VoterAnswerFilterValues[n].VariableValue)).format("ddd MMM Do YYYY HH:mm A");
-                            }
-                        }
+                        //for (var n in data[i].VoterAnswerFilterValues) {
+                        //    if (data[i].VoterAnswerFilterValues[n].VariableName === 'Date & Time') {
+                        //        data[i].VoterAnswerFilterValues[n].VariableValue = moment(parseInt(data[i].VoterAnswerFilterValues[n].VariableValue)).format("ddd MMM Do YYYY HH:mm A");
+                        //    }
+                        //}
 
                         for (var z = 0, len = data[i].VoterAnswerFilterValues.length; z < len; z++) {
                             data[i][data[i].VoterAnswerFilterValues[z].VariableName.replace(' ', '').replace('&', '')] = data[i].VoterAnswerFilterValues[z].VariableValue;
                         }
 
                         //For rearrange column only when summary column          M0021
-                        for (var j = 0; j < data[i].VoterAnswerFilterValues.length; j++) {
-                            if (data[i].VoterAnswerFilterValues[j].VariableName == 'Free text synopsis') {
-                                var synopsisvalue = data[i].VoterAnswerFilterValues[j];
-                                var synopsisindex = j;
-                                var sumbmitedvalue;
-                                var sumbmitedindex = 0;
-                                var chkflag = false;
-                                for (var k = 0; k < data[i].VoterAnswerFilterValues.length; k++) {
-                                    if (data[i].VoterAnswerFilterValues[k].VariableName == 'Last Submitted') {
-                                        sumbmitedvalue = data[i].VoterAnswerFilterValues[k];
-                                        sumbmitedindex = k - 1;
-                                        chkflag = true;
-                                    }
-                                }
-                                if (chkflag && chkval != i) {
-                                    chkval = i;
-                                    data[i].VoterAnswerFilterValues.splice(synopsisindex, 1);
-                                    data[i].VoterAnswerFilterValues.splice(sumbmitedindex, 1);
-                                    data[i].VoterAnswerFilterValues.push(sumbmitedvalue);
-                                    data[i].VoterAnswerFilterValues.push(synopsisvalue);
-                                }
-                            }
-                        }
+                        //for (var j = 0; j < data[i].VoterAnswerFilterValues.length; j++) {
+                        //    if (data[i].VoterAnswerFilterValues[j].VariableName == 'Free text synopsis') {
+                        //        var synopsisvalue = data[i].VoterAnswerFilterValues[j];
+                        //        var synopsisindex = j;
+                        //        var sumbmitedvalue;
+                        //        var sumbmitedindex = 0;
+                        //        var chkflag = false;
+                        //        for (var k = 0; k < data[i].VoterAnswerFilterValues.length; k++) {
+                        //            if (data[i].VoterAnswerFilterValues[k].VariableName == 'Last Submitted') {
+                        //                sumbmitedvalue = data[i].VoterAnswerFilterValues[k];
+                        //                sumbmitedindex = k - 1;
+                        //                chkflag = true;
+                        //            }
+                        //        }
+                        //        if (chkflag && chkval != i) {
+                        //            chkval = i;
+                        //            data[i].VoterAnswerFilterValues.splice(synopsisindex, 1);
+                        //            data[i].VoterAnswerFilterValues.splice(sumbmitedindex, 1);
+                        //            data[i].VoterAnswerFilterValues.push(sumbmitedvalue);
+                        //            data[i].VoterAnswerFilterValues.push(synopsisvalue);
+                        //        }
+                        //    }
+                        //}
                     }
                     for (var l in oSD.SurveyList) {
                         if (oSD.SurveyList[l].SurveyID === data[i].SurveyID) {
@@ -688,23 +624,13 @@
         function searchEmployeeByName() {
             var SearchTerm = oSD.FilterSettings.SelectedEmployee;
             var SerchEvent = null;
-            var chksrch = $('.comonsrch').data('srch');
-            if (chksrch == "busins") {
-                SerchEvent = $("#SearchEmployeebs");
-            }
-            if (chksrch == "educatn") {
-                SerchEvent = $("#SearchEmployeeEdu");
-            }
+            var chksrch = $('.comonsrch').data('srch');            
+            SerchEvent = $("#SearchEmployeebs");            
             $(SerchEvent).autocomplete({
                 minLength: 1,
                 source: function (request, response) {
-                    var AutoFilterobj = SearchTerm;
-                    if (chksrch == "busins") {
+                    var AutoFilterobj = SearchTerm;                  
                         autocompleteajaxbs(request, response, AutoFilterobj)
-                    }
-                    if (chksrch == "educatn") {
-                        autocompleteajaxEd(request, response, AutoFilterobj)
-                    }
                 },
                 select: function (event, ui) {
                     oSD.SearchData.searchTerm = ui.item.value;                           
@@ -727,145 +653,8 @@
                 }
             })
         }
-        function autocompleteajaxEd(request, response, AutoFilterobj) {
-            DataService.searchUserDetailsbyClass(AutoFilterobj)
-            .success(function (data, status, headers, config) {
-                var names = [];
-                if (data.length > 0) {
-                    for (var i = 0; i < data.length; i++) {
-                        names.push(data[i].Name)
-                    }
-                    response(names);
-                }
-            })
-        }
-
-        function findGradeData(empSearchName) {
-            if (empSearchName) {
-                for (var i in oSD.SurveyList) {
-                    for (var k in oSD.SurveyList[i].VoteList) {
-                        var EmployeeName = '';
-                        var GradeName = '';
-                        for (var m in oSD.SurveyList[i].VoteList[k].VoterAnswerFilterValues) {
-                            if (oSD.SurveyList[i].VoteList[k].VoterAnswerFilterValues[m].VariableName === 'Grade' && oSD.SurveyList[i].VoteList[k].Grade.toLowerCase().indexOf(empSearchName) > -1) {
-                                var check = oSD.SurveyList[i].VoteList[k].Grade
-                                if (oSD.Gradelst.indexOf(check) > -1) {
-                                    let chkval = null;
-                                    if (chkval == false) {
-                                        oSD.FilterSettings.SerachData.push({ "searchitm": check })
-                                    }
-                                }
-                                else {
-                                    oSD.Gradelst.push(check);
-                                    oSD.FilterSettings.SerachData.push({ "searchitm": check })
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            oSD.FilterSettings.FilterData = oSD.FilterSettings.SerachData;
-        }
-        function findDeptData(empSearchName) {
-            if (empSearchName) {
-                for (var i in oSD.SurveyList) {
-                    for (var k in oSD.SurveyList[i].VoteList) {
-                        var EmployeeName = '';
-                        var GradeName = '';
-                        for (var m in oSD.SurveyList[i].VoteList[k].VoterAnswerFilterValues) {
-                            if (oSD.SurveyList[i].VoteList[k].VoterAnswerFilterValues[m].VariableName === 'Department' && oSD.SurveyList[i].VoteList[k].Department.toLowerCase().indexOf(empSearchName) > -1) {
-                                var check = oSD.SurveyList[i].VoteList[k].Department
-                                if (oSD.departmentlst.indexOf(check) > -1) {
-                                    let chkval = null;
-                                    if (chkval == false) {
-                                        oSD.FilterSettings.SerachData.push({ "searchitm": check })
-                                    }
-                                }
-                                else {
-                                    oSD.departmentlst.push(check);
-                                    oSD.FilterSettings.SerachData.push({ "searchitm": check })
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            oSD.FilterSettings.FilterData = oSD.FilterSettings.SerachData;
-        }
-        function findSubjctData(empSearchName) {
-            if (empSearchName) {
-                for (var i in oSD.SurveyList) {
-                    for (var k in oSD.SurveyList[i].VoteList) {
-                        var EmployeeName = '';
-                        var GradeName = '';
-                        for (var m in oSD.SurveyList[i].VoteList[k].VoterAnswerFilterValues) {
-                            if (oSD.SurveyList[i].VoteList[k].VoterAnswerFilterValues[m].VariableName === 'Subject' && oSD.SurveyList[i].VoteList[k].Subject.toLowerCase().indexOf(empSearchName) > -1) {
-                                var check = oSD.SurveyList[i].VoteList[k].Subject
-                                if (oSD.Subjctlst.indexOf(check) > -1) {
-                                    let chkval = null;
-                                    if (chkval == false) {
-                                        oSD.FilterSettings.SerachData.push({ "searchitm": check })
-                                    }
-                                }
-                                else {
-                                    oSD.Subjctlst.push(check);
-                                    oSD.FilterSettings.SerachData.push({ "searchitm": check })
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            oSD.FilterSettings.FilterData = oSD.FilterSettings.SerachData;
-        }
-        function findEmployeeInData(empSearchName) {
-            for (var i in oSD.SurveyList) {
-                for (var k in oSD.SurveyList[i].VoteList) {
-                    var EmployeeName = '';
-                    var GradeName = '';
-                    var Dept = '';
-                    var Subjct = '';
-                    for (var m in oSD.SurveyList[i].VoteList[k].VoterAnswerFilterValues) {
-                        if (oSD.SurveyList[i].VoteList[k].VoterAnswerFilterValues[m].VariableName === 'Employee') {
-                            EmployeeName = oSD.SurveyList[i].VoteList[k].VoterAnswerFilterValues[m].VariableValue;
-                        }
-                        else if (oSD.SurveyList[i].VoteList[k].VoterAnswerFilterValues[m].VariableName === 'Teacher') {
-                            EmployeeName = oSD.SurveyList[i].VoteList[k].VoterAnswerFilterValues[m].VariableValue;
-                        }
-                        else if (oSD.SurveyList[i].VoteList[k].VoterAnswerFilterValues[m].VariableName === 'Grade') {
-                            GradeName = oSD.SurveyList[i].VoteList[k].VoterAnswerFilterValues[m].VariableValue;
-                        }
-                        else if (oSD.SurveyList[i].VoteList[k].VoterAnswerFilterValues[m].VariableName === 'Department') {
-                            Dept = oSD.SurveyList[i].VoteList[k].VoterAnswerFilterValues[m].VariableValue;
-                        }
-                        else if (oSD.SurveyList[i].VoteList[k].VoterAnswerFilterValues[m].VariableName === 'Subject') {
-                            Subjct = oSD.SurveyList[i].VoteList[k].VoterAnswerFilterValues[m].VariableValue;
-                        }
-                    }
-                    if (EmployeeName == empSearchName) {
-                        oSD.SurveyList[i].VoteList[k].IsInvalidEmployee = false;
-                    }
-                    else if (GradeName == empSearchName) {
-                        oSD.SurveyList[i].VoteList[k].IsInvalidEmployee = false;
-                    }
-                    else if (Dept == empSearchName) {
-                        oSD.SurveyList[i].VoteList[k].IsInvalidEmployee = false;
-                    }
-                    else if (Subjct == empSearchName) {
-                        oSD.SurveyList[i].VoteList[k].IsInvalidEmployee = false;
-                    }
-                    else {
-                        oSD.SurveyList[i].VoteList[k].IsInvalidEmployee = true;
-                    }
-                    if (empSearchName == '') {
-                        oSD.SurveyList[i].VoteList[k].IsInvalidEmployee = false;
-                    }
-
-                }
-            }
-        }
-        //END NILESH-TSK16
-
+       
+           
         function reCalculateDateRange() {
             //var votes = [];
             var date = null;
@@ -914,49 +703,7 @@
             }
             //console.table(votes);
         }
-        //--------------Check Education | Business------------------------
-        function getTESurveyListForUser() {
-            DataService.getTESurveyListForUser()
-                .success(function (data, status, headers, config) {
-                    oSD.TESurveyList = data;
-                    if (oSD.TESurveyList.length > 0) {
-                        educationrpt();
-                    }
-                    else {
-                        businessrpt();
-                    }
-                })
-        }
-
-        function getSESurveyListForUser() {
-            DataService.getSESurveyListForUser()
-                .success(function (data, status, headers, config) {
-                    oSD.SESurveyList = data;
-                    if (oSD.SESurveyList.length > 0) {
-                        educationrpt();
-                    }
-                    else {
-                        businessrpt();
-                    }
-                })
-        }
-        function educationrpt() {
-            if (oSD.TESurveyList.length > 0 || oSD.SESurveyList.length > 0) {
-                //alert("Education")
-                $scope.eductnrpt = true;
-                $scope.businessrpt = false;
-                getListOfAllSurvey();
-            }
-        }
-
-        function businessrpt() {
-            if ((oSD.TESurveyList.length < 0 && oSD.SESurveyList.length > 0) || (oSD.TESurveyList.length > 0 && oSD.SESurveyList.length < 0) || (oSD.TESurveyList.length <= 0 && oSD.SESurveyList.length <= 0)) {
-                //alert("Business")
-                $scope.businessrpt = true;
-                $scope.eductnrpt = false;
-                getListOfAllSurvey();
-            }
-        }
+        
         //----------------------------XX----------------------------------
         function deActivateVote(voteID, surveyID) {
             SMAAlertFactory.CreateConfirmAlert("Are you sure<br>you want to delete this document?", null, null, null, confirmCallback);
@@ -975,7 +722,6 @@
                         var searchdata = localStorage.getItem("SrchData");
                         var strtdt = localStorage.getItem("StrtDt");
                         var endt = localStorage.getItem("EndDt");
-                        //    getSurveyListForUser(searchdata, strtdt, endt)
                     }).error(function (response, status, header, config) {
                         $scope.spinner.resolve();
                         SMAAlertFactory.CreateInfoAlert("Document failed to deleted!");
@@ -995,30 +741,27 @@
         function setSpinner(chk) {
             oSD.Spinner = false;
         }
-        //$scope.getVotBySurveyID = function (survey) {
-        //    alert(survey)
-        //}
-        function getVotBySurveyID(survey, chk) {
+       
+        function getVotBySurveyID(survey, chk,index) {
             if (chk == 'divtag') {
                 survey.ShowVotes = survey.ShowVotes == false ? true : false;
             }
             var SurveyData = null;
-            var data = [];
+            var Survey = oSD.SurveyList.filter(function (e) { return e.SurveyID == survey.SurveyID });
             if (survey.ShowVotes == true && (typeof $scope.serchData == "undefined" || $scope.serchData == null)) {
+                $('#show' + index).text("Hide");
                 SurveyData = {
-                    surveyID: survey.SurveyID,
-                    searchItem: oSD.SearchData
-                }
-                getListOfAllSurvey(SurveyData);
-            } else if (survey.ShowVotes == true && (typeof $scope.serchData != "undefined" && $scope.serchData != null)) {//M0032
-                oSD.SearchData.searchTerm = $scope.serchData;
-                SurveyData = {
-                    surveyID: survey.SurveyID,
-                    searchItem: oSD.SearchData
+                    surveydata: Survey,
+                    filterdata: {
+                        searchTerm: '',
+                        startDate: '',
+                        endDate: ''
+                    }
                 }
                 getVoteListForUser(SurveyData);
-            }
+            } 
             else {
+                $('#show' + index).text("Show");
                 var VoteData = oSD.SurveyList.filter(function (e) {
                     return e.SurveyID == survey.SurveyID;
                 })

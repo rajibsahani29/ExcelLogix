@@ -591,44 +591,43 @@
 
             //START NILESH-TSK45            
             var merchantData = JSON.parse(localStorage.getItem("MerchantData"));
-            DataService.surveyTypeGetList(merchantData.MerchantID).then(function (res) {
-                var arrSurveyTypeList = res.data;
-                getSurveyByType(arrSurveyTypeList);
-            });
+            //DataService.surveyTypeGetList(merchantData.MerchantID).then(function (res) {
+            //    var arrSurveyTypeList = res.data;
+                
+            //});
+            getSurveyByType(merchantData);
         }
-        function getSurveyByType(arrSurveyTypeList) {
+        function getSurveyByType(merchantData) {
             var currentIndex = 0;
             DataService.CheckCustomPageRights("report")
                 .success(function (data, status1, headers, config) {
                     if (status1 == 200) {
                         //END NILESH-TSK45
-                        for (var i = 0; i < arrSurveyTypeList.length; i++) {
-                            DataService.getSurveyListByListName(arrSurveyTypeList[i].SurveyTypeID)
-                                .success(function (data, status, headers, config) {
-                                    data = data.filter(function (e) {
-                                        return e.Archive == false;
-                                    })
-                                    function getSurveyCountFromList(surveyID, list) {
-                                        return list.filter(function (e) {
-                                            return e.SurveyID === surveyID;
-                                        }).length;
-                                    }
-                                    for (var j in data) {
-                                        if (getSurveyCountFromList(data[j].SurveyID, rC.SurveyList) === 0) rC.SurveyList.push(data[j]);
-                                    }
-                                    currentIndex++;
-                                    if (currentIndex == arrSurveyTypeList.length) {
-                                        rC.SurveysListIsLoading = false;
-                                        //getSurveyCountFromList.sort();
-                                    }
+                        DataService.GetSureyListByFormType(merchantData.MerchantID)
+                            .success(function (data, status, headers, config) {
+                                data = data.filter(function (e) {
+                                    return e.Archive == false;
                                 })
-                                .error(function (data, status, headers, config) {
-                                    currentIndex++;
-                                    if (currentIndex == arrSurveyTypeList.length) {
-                                        rC.SurveysListIsLoading = false;
-                                    }
-                                });
-                        }
+                                function getSurveyCountFromList(surveyID, list) {
+                                    return list.filter(function (e) {
+                                        return e.SurveyID === surveyID;
+                                    }).length;
+                                }
+                                for (var j in data) {
+                                    if (getSurveyCountFromList(data[j].SurveyID, rC.SurveyList) === 0) rC.SurveyList.push(data[j]);
+                                }
+                                currentIndex++;
+                                //if (currentIndex == arrSurveyTypeList.length) {
+                                //    rC.SurveysListIsLoading = false;
+                                //    //getSurveyCountFromList.sort();
+                                //}
+                            })
+                            .error(function (data, status, headers, config) {
+                                currentIndex++;
+                                //if (currentIndex == arrSurveyTypeList.length) {
+                                //    rC.SurveysListIsLoading = false;
+                                //}
+                            });
                         //START NILESH-TSK45
                     }
                 })
