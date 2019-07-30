@@ -8,7 +8,7 @@
 
     function dataService($http, ProjectConstants, $q, $timeout) {
 
-        /*jshint validthis:true */
+	    /*jshint validthis:true */  
         var dS = this;
         // user
         dS.validateUserLogin = validateUserLogin;
@@ -469,8 +469,8 @@
             var url = getBaseURL() + "Surveys/GetSurveyTypeByMerchant/" + merchantID;
             return $http.get(url);
         }
-        function GetSureyListByFormType(merchantid, str) {
-            var url = getBaseURL() + "Surveys/UserByParam/" + merchantid + "/" + str;
+        function GetSureyListByFormType(merchantid) {
+            var url = getBaseURL() + "Surveys/UserByParam/" + merchantid;
             return $http.get(url);
         }
         //////////////////
@@ -488,12 +488,7 @@
         }
         function getDashboardDataNew() {
             var url = getBaseURL() + "Dashboard/getNewDashboardData";
-            var req = {
-                method: "POST",
-                url: url,
-                timeout: 1000 * 60 * 6
-            };
-            return $http(req);
+            return $http.get(url);            
         }
         function addDashbrdEvent(eventdata) {
             var url = getBaseURL() + "Dashboard/addevent";
