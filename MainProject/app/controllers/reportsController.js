@@ -225,16 +225,7 @@
                         endDate[momentFunc](abstractTimeNumber).endOf("day").add(1, "millisecond");
                         break;
                     default:
-                        ////startDate[momentFunc](abstractTimeNumber).startOf(momentFunc).subtract(1, "millisecond");
-                        //startDate.startOf("day");
-                        //startDate[momentFunc](abstractTimeNumber);
-                        //startDate.subtract(1, "millisecond");
-                        ////endDate[momentFunc](abstractTimeNumber).endOf(momentFunc).add(1, "millisecond");
-                        //endDate.endOf("day");
-                        //endDate[momentFunc](abstractTimeNumber);
-                        //endDate.add(1, "millisecond");
-                        //break;
-                        //startDate[momentFunc](abstractTimeNumber).startOf(momentFunc).subtract(1, "millisecond");
+                       
                         startDate[momentFunc](abstractTimeNumber);
                         startDate.startOf(momentFunc);
                         startDate.subtract(1, "millisecond");
@@ -244,7 +235,7 @@
                         endDate.add(1, "millisecond");
                         break;
                 }
-
+             
                 for (var i in repConst.AllVotes) {
                     var dateFromForm = null;
                     if (repConst.CurrentDateTimeAnswerID > -1) {
@@ -375,17 +366,7 @@
         rC.SurveyList = [];
         rC.SurveyID = -1;
         rC.SurveyTitle = null;
-        //if (Modernizr.inputtypes["date"]) {
-        //    rC.momentFormat = "YYYY-MM-DDTHH:mm:ss";
-        //    rC.StartDateString = startDate.format(rC.momentFormat);
-        //    rC.EndDateString = endDate.format(rC.momentFormat);
-        //}
-        //else {
-        //    rC.momentFormat = "MM/DD/YYYY h:mm a";
-        //    rC.StartDateString = startDate.format(rC.momentFormat);
-        //    rC.EndDateString = endDate.format(rC.momentFormat);
-        //}
-        //rC.StartDateString = startDate.format(rC.momentFormat);
+      
 
         setTimeout(function () { rC.EndDateString = endDate.format(rC.momentFormat); }, 500)
         console.log(rC.StartDateString);
@@ -584,17 +565,8 @@
                     Title: "Select Form"
                 });
 
-            // START NILESH
-            //var TEsurveysLoaded = false;
-            //var SEsurveysLoaded = false;
-            //  var arrSurveyTypeList = ["IBS-EmployeeEvaluationForms","IBS-SafetyForms","IBS-Coaching"];
-
-            //START NILESH-TSK45            
             var merchantData = JSON.parse(localStorage.getItem("MerchantData"));
-            //DataService.surveyTypeGetList(merchantData.MerchantID).then(function (res) {
-            //    var arrSurveyTypeList = res.data;
-                
-            //});
+           
             getSurveyByType(merchantData);
         }
         function getSurveyByType(merchantData) {
